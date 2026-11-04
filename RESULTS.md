@@ -63,6 +63,17 @@ per case:
 
 pages under 12,000 chars are returned whole. selection only pays off on large pages, and a wrong section is worse than a full page.
 
+## batch
+
+ten urls, cold cache, one process per fetch against one batch call at concurrency 8.
+
+| mode | wall clock |
+| --- | --- |
+| ten separate fetches | 0.98 s |
+| one batch call | 0.25 s |
+
+4x on wall clock. the larger saving for an agent is that batch is one tool call instead of ten, so no conversation round trips.
+
 ## against a hosted reader
 
 six pages, quarry versus `r.jina.ai`, the reader most agents use when they want clean markdown. both arms return markdown for the same url. jina's latency includes the network round trip to its service.

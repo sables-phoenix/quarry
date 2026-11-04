@@ -305,14 +305,16 @@ impl Fetcher {
                 .clone()
         };
         let _permit = gate.acquire().await.ok();
-        let mut seen = self.last_seen.lock().await;
-        if let Some(prev) = seen.get(&host) {
-            let elapsed = prev.elapsed();
-            if elapsed < Duration::from_millis(150) {
-                tokio::time::sleep(Duration::from_millis(150) - elapsed).await;
-            }
+        let wait = {
+            let seen = self.last_seen.lock().await;
+            seen.get(&host)
+                .map(|prev| Duration::from_millis(150).saturating_sub(prev.elapsed()))
+                .unwrap_or_default()
+        };
+        if !wait.is_zero() {
+            tokio::time::sleep(wait).await;
         }
-        seen.insert(host, Instant::now());
+        self.last_seen.lock().await.insert(host, Instant::now());
     }
 }
 

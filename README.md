@@ -166,7 +166,8 @@ real pages, state graph against chrome devtools mcp:
 replay returns 10 tokens and zero model calls. a changed page string is caught with a 53 token witness.
 
 ```bash
-node browser/quarry-browser.mjs mcp
+npm --prefix browser run build
+node browser/dist/cli.js mcp
 ```
 
 ## security

@@ -1,4 +1,7 @@
-export const FLOWS = [
+import type { Step, Assertion } from "./types.js";
+export type Flow = { name: string; path: string; steps: Step[]; asserts: Assertion[] };
+
+export const FLOWS: Flow[] = [
   {
     name: "login ok",
     path: "/login.html",

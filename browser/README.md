@@ -1,6 +1,6 @@
 # quarry browser
 
-a semantic state layer for browser agents. it runs chrome over cdp, turns the page into a small scoped state, and returns deltas instead of screenshots.
+a semantic state layer for browser agents, written in typescript on effect 4. it runs chrome over cdp, turns the page into a small scoped state, and returns deltas instead of screenshots.
 
 ## why
 
@@ -30,11 +30,13 @@ an accessibility snapshot of mdn is about 23,000 tokens. a screenshot is 1,366. 
 ## use
 
 ```bash
-node browser/quarry-browser.mjs state https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
-node browser/quarry-browser.mjs act https://example.com '[{"op":"click","role":"button","name":"save"}]'
-node browser/quarry-browser.mjs project https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching --query "etag"
-node browser/quarry-browser.mjs replay flow.json
-node browser/quarry-browser.mjs mcp
+npm --prefix browser install
+npm --prefix browser run build
+node browser/dist/cli.js state https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching
+node browser/dist/cli.js act https://example.com '[{"op":"click","role":"button","name":"save"}]'
+node browser/dist/cli.js project https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching --query "etag"
+node browser/dist/cli.js replay flow.json
+node browser/dist/cli.js mcp
 ```
 
 set `CHROME` to the browser binary when it is not `chrome-headless-shell` on `path`.
@@ -46,7 +48,7 @@ mcp config for opencode:
   "mcp": {
     "quarry-browser": {
       "type": "local",
-      "command": ["node", "/absolute/path/to/quarry/browser/quarry-browser.mjs", "mcp"],
+      "command": ["node", "/absolute/path/to/quarry/browser/dist/cli.js", "mcp"],
       "enabled": true
     }
   }
@@ -85,7 +87,7 @@ mcp config for opencode:
 ## test
 
 ```bash
-CHROME=google-chrome node --test browser/test/*.test.mjs
+npm --prefix browser test
 ```
 
 the integration test runs 19 flows twice and checks that a wrong assertion fails with a witness.

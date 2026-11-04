@@ -49,7 +49,7 @@ def main() -> int:
             code = strip_strings(line)
             if "//" in code or "/*" in code:
                 bad.append(f"{path}:{number}: {line.strip()}")
-    for path in sorted(pathlib.Path("browser").rglob("*.mjs")):
+    for path in sorted(list(pathlib.Path("browser/src").rglob("*.ts")) + list(pathlib.Path("browser/test").rglob("*.ts"))):
         for number, line in enumerate(path.read_text().splitlines(), 1):
             code = strip_js(line)
             if "//" in code or "/*" in code:

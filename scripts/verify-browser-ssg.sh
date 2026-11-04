@@ -2,9 +2,11 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export CHROME="${CHROME:-$HOME/chrome-headless-shell}"
-node --test browser/test/state.test.mjs
-node --test browser/test/flows.test.mjs
-
+cd browser
+if [ -f package-lock.json ]; then npm ci --silent; else npm install --silent; fi
+npm run build
+npm test
+cd ..
 if [ ! -f formal/tla2tools.jar ]; then
   curl -sSL -o formal/tla2tools.jar https://github.com/tlaplus/tlaplus/releases/latest/download/tla2tools.jar
 fi

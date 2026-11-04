@@ -3,8 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "bin": { "quarry-browser": "./quarry-browser.mjs" },
+  "bin": {
+    "quarry-browser": "./dist/cli.js"
+  },
   "scripts": {
-    "test": "node --test test/*.test.mjs"
+    "build": "tsc -p tsconfig.json",
+    "test": "tsx --test test/*.test.ts",
+    "start": "node dist/cli.js",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "effect": "4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
   }
 }

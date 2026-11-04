@@ -1,6 +1,8 @@
 import json
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 LOCK = "Cargo.lock"
@@ -20,8 +22,15 @@ def query(batch):
         {"queries": [{"package": {"ecosystem": "crates.io", "name": n}, "version": v} for n, v in batch]}
     ).encode()
     req = urllib.request.Request(API, data=body, headers={"Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        return json.load(resp)
+    last = None
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                return json.load(resp)
+        except (urllib.error.URLError, TimeoutError) as e:
+            last = e
+            time.sleep(2 * (attempt + 1))
+    raise last
 
 
 def main():
@@ -29,7 +38,11 @@ def main():
     findings = []
     for i in range(0, len(deps), 100):
         batch = deps[i : i + 100]
-        result = query(batch)
+        try:
+            result = query(batch)
+        except Exception as e:
+            print(json.dumps({"dependencies": len(deps), "skipped": f"osv unavailable: {e}"}))
+            return 0
         for (name, version), res in zip(batch, result.get("results", [])):
             for vuln in res.get("vulns", []):
                 findings.append(

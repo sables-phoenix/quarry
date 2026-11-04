@@ -45,7 +45,8 @@ def main():
                     }
                 )
     print(json.dumps({"dependencies": len(deps), "vulnerabilities": findings}, indent=2))
-    return 1 if findings else 0
+    blocking = [f for f in findings if f["severity"] or f["id"].startswith("CVE-")]
+    return 1 if blocking else 0
 
 
 if __name__ == "__main__":

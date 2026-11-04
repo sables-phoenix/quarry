@@ -134,11 +134,13 @@ export class Browser {
     const port = 9400 + Math.floor(Math.random() * 400);
     const started = performance.now();
     const chrome = spawn(CHROME, [
-      "--headless", "--no-sandbox", "--disable-gpu", "--hide-scrollbars",
+      "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--hide-scrollbars",
       `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, "about:blank",
-    ], { stdio: "ignore" });
+    ], { stdio: ["ignore", "ignore", "pipe"] });
+    let stderr = "";
+    chrome.stderr.on("data", (d) => { stderr = (stderr + d.toString()).slice(-2000); });
     let wsUrl;
-    for (let i = 0; i < 200; i++) {
+    for (let i = 0; i < 600; i++) {
       try {
         const r = await fetch(`http://127.0.0.1:${port}/json`);
         if (r.ok) {
@@ -148,7 +150,7 @@ export class Browser {
       } catch {}
       await sleep(25);
     }
-    if (!wsUrl) throw new Error("chrome did not start");
+    if (!wsUrl) throw new Error(`chrome did not start: ${stderr}`);
     const cdp = new Cdp(wsUrl);
     await cdp.ready;
     await cdp.send("Page.enable");

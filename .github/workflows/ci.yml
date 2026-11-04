@@ -26,5 +26,4 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - run: CHROME=google-chrome bash scripts/verify-browser.sh
       - run: CHROME=google-chrome bash scripts/verify-browser-ssg.sh

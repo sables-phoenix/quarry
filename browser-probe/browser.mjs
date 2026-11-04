@@ -140,7 +140,7 @@ export class Browser {
     let stderr = "";
     chrome.stderr.on("data", (d) => { stderr = (stderr + d.toString()).slice(-2000); });
     let wsUrl;
-    for (let i = 0; i < 600; i++) {
+    for (let i = 0; i < 1200; i++) {
       try {
         const r = await fetch(`http://127.0.0.1:${port}/json`);
         if (r.ok) {
@@ -257,7 +257,10 @@ export class Browser {
   async close() {
     try { this.cdp.ws.close(); } catch {}
     this.chrome.kill("SIGKILL");
-    rmSync(this.profile, { recursive: true, force: true });
+    await sleep(300);
+    try {
+      rmSync(this.profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 });
+    } catch {}
   }
 }
 

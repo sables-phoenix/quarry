@@ -172,4 +172,4 @@ for (const url of pages) out.push(await run(cdp, url));
 console.log(JSON.stringify(out, null, 2));
 cdp.ws.close();
 chrome.kill("SIGKILL");
-rmSync(profile, { recursive: true, force: true });
+try { rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }); } catch {}

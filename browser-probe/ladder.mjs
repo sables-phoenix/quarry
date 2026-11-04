@@ -222,4 +222,4 @@ for (const s of scenarios) {
 console.log(JSON.stringify({ boot_ms: Math.round(bootMs), results }, null, 2));
 cdp.ws.close();
 chrome.kill("SIGKILL");
-rmSync(profile, { recursive: true, force: true });
+try { rmSync(profile, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 }); } catch {}

@@ -1,17 +1,17 @@
 {
   "summary": {
     "pages": 20,
-    "ok": 20,
-    "median_ratio_text": 1.14,
-    "median_ratio_html": 11.32,
+    "ok": 19,
+    "median_ratio_text": 1.15,
+    "median_ratio_html": 13.24,
     "median_ratio_bytes": 1.0,
-    "total_baseline_text_chars": 1242394,
-    "total_quarry_chars": 1158867,
-    "cold_ms_p50": 82.9,
-    "warm_ms_p50": 11.3,
+    "total_baseline_text_chars": 1180080,
+    "total_quarry_chars": 1093664,
+    "cold_ms_p50": 59.9,
+    "warm_ms_p50": 11.4,
     "needs_browser": 0,
     "errors": [],
-    "total_ratio": 1.07
+    "total_ratio": 1.08
   },
   "rows": [
     {
@@ -22,15 +22,15 @@
         "bytes": 25652,
         "html_chars": 25633,
         "text_chars": 4738,
-        "ms": 88.77121401019394
+        "ms": 232.16761299408972
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 25652,
         "chars": 4232,
         "tokens": 1058,
-        "ms": 84.20621789991856,
-        "internal_ms": 78,
+        "ms": 44.20272400602698,
+        "internal_ms": 38,
         "cache": "miss",
         "needs_browser": false
       },
@@ -39,7 +39,7 @@
         "bytes_body": 25652,
         "chars": 4232,
         "tokens": 1058,
-        "ms": 4.766810918226838,
+        "ms": 5.123282084241509,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -56,15 +56,15 @@
         "bytes": 442002,
         "html_chars": 441665,
         "text_chars": 26090,
-        "ms": 86.38726780191064
+        "ms": 89.53080396167934
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 442002,
         "chars": 23673,
         "tokens": 5919,
-        "ms": 56.25831289216876,
-        "internal_ms": 41,
+        "ms": 290.2001249603927,
+        "internal_ms": 271,
         "cache": "miss",
         "needs_browser": false
       },
@@ -73,7 +73,7 @@
         "bytes_body": 442002,
         "chars": 23673,
         "tokens": 5919,
-        "ms": 14.461131999269128,
+        "ms": 14.802591875195503,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -90,15 +90,15 @@
         "bytes": 260853,
         "html_chars": 260629,
         "text_chars": 42350,
-        "ms": 122.0192548353225
+        "ms": 185.4305670130998
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 260853,
         "chars": 34214,
         "tokens": 8554,
-        "ms": 45.202095061540604,
-        "internal_ms": 33,
+        "ms": 65.56541286408901,
+        "internal_ms": 54,
         "cache": "miss",
         "needs_browser": false
       },
@@ -107,7 +107,7 @@
         "bytes_body": 260853,
         "chars": 34214,
         "tokens": 8554,
-        "ms": 11.446557007730007,
+        "ms": 11.180212954059243,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -124,15 +124,15 @@
         "bytes": 55998,
         "html_chars": 55826,
         "text_chars": 24655,
-        "ms": 12.81149685382843
+        "ms": 12.828151928260922
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 55998,
         "chars": 27188,
         "tokens": 6797,
-        "ms": 12.931151082739234,
-        "internal_ms": 6,
+        "ms": 14.01535514742136,
+        "internal_ms": 7,
         "cache": "miss",
         "needs_browser": false
       },
@@ -141,7 +141,7 @@
         "bytes_body": 55998,
         "chars": 27188,
         "tokens": 6797,
-        "ms": 5.907183978706598,
+        "ms": 5.919980118051171,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -158,15 +158,15 @@
         "bytes": 792027,
         "html_chars": 792003,
         "text_chars": 10073,
-        "ms": 240.37723313085735
+        "ms": 243.1204121094197
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 792027,
         "chars": 8678,
         "tokens": 2170,
-        "ms": 134.9976018536836,
-        "internal_ms": 122,
+        "ms": 93.16024486906826,
+        "internal_ms": 81,
         "cache": "miss",
         "needs_browser": false
       },
@@ -175,7 +175,7 @@
         "bytes_body": 792027,
         "chars": 8678,
         "tokens": 2170,
-        "ms": 11.538077844306827,
+        "ms": 11.267140973359346,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -192,15 +192,15 @@
         "bytes": 1108658,
         "html_chars": 1107342,
         "text_chars": 266059,
-        "ms": 81.55877492390573
+        "ms": 56.19330215267837
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 1108658,
         "chars": 282931,
         "tokens": 70733,
-        "ms": 138.46403011120856,
-        "internal_ms": 80,
+        "ms": 97.69051987677813,
+        "internal_ms": 40,
         "cache": "miss",
         "needs_browser": false
       },
@@ -209,7 +209,7 @@
         "bytes_body": 1108658,
         "chars": 282931,
         "tokens": 70733,
-        "ms": 58.64679208025336,
+        "ms": 57.67359281890094,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -221,20 +221,15 @@
     {
       "url": "https://www.postgresql.org/docs/current/sql-select.html",
       "baseline": {
-        "status": 200,
-        "ctype": "text/html; charset=utf-8",
-        "bytes": 118042,
-        "html_chars": 118016,
-        "text_chars": 62314,
-        "ms": 4042.2128941863775
+        "error": "<urlopen error _ssl.c:983: The handshake operation timed out>"
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 118042,
         "chars": 65203,
         "tokens": 16301,
-        "ms": 5160.260835196823,
-        "internal_ms": 5148,
+        "ms": 3212.9653689917177,
+        "internal_ms": 3201,
         "cache": "miss",
         "needs_browser": false
       },
@@ -243,14 +238,11 @@
         "bytes_body": 118042,
         "chars": 65203,
         "tokens": 16301,
-        "ms": 10.969310998916626,
+        "ms": 11.976323090493679,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
-      },
-      "ratio_text": 0.96,
-      "ratio_html": 1.81,
-      "ratio_bytes": 1.0
+      }
     },
     {
       "url": "https://kubernetes.io/docs/concepts/overview/",
@@ -260,15 +252,15 @@
         "bytes": 506514,
         "html_chars": 506362,
         "text_chars": 34474,
-        "ms": 99.71957514062524
+        "ms": 98.91978395171463
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 506514,
         "chars": 10137,
         "tokens": 2535,
-        "ms": 30.698050977662206,
-        "internal_ms": 16,
+        "ms": 43.048473075032234,
+        "internal_ms": 28,
         "cache": "miss",
         "needs_browser": false
       },
@@ -277,7 +269,7 @@
         "bytes_body": 506514,
         "chars": 10137,
         "tokens": 2535,
-        "ms": 13.660424156114459,
+        "ms": 14.039095025509596,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -294,15 +286,15 @@
         "bytes": 142916,
         "html_chars": 142872,
         "text_chars": 97840,
-        "ms": 287.5614520162344
+        "ms": 152.98646013252437
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 142916,
         "chars": 101901,
         "tokens": 25476,
-        "ms": 111.79973091930151,
-        "internal_ms": 100,
+        "ms": 165.87033704854548,
+        "internal_ms": 155,
         "cache": "miss",
         "needs_browser": false
       },
@@ -311,7 +303,7 @@
         "bytes_body": 142916,
         "chars": 101901,
         "tokens": 25476,
-        "ms": 9.771758923307061,
+        "ms": 10.117375059053302,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -328,15 +320,15 @@
         "bytes": 25411,
         "html_chars": 25399,
         "text_chars": 3911,
-        "ms": 52.1400379948318
+        "ms": 46.96761700324714
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 25411,
         "chars": 3893,
         "tokens": 974,
-        "ms": 52.39146598614752,
-        "internal_ms": 46,
+        "ms": 37.136423168703914,
+        "internal_ms": 30,
         "cache": "miss",
         "needs_browser": false
       },
@@ -345,7 +337,7 @@
         "bytes_body": 25411,
         "chars": 3893,
         "tokens": 974,
-        "ms": 5.0994788762182,
+        "ms": 5.130467936396599,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -362,15 +354,15 @@
         "bytes": 153353,
         "html_chars": 153232,
         "text_chars": 5355,
-        "ms": 33.34741201251745
+        "ms": 112.95892996713519
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 153353,
         "chars": 2884,
         "tokens": 721,
-        "ms": 183.01649508066475,
-        "internal_ms": 175,
+        "ms": 40.501083014532924,
+        "internal_ms": 31,
         "cache": "miss",
         "needs_browser": false
       },
@@ -379,7 +371,7 @@
         "bytes_body": 153353,
         "chars": 2884,
         "tokens": 721,
-        "ms": 8.950592018663883,
+        "ms": 7.404242875054479,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -396,15 +388,15 @@
         "bytes": 18594,
         "html_chars": 18452,
         "text_chars": 3478,
-        "ms": 27.910594129934907
+        "ms": 28.998312074691057
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 18594,
         "chars": 2847,
         "tokens": 712,
-        "ms": 24.66450398787856,
-        "internal_ms": 19,
+        "ms": 29.416222823783755,
+        "internal_ms": 23,
         "cache": "miss",
         "needs_browser": false
       },
@@ -413,7 +405,7 @@
         "bytes_body": 18594,
         "chars": 2847,
         "tokens": 712,
-        "ms": 4.67848707921803,
+        "ms": 4.788402933627367,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -430,14 +422,14 @@
         "bytes": 445667,
         "html_chars": 444323,
         "text_chars": 40227,
-        "ms": 14.387774979695678
+        "ms": 14.548096107318997
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 445667,
         "chars": 21593,
         "tokens": 5399,
-        "ms": 31.89097810536623,
+        "ms": 31.287306919693947,
         "internal_ms": 11,
         "cache": "miss",
         "needs_browser": false
@@ -447,7 +439,7 @@
         "bytes_body": 445667,
         "chars": 21593,
         "tokens": 5399,
-        "ms": 18.604679964482784,
+        "ms": 19.676918163895607,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -464,15 +456,15 @@
         "bytes": 1187554,
         "html_chars": 1184898,
         "text_chars": 450782,
-        "ms": 166.1973560694605
+        "ms": 187.95428099110723
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 1187554,
         "chars": 442805,
         "tokens": 110702,
-        "ms": 305.3874410688877,
-        "internal_ms": 249,
+        "ms": 180.96460588276386,
+        "internal_ms": 121,
         "cache": "miss",
         "needs_browser": false
       },
@@ -481,7 +473,7 @@
         "bytes_body": 1187554,
         "chars": 442805,
         "tokens": 110702,
-        "ms": 56.19508703239262,
+        "ms": 56.964057963341475,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -498,15 +490,15 @@
         "bytes": 616088,
         "html_chars": 616045,
         "text_chars": 41423,
-        "ms": 23.504598066210747
+        "ms": 16.174855176359415
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 616088,
         "chars": 35574,
         "tokens": 8894,
-        "ms": 25.20301309414208,
-        "internal_ms": 10,
+        "ms": 31.07304102741182,
+        "internal_ms": 16,
         "cache": "miss",
         "needs_browser": false
       },
@@ -515,7 +507,7 @@
         "bytes_body": 616088,
         "chars": 35574,
         "tokens": 8894,
-        "ms": 14.413336059078574,
+        "ms": 14.615150168538094,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -532,24 +524,24 @@
         "bytes": 101572,
         "html_chars": 101338,
         "text_chars": 11894,
-        "ms": 499.36547805555165
+        "ms": 582.5606149155647
       },
       "quarry_cold": {
         "status": 200,
-        "bytes_body": 101572,
+        "bytes_body": 101568,
         "chars": 10766,
         "tokens": 2692,
-        "ms": 284.56789487972856,
+        "ms": 284.6956180874258,
         "internal_ms": 277,
         "cache": "miss",
         "needs_browser": false
       },
       "quarry_warm": {
         "status": 200,
-        "bytes_body": 101572,
+        "bytes_body": 101568,
         "chars": 10766,
         "tokens": 2692,
-        "ms": 6.799784954637289,
+        "ms": 6.763622863218188,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -566,15 +558,15 @@
         "bytes": 571005,
         "html_chars": 571002,
         "text_chars": 28646,
-        "ms": 37.761509185656905
+        "ms": 72.71602214314044
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 571005,
         "chars": 12855,
         "tokens": 3214,
-        "ms": 81.57629892230034,
-        "internal_ms": 66,
+        "ms": 54.32659899815917,
+        "internal_ms": 38,
         "cache": "miss",
         "needs_browser": false
       },
@@ -583,7 +575,7 @@
         "bytes_body": 571005,
         "chars": 12855,
         "tokens": 3214,
-        "ms": 15.595479868352413,
+        "ms": 15.36020589992404,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -597,27 +589,27 @@
       "baseline": {
         "status": 200,
         "ctype": "text/html",
-        "bytes": 337199,
-        "html_chars": 337171,
+        "bytes": 337189,
+        "html_chars": 337161,
         "text_chars": 25615,
-        "ms": 58.861557859927416
+        "ms": 132.2893330361694
       },
       "quarry_cold": {
         "status": 200,
-        "bytes_body": 337199,
+        "bytes_body": 337189,
         "chars": 7920,
         "tokens": 1980,
-        "ms": 144.47604911401868,
-        "internal_ms": 132,
+        "ms": 149.5632859878242,
+        "internal_ms": 137,
         "cache": "miss",
         "needs_browser": false
       },
       "quarry_warm": {
         "status": 200,
-        "bytes_body": 337199,
+        "bytes_body": 337189,
         "chars": 7920,
         "tokens": 1980,
-        "ms": 11.23230205848813,
+        "ms": 11.445627082139254,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -634,15 +626,15 @@
         "bytes": 2033807,
         "html_chars": 2033807,
         "text_chars": 36440,
-        "ms": 196.9650979153812
+        "ms": 221.3105799164623
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 2033807,
         "chars": 36850,
         "tokens": 9213,
-        "ms": 248.05607902817428,
-        "internal_ms": 202,
+        "ms": 267.922876868397,
+        "internal_ms": 223,
         "cache": "miss",
         "needs_browser": false
       },
@@ -651,7 +643,7 @@
         "bytes_body": 2033807,
         "chars": 36850,
         "tokens": 9213,
-        "ms": 45.16027984209359,
+        "ms": 45.348034938797355,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -668,15 +660,15 @@
         "bytes": 301060,
         "html_chars": 300905,
         "text_chars": 26030,
-        "ms": 12.697602855041623
+        "ms": 41.15791688673198
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 301060,
         "chars": 22723,
         "tokens": 5681,
-        "ms": 34.41509697586298,
-        "internal_ms": 23,
+        "ms": 28.6026019603014,
+        "internal_ms": 17,
         "cache": "miss",
         "needs_browser": false
       },
@@ -685,7 +677,7 @@
         "bytes_body": 301060,
         "chars": 22723,
         "tokens": 5681,
-        "ms": 10.73563494719565,
+        "ms": 10.934102116152644,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false

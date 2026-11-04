@@ -58,6 +58,21 @@ the tool time is similar across all three arms, 150 to 460 ms, because the brows
 
 a deliberately broken login page is caught by replay: `replay_catches_regression` is true, and the failure report costs 79 tokens instead of a full page dump.
 
+## against chrome devtools mcp on the same fixture
+
+the same login flow, driven by the `chrome-devtools` mcp server that ships with this environment, with a snapshot after each action:
+
+| arm | tokens |
+| --- | --- |
+| devtools mcp, snapshot per step | 236 |
+| devtools mcp, snapshot plus screenshot per step | 4,334 |
+| delta ladder | 191 |
+| replay | 10 |
+
+on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm collapses: mdn is 18,841 tokens per snapshot, versus roughly 567 for the ladder on the same page.
+
+the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win much on a small form with a dom-only agent.
+
 ## formal model
 
 `formal/Replay.tla` models the protocol: idle, observing, acting, verifying, passed, failed. it checks four invariants with tlc across both a passing and a failing assertion set.

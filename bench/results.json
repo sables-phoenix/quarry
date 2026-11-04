@@ -7,8 +7,8 @@
     "median_ratio_bytes": 1.0,
     "total_baseline_text_chars": 1242394,
     "total_quarry_chars": 1158867,
-    "cold_ms_p50": 66.1,
-    "warm_ms_p50": 17.0,
+    "cold_ms_p50": 82.9,
+    "warm_ms_p50": 11.3,
     "needs_browser": 0,
     "errors": [],
     "total_ratio": 1.07
@@ -22,15 +22,15 @@
         "bytes": 25652,
         "html_chars": 25633,
         "text_chars": 4738,
-        "ms": 62.05091695301235
+        "ms": 88.77121401019394
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 25652,
         "chars": 4232,
         "tokens": 1058,
-        "ms": 67.92048690840602,
-        "internal_ms": 62,
+        "ms": 84.20621789991856,
+        "internal_ms": 78,
         "cache": "miss",
         "needs_browser": false
       },
@@ -39,7 +39,7 @@
         "bytes_body": 25652,
         "chars": 4232,
         "tokens": 1058,
-        "ms": 4.9005490727722645,
+        "ms": 4.766810918226838,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -56,15 +56,15 @@
         "bytes": 442002,
         "html_chars": 441665,
         "text_chars": 26090,
-        "ms": 33.370297169312835
+        "ms": 86.38726780191064
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 442002,
         "chars": 23673,
         "tokens": 5919,
-        "ms": 73.86473007500172,
-        "internal_ms": 56,
+        "ms": 56.25831289216876,
+        "internal_ms": 41,
         "cache": "miss",
         "needs_browser": false
       },
@@ -73,7 +73,7 @@
         "bytes_body": 442002,
         "chars": 23673,
         "tokens": 5919,
-        "ms": 15.214262064546347,
+        "ms": 14.461131999269128,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -90,14 +90,14 @@
         "bytes": 260853,
         "html_chars": 260629,
         "text_chars": 42350,
-        "ms": 49.805592047050595
+        "ms": 122.0192548353225
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 260853,
         "chars": 34214,
         "tokens": 8554,
-        "ms": 44.81150908395648,
+        "ms": 45.202095061540604,
         "internal_ms": 33,
         "cache": "miss",
         "needs_browser": false
@@ -107,7 +107,7 @@
         "bytes_body": 260853,
         "chars": 34214,
         "tokens": 8554,
-        "ms": 11.727806180715561,
+        "ms": 11.446557007730007,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -124,15 +124,15 @@
         "bytes": 55998,
         "html_chars": 55826,
         "text_chars": 24655,
-        "ms": 8.928907802328467
+        "ms": 12.81149685382843
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 55998,
         "chars": 27188,
         "tokens": 6797,
-        "ms": 14.150989009067416,
-        "internal_ms": 7,
+        "ms": 12.931151082739234,
+        "internal_ms": 6,
         "cache": "miss",
         "needs_browser": false
       },
@@ -141,7 +141,7 @@
         "bytes_body": 55998,
         "chars": 27188,
         "tokens": 6797,
-        "ms": 6.226025056093931,
+        "ms": 5.907183978706598,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -158,15 +158,15 @@
         "bytes": 792027,
         "html_chars": 792003,
         "text_chars": 10073,
-        "ms": 118.74883202835917
+        "ms": 240.37723313085735
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 792027,
         "chars": 8678,
         "tokens": 2170,
-        "ms": 178.0225019901991,
-        "internal_ms": 151,
+        "ms": 134.9976018536836,
+        "internal_ms": 122,
         "cache": "miss",
         "needs_browser": false
       },
@@ -175,7 +175,7 @@
         "bytes_body": 792027,
         "chars": 8678,
         "tokens": 2170,
-        "ms": 28.31283607520163,
+        "ms": 11.538077844306827,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -192,15 +192,15 @@
         "bytes": 1108658,
         "html_chars": 1107342,
         "text_chars": 266059,
-        "ms": 62.86928500048816
+        "ms": 81.55877492390573
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 1108658,
         "chars": 282931,
         "tokens": 70733,
-        "ms": 141.98973588645458,
-        "internal_ms": 44,
+        "ms": 138.46403011120856,
+        "internal_ms": 80,
         "cache": "miss",
         "needs_browser": false
       },
@@ -209,7 +209,7 @@
         "bytes_body": 1108658,
         "chars": 282931,
         "tokens": 70733,
-        "ms": 115.41672586463392,
+        "ms": 58.64679208025336,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -226,15 +226,15 @@
         "bytes": 118042,
         "html_chars": 118016,
         "text_chars": 62314,
-        "ms": 5573.5965319909155
+        "ms": 4042.2128941863775
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 118042,
         "chars": 65203,
         "tokens": 16301,
-        "ms": 706.0551710892469,
-        "internal_ms": 681,
+        "ms": 5160.260835196823,
+        "internal_ms": 5148,
         "cache": "miss",
         "needs_browser": false
       },
@@ -243,7 +243,7 @@
         "bytes_body": 118042,
         "chars": 65203,
         "tokens": 16301,
-        "ms": 21.816171007230878,
+        "ms": 10.969310998916626,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -260,15 +260,15 @@
         "bytes": 506514,
         "html_chars": 506362,
         "text_chars": 34474,
-        "ms": 61.67238811030984
+        "ms": 99.71957514062524
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 506514,
         "chars": 10137,
         "tokens": 2535,
-        "ms": 42.7781839389354,
-        "internal_ms": 20,
+        "ms": 30.698050977662206,
+        "internal_ms": 16,
         "cache": "miss",
         "needs_browser": false
       },
@@ -277,7 +277,7 @@
         "bytes_body": 506514,
         "chars": 10137,
         "tokens": 2535,
-        "ms": 30.75905190780759,
+        "ms": 13.660424156114459,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -294,15 +294,15 @@
         "bytes": 142916,
         "html_chars": 142872,
         "text_chars": 97840,
-        "ms": 123.9391970448196
+        "ms": 287.5614520162344
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 142916,
         "chars": 101901,
         "tokens": 25476,
-        "ms": 202.7725661173463,
-        "internal_ms": 175,
+        "ms": 111.79973091930151,
+        "internal_ms": 100,
         "cache": "miss",
         "needs_browser": false
       },
@@ -311,7 +311,7 @@
         "bytes_body": 142916,
         "chars": 101901,
         "tokens": 25476,
-        "ms": 12.195768067613244,
+        "ms": 9.771758923307061,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -328,15 +328,15 @@
         "bytes": 25411,
         "html_chars": 25399,
         "text_chars": 3911,
-        "ms": 26.399689028039575
+        "ms": 52.1400379948318
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 25411,
         "chars": 3893,
         "tokens": 974,
-        "ms": 41.013380978256464,
-        "internal_ms": 28,
+        "ms": 52.39146598614752,
+        "internal_ms": 46,
         "cache": "miss",
         "needs_browser": false
       },
@@ -345,7 +345,7 @@
         "bytes_body": 25411,
         "chars": 3893,
         "tokens": 974,
-        "ms": 14.905574033036828,
+        "ms": 5.0994788762182,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -362,15 +362,15 @@
         "bytes": 153353,
         "html_chars": 153232,
         "text_chars": 5355,
-        "ms": 116.63512606173754
+        "ms": 33.34741201251745
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 153353,
         "chars": 2884,
         "tokens": 721,
-        "ms": 53.99063299410045,
-        "internal_ms": 33,
+        "ms": 183.01649508066475,
+        "internal_ms": 175,
         "cache": "miss",
         "needs_browser": false
       },
@@ -379,7 +379,7 @@
         "bytes_body": 153353,
         "chars": 2884,
         "tokens": 721,
-        "ms": 15.939363976940513,
+        "ms": 8.950592018663883,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -396,15 +396,15 @@
         "bytes": 18594,
         "html_chars": 18452,
         "text_chars": 3478,
-        "ms": 28.358011040836573
+        "ms": 27.910594129934907
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 18594,
         "chars": 2847,
         "tokens": 712,
-        "ms": 40.712644113227725,
-        "internal_ms": 29,
+        "ms": 24.66450398787856,
+        "internal_ms": 19,
         "cache": "miss",
         "needs_browser": false
       },
@@ -413,7 +413,7 @@
         "bytes_body": 18594,
         "chars": 2847,
         "tokens": 712,
-        "ms": 14.017274836078286,
+        "ms": 4.67848707921803,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -430,15 +430,15 @@
         "bytes": 445667,
         "html_chars": 444323,
         "text_chars": 40227,
-        "ms": 19.49660200625658
+        "ms": 14.387774979695678
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 445667,
         "chars": 21593,
         "tokens": 5399,
-        "ms": 64.36740001663566,
-        "internal_ms": 20,
+        "ms": 31.89097810536623,
+        "internal_ms": 11,
         "cache": "miss",
         "needs_browser": false
       },
@@ -447,7 +447,7 @@
         "bytes_body": 445667,
         "chars": 21593,
         "tokens": 5399,
-        "ms": 44.60687190294266,
+        "ms": 18.604679964482784,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -464,15 +464,15 @@
         "bytes": 1187554,
         "html_chars": 1184898,
         "text_chars": 450782,
-        "ms": 137.65723491087556
+        "ms": 166.1973560694605
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 1187554,
         "chars": 442805,
         "tokens": 110702,
-        "ms": 237.71583987399936,
-        "internal_ms": 173,
+        "ms": 305.3874410688877,
+        "internal_ms": 249,
         "cache": "miss",
         "needs_browser": false
       },
@@ -481,7 +481,7 @@
         "bytes_body": 1187554,
         "chars": 442805,
         "tokens": 110702,
-        "ms": 122.37345590256155,
+        "ms": 56.19508703239262,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -498,15 +498,15 @@
         "bytes": 616088,
         "html_chars": 616045,
         "text_chars": 41423,
-        "ms": 21.94451098330319
+        "ms": 23.504598066210747
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 616088,
         "chars": 35574,
         "tokens": 8894,
-        "ms": 41.264374973252416,
-        "internal_ms": 18,
+        "ms": 25.20301309414208,
+        "internal_ms": 10,
         "cache": "miss",
         "needs_browser": false
       },
@@ -515,7 +515,7 @@
         "bytes_body": 616088,
         "chars": 35574,
         "tokens": 8894,
-        "ms": 17.641026992350817,
+        "ms": 14.413336059078574,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -529,18 +529,18 @@
       "baseline": {
         "status": 200,
         "ctype": "text/html; charset=utf-8",
-        "bytes": 101568,
-        "html_chars": 101334,
+        "bytes": 101572,
+        "html_chars": 101338,
         "text_chars": 11894,
-        "ms": 191.4072479121387
+        "ms": 499.36547805555165
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 101572,
         "chars": 10766,
         "tokens": 2692,
-        "ms": 291.6765168774873,
-        "internal_ms": 270,
+        "ms": 284.56789487972856,
+        "internal_ms": 277,
         "cache": "miss",
         "needs_browser": false
       },
@@ -549,7 +549,7 @@
         "bytes_body": 101572,
         "chars": 10766,
         "tokens": 2692,
-        "ms": 15.660636126995087,
+        "ms": 6.799784954637289,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -566,15 +566,15 @@
         "bytes": 571005,
         "html_chars": 571002,
         "text_chars": 28646,
-        "ms": 52.076762076467276
+        "ms": 37.761509185656905
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 571005,
         "chars": 12855,
         "tokens": 3214,
-        "ms": 52.14554280973971,
-        "internal_ms": 31,
+        "ms": 81.57629892230034,
+        "internal_ms": 66,
         "cache": "miss",
         "needs_browser": false
       },
@@ -583,7 +583,7 @@
         "bytes_body": 571005,
         "chars": 12855,
         "tokens": 3214,
-        "ms": 34.81618803925812,
+        "ms": 15.595479868352413,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -600,15 +600,15 @@
         "bytes": 337199,
         "html_chars": 337171,
         "text_chars": 25615,
-        "ms": 146.10821497626603
+        "ms": 58.861557859927416
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 337199,
         "chars": 7920,
         "tokens": 1980,
-        "ms": 153.18201994523406,
-        "internal_ms": 126,
+        "ms": 144.47604911401868,
+        "internal_ms": 132,
         "cache": "miss",
         "needs_browser": false
       },
@@ -617,7 +617,7 @@
         "bytes_body": 337199,
         "chars": 7920,
         "tokens": 1980,
-        "ms": 16.301125055179,
+        "ms": 11.23230205848813,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -634,15 +634,15 @@
         "bytes": 2033807,
         "html_chars": 2033807,
         "text_chars": 36440,
-        "ms": 201.3054599519819
+        "ms": 196.9650979153812
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 2033807,
         "chars": 36850,
         "tokens": 9213,
-        "ms": 388.1377959623933,
-        "internal_ms": 290,
+        "ms": 248.05607902817428,
+        "internal_ms": 202,
         "cache": "miss",
         "needs_browser": false
       },
@@ -651,7 +651,7 @@
         "bytes_body": 2033807,
         "chars": 36850,
         "tokens": 9213,
-        "ms": 98.9029670599848,
+        "ms": 45.16027984209359,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false
@@ -668,15 +668,15 @@
         "bytes": 301060,
         "html_chars": 300905,
         "text_chars": 26030,
-        "ms": 16.850873129442334
+        "ms": 12.697602855041623
       },
       "quarry_cold": {
         "status": 200,
         "bytes_body": 301060,
         "chars": 22723,
         "tokens": 5681,
-        "ms": 43.8287400174886,
-        "internal_ms": 16,
+        "ms": 34.41509697586298,
+        "internal_ms": 23,
         "cache": "miss",
         "needs_browser": false
       },
@@ -685,7 +685,7 @@
         "bytes_body": 301060,
         "chars": 22723,
         "tokens": 5681,
-        "ms": 28.942913049831986,
+        "ms": 10.73563494719565,
         "internal_ms": 0,
         "cache": "hit",
         "needs_browser": false

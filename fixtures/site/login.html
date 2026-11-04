@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>sign in</title></head><body>
+<h1>sign in</h1>
+<form id="f">
+<label for="email">email</label><input id="email" name="email" type="email" autocomplete="username">
+<label for="password">password</label><input id="password" name="password" type="password" autocomplete="current-password">
+<button id="go" type="submit">continue</button>
+</form>
+<p id="err" role="alert" hidden>invalid credentials</p>
+<script>
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();
+var e1=document.getElementById('email').value;var p=document.getElementById('password').value;
+if(new URLSearchParams(location.search).get('break')!=='1' && e1==='ada@example.com'&&p==='correct-horse'){location.href='/dashboard.html'}else{document.getElementById('err').hidden=false}});
+</script>
+</body></html>

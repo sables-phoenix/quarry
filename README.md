@@ -140,6 +140,19 @@ quarry uses the first key it finds, then falls back to duckduckgo lite and bing:
 | duckduckgo | none |
 | bing | none |
 
+## browser verification
+
+prototype, measured, not in the binary yet. the full writeup is in `browser.md`.
+
+| flow | screenshot per step | delta ladder | replay |
+| --- | --- | --- | --- |
+| login | 5,464 | 191 | 10 |
+| increment twice | 4,098 | 131 | 10 |
+| filter a list | 2,732 | 496 | 10 |
+| visual chart | 2,732 | 264 | 10 |
+
+the finding that shaped it: a full accessibility snapshot costs 18,841 tokens on mdn, while a screenshot costs 1,366 and a state fingerprint costs 46. the cheap path is a fingerprint, then a text delta, then a cropped image, and a model-free replay after the first record.
+
 ## security
 
 - only `http` and `https` are fetched.

@@ -1,0 +1,168 @@
+{
+  "summary": {
+    "cases": 10,
+    "ok": 10,
+    "recall": 1.0,
+    "median_ratio": 4.83,
+    "total_full_tokens": 134614,
+    "total_selected_tokens": 16448,
+    "total_ratio": 8.18
+  },
+  "rows": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+      "question": "how does etag revalidation work",
+      "needle": "if-none-match",
+      "full_chars": 34214,
+      "full_tokens": 8554,
+      "selected_chars": 4857,
+      "selected_tokens": 1215,
+      "ratio": 7.04,
+      "found": true,
+      "sections": [
+        "etag-if-none-match",
+        "force-revalidation",
+        "avoiding-revalidation"
+      ]
+    },
+    {
+      "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
+      "question": "what happens when a value goes out of scope",
+      "needle": "drop",
+      "full_chars": 27188,
+      "full_tokens": 6797,
+      "selected_chars": 5682,
+      "selected_tokens": 1422,
+      "ratio": 4.78,
+      "found": true,
+      "sections": [
+        "return-values-and-scope",
+        "scope-and-assignment",
+        "variable-scope"
+      ]
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/sql-select.html",
+      "question": "how do i limit the rows returned",
+      "needle": "LIMIT",
+      "full_chars": 65203,
+      "full_tokens": 16301,
+      "selected_chars": 7491,
+      "selected_tokens": 1874,
+      "ratio": 8.7,
+      "found": true,
+      "sections": [
+        "limit-clause",
+        "the-locking-clause",
+        "limit-and-offset"
+      ]
+    },
+    {
+      "url": "https://nodejs.org/api/fs.html",
+      "question": "how do i read a file synchronously",
+      "needle": "readFileSync",
+      "full_chars": 282931,
+      "full_tokens": 70733,
+      "selected_chars": 7995,
+      "selected_tokens": 2000,
+      "ratio": 35.39,
+      "found": true,
+      "sections": [
+        "filehandle-readfile-options",
+        "fs-readfile-path-options-callback",
+        "event-ready-2"
+      ]
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
+      "question": "constrain a type parameter",
+      "needle": "extends",
+      "full_chars": 22723,
+      "full_tokens": 5681,
+      "selected_chars": 4649,
+      "selected_tokens": 1163,
+      "ratio": 4.89,
+      "found": true,
+      "sections": [
+        "using-type-parameters-in-generic-constraints",
+        "generic-parameter-defaults",
+        "generic-constraints"
+      ]
+    },
+    {
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api",
+      "question": "how do i authenticate a request",
+      "needle": "token",
+      "full_chars": 35574,
+      "full_tokens": 8894,
+      "selected_chars": 5432,
+      "selected_tokens": 1359,
+      "ratio": 6.55,
+      "found": true,
+      "sections": [
+        "4-make-a-request-with-github-cli",
+        "example-request-using-body-parameters",
+        "authentication"
+      ]
+    },
+    {
+      "url": "https://sqlite.org/lang_select.html",
+      "question": "how does group by work",
+      "needle": "GROUP BY",
+      "full_chars": 36850,
+      "full_tokens": 9213,
+      "selected_chars": 7849,
+      "selected_tokens": 1963,
+      "ratio": 4.69,
+      "found": true,
+      "sections": [
+        "2-4-generation-of-the-set-of-result-rows",
+        "2-5-bare-columns-in-an-aggregate-query"
+      ]
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "question": "what is a pod",
+      "needle": "pod",
+      "full_chars": 10137,
+      "full_tokens": 2535,
+      "selected_chars": 8013,
+      "selected_tokens": 2004,
+      "ratio": 1.27,
+      "found": true,
+      "sections": [
+        "full"
+      ]
+    },
+    {
+      "url": "https://docs.docker.com/engine/network/",
+      "question": "what is the default bridge network",
+      "needle": "bridge",
+      "full_chars": 12855,
+      "full_tokens": 3214,
+      "selected_chars": 5892,
+      "selected_tokens": 1474,
+      "ratio": 2.18,
+      "found": true,
+      "sections": [
+        "user-defined-networks",
+        "connecting-to-multiple-networks",
+        "drivers"
+      ]
+    },
+    {
+      "url": "https://web.dev/articles/rendering-performance",
+      "question": "how does the browser render a page",
+      "needle": "render",
+      "full_chars": 10766,
+      "full_tokens": 2692,
+      "selected_chars": 7896,
+      "selected_tokens": 1974,
+      "ratio": 1.36,
+      "found": true,
+      "sections": [
+        "full"
+      ]
+    }
+  ]
+}

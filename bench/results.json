@@ -1,0 +1,698 @@
+{
+  "summary": {
+    "pages": 20,
+    "ok": 20,
+    "median_ratio_text": 1.14,
+    "median_ratio_html": 11.32,
+    "median_ratio_bytes": 1.0,
+    "total_baseline_text_chars": 1242394,
+    "total_quarry_chars": 1158867,
+    "cold_ms_p50": 66.1,
+    "warm_ms_p50": 17.0,
+    "needs_browser": 0,
+    "errors": [],
+    "total_ratio": 1.07
+  },
+  "rows": [
+    {
+      "url": "https://docs.rs/serde/latest/serde/",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 25652,
+        "html_chars": 25633,
+        "text_chars": 4738,
+        "ms": 62.05091695301235
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 25652,
+        "chars": 4232,
+        "tokens": 1058,
+        "ms": 67.92048690840602,
+        "internal_ms": 62,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 25652,
+        "chars": 4232,
+        "tokens": 1058,
+        "ms": 4.9005490727722645,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.12,
+      "ratio_html": 6.06,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://react.dev/reference/react/useState",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 442002,
+        "html_chars": 441665,
+        "text_chars": 26090,
+        "ms": 33.370297169312835
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 442002,
+        "chars": 23673,
+        "tokens": 5919,
+        "ms": 73.86473007500172,
+        "internal_ms": 56,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 442002,
+        "chars": 23673,
+        "tokens": 5919,
+        "ms": 15.214262064546347,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.1,
+      "ratio_html": 18.66,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 260853,
+        "html_chars": 260629,
+        "text_chars": 42350,
+        "ms": 49.805592047050595
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 260853,
+        "chars": 34214,
+        "tokens": 8554,
+        "ms": 44.81150908395648,
+        "internal_ms": 33,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 260853,
+        "chars": 34214,
+        "tokens": 8554,
+        "ms": 11.727806180715561,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.24,
+      "ratio_html": 7.62,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 55998,
+        "html_chars": 55826,
+        "text_chars": 24655,
+        "ms": 8.928907802328467
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 55998,
+        "chars": 27188,
+        "tokens": 6797,
+        "ms": 14.150989009067416,
+        "internal_ms": 7,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 55998,
+        "chars": 27188,
+        "tokens": 6797,
+        "ms": 6.226025056093931,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 0.91,
+      "ratio_html": 2.05,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://nextjs.org/docs/app/building-your-application/routing",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 792027,
+        "html_chars": 792003,
+        "text_chars": 10073,
+        "ms": 118.74883202835917
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 792027,
+        "chars": 8678,
+        "tokens": 2170,
+        "ms": 178.0225019901991,
+        "internal_ms": 151,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 792027,
+        "chars": 8678,
+        "tokens": 2170,
+        "ms": 28.31283607520163,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.16,
+      "ratio_html": 91.27,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://nodejs.org/api/fs.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 1108658,
+        "html_chars": 1107342,
+        "text_chars": 266059,
+        "ms": 62.86928500048816
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 1108658,
+        "chars": 282931,
+        "tokens": 70733,
+        "ms": 141.98973588645458,
+        "internal_ms": 44,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 1108658,
+        "chars": 282931,
+        "tokens": 70733,
+        "ms": 115.41672586463392,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 0.94,
+      "ratio_html": 3.91,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://www.postgresql.org/docs/current/sql-select.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 118042,
+        "html_chars": 118016,
+        "text_chars": 62314,
+        "ms": 5573.5965319909155
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 118042,
+        "chars": 65203,
+        "tokens": 16301,
+        "ms": 706.0551710892469,
+        "internal_ms": 681,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 118042,
+        "chars": 65203,
+        "tokens": 16301,
+        "ms": 21.816171007230878,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 0.96,
+      "ratio_html": 1.81,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://kubernetes.io/docs/concepts/overview/",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=UTF-8",
+        "bytes": 506514,
+        "html_chars": 506362,
+        "text_chars": 34474,
+        "ms": 61.67238811030984
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 506514,
+        "chars": 10137,
+        "tokens": 2535,
+        "ms": 42.7781839389354,
+        "internal_ms": 20,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 506514,
+        "chars": 10137,
+        "tokens": 2535,
+        "ms": 30.75905190780759,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 3.4,
+      "ratio_html": 49.95,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://go.dev/doc/effective_go",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 142916,
+        "html_chars": 142872,
+        "text_chars": 97840,
+        "ms": 123.9391970448196
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 142916,
+        "chars": 101901,
+        "tokens": 25476,
+        "ms": 202.7725661173463,
+        "internal_ms": 175,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 142916,
+        "chars": 101901,
+        "tokens": 25476,
+        "ms": 12.195768067613244,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 0.96,
+      "ratio_html": 1.4,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://docs.python.org/3/library/asyncio.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 25411,
+        "html_chars": 25399,
+        "text_chars": 3911,
+        "ms": 26.399689028039575
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 25411,
+        "chars": 3893,
+        "tokens": 974,
+        "ms": 41.013380978256464,
+        "internal_ms": 28,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 25411,
+        "chars": 3893,
+        "tokens": 974,
+        "ms": 14.905574033036828,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.0,
+      "ratio_html": 6.52,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 153353,
+        "html_chars": 153232,
+        "text_chars": 5355,
+        "ms": 116.63512606173754
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 153353,
+        "chars": 2884,
+        "tokens": 721,
+        "ms": 53.99063299410045,
+        "internal_ms": 33,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 153353,
+        "chars": 2884,
+        "tokens": 721,
+        "ms": 15.939363976940513,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.86,
+      "ratio_html": 53.13,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://www.rust-lang.org/",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 18594,
+        "html_chars": 18452,
+        "text_chars": 3478,
+        "ms": 28.358011040836573
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 18594,
+        "chars": 2847,
+        "tokens": 712,
+        "ms": 40.712644113227725,
+        "internal_ms": 29,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 18594,
+        "chars": 2847,
+        "tokens": 712,
+        "ms": 14.017274836078286,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.22,
+      "ratio_html": 6.48,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/HTTPS",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=UTF-8",
+        "bytes": 445667,
+        "html_chars": 444323,
+        "text_chars": 40227,
+        "ms": 19.49660200625658
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 445667,
+        "chars": 21593,
+        "tokens": 5399,
+        "ms": 64.36740001663566,
+        "internal_ms": 20,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 445667,
+        "chars": 21593,
+        "tokens": 5399,
+        "ms": 44.60687190294266,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.86,
+      "ratio_html": 20.58,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 1187554,
+        "html_chars": 1184898,
+        "text_chars": 450782,
+        "ms": 137.65723491087556
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 1187554,
+        "chars": 442805,
+        "tokens": 110702,
+        "ms": 237.71583987399936,
+        "internal_ms": 173,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 1187554,
+        "chars": 442805,
+        "tokens": 110702,
+        "ms": 122.37345590256155,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.02,
+      "ratio_html": 2.68,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 616088,
+        "html_chars": 616045,
+        "text_chars": 41423,
+        "ms": 21.94451098330319
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 616088,
+        "chars": 35574,
+        "tokens": 8894,
+        "ms": 41.264374973252416,
+        "internal_ms": 18,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 616088,
+        "chars": 35574,
+        "tokens": 8894,
+        "ms": 17.641026992350817,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.16,
+      "ratio_html": 17.32,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://web.dev/articles/rendering-performance",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 101568,
+        "html_chars": 101334,
+        "text_chars": 11894,
+        "ms": 191.4072479121387
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 101572,
+        "chars": 10766,
+        "tokens": 2692,
+        "ms": 291.6765168774873,
+        "internal_ms": 270,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 101572,
+        "chars": 10766,
+        "tokens": 2692,
+        "ms": 15.660636126995087,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.1,
+      "ratio_html": 9.41,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://docs.docker.com/engine/network/",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 571005,
+        "html_chars": 571002,
+        "text_chars": 28646,
+        "ms": 52.076762076467276
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 571005,
+        "chars": 12855,
+        "tokens": 3214,
+        "ms": 52.14554280973971,
+        "internal_ms": 31,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 571005,
+        "chars": 12855,
+        "tokens": 3214,
+        "ms": 34.81618803925812,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 2.23,
+      "ratio_html": 44.42,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://grafana.com/docs/grafana/latest/datasources/prometheus/",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html",
+        "bytes": 337199,
+        "html_chars": 337171,
+        "text_chars": 25615,
+        "ms": 146.10821497626603
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 337199,
+        "chars": 7920,
+        "tokens": 1980,
+        "ms": 153.18201994523406,
+        "internal_ms": 126,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 337199,
+        "chars": 7920,
+        "tokens": 1980,
+        "ms": 16.301125055179,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 3.23,
+      "ratio_html": 42.57,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://sqlite.org/lang_select.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 2033807,
+        "html_chars": 2033807,
+        "text_chars": 36440,
+        "ms": 201.3054599519819
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 2033807,
+        "chars": 36850,
+        "tokens": 9213,
+        "ms": 388.1377959623933,
+        "internal_ms": 290,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 2033807,
+        "chars": 36850,
+        "tokens": 9213,
+        "ms": 98.9029670599848,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 0.99,
+      "ratio_html": 55.19,
+      "ratio_bytes": 1.0
+    },
+    {
+      "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
+      "baseline": {
+        "status": 200,
+        "ctype": "text/html; charset=utf-8",
+        "bytes": 301060,
+        "html_chars": 300905,
+        "text_chars": 26030,
+        "ms": 16.850873129442334
+      },
+      "quarry_cold": {
+        "status": 200,
+        "bytes_body": 301060,
+        "chars": 22723,
+        "tokens": 5681,
+        "ms": 43.8287400174886,
+        "internal_ms": 16,
+        "cache": "miss",
+        "needs_browser": false
+      },
+      "quarry_warm": {
+        "status": 200,
+        "bytes_body": 301060,
+        "chars": 22723,
+        "tokens": 5681,
+        "ms": 28.942913049831986,
+        "internal_ms": 0,
+        "cache": "hit",
+        "needs_browser": false
+      },
+      "ratio_text": 1.15,
+      "ratio_html": 13.24,
+      "ratio_bytes": 1.0
+    }
+  ]
+}

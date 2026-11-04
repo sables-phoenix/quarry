@@ -63,12 +63,28 @@ per case:
 
 pages under 12,000 chars are returned whole. selection only pays off on large pages, and a wrong section is worse than a full page.
 
+## against a hosted reader
+
+six pages, quarry versus `r.jina.ai`, the reader most agents use when they want clean markdown. both arms return markdown for the same url. jina's latency includes the network round trip to its service.
+
+| page | quarry tokens | jina tokens | ratio | quarry ms | jina ms |
+| --- | --- | --- | --- | --- | --- |
+| docs.rs serde | 1,058 | 1,530 | 1.45x | 51 | 256 |
+| mdn caching | 8,554 | 8,626 | 1.01x | 16 | 2,378 |
+| rust ownership | 6,797 | 10,536 | 1.55x | 11 | 1,728 |
+| nodejs fs | 70,733 | 54,061 | 0.76x | 60 | 777 |
+| typescript generics | 5,681 | 7,227 | 1.27x | 12 | 689 |
+| sqlite select | 9,213 | 508,483 | 55.19x | 49 | 3,218 |
+
+median 1.36x fewer tokens and 63x faster. the node.js page is the honest loss: jina extracted it better. the sqlite page is jina returning the raw file, which is a bug on its side rather than a win on ours.
+
 ## how to reproduce
 
 ```bash
 cargo build --release
 python3 bench/bench.py
 python3 bench/select.py
+python3 bench/external.py
 ```
 
 both scripts print a json summary and write their raw rows next to themselves. they use the live web, so absolute latencies move with the network. ratios are stable because both arms see the same page.

@@ -26,6 +26,8 @@ coding agents pay for the web in tokens, round trips, and wall clock. the built-
 | cold fetch, p50 | 72 ms |
 | warm cache fetch, p50 | 24 ms |
 | warm cache network bytes | 0 |
+| tokens vs a hosted reader (jina), median | 1.36x fewer |
+| wall clock vs a hosted reader (jina), median | 63x faster |
 
 full-page extraction alone is not where the win is. selection is. given one question per page, quarry returns the matching sections instead of the page:
 

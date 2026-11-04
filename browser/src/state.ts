@@ -45,12 +45,12 @@ export function buildState(nodes: AxNode[], url: string, options: { scope?: stri
   for (const n of nodes) {
     if (n.ignored || !inScope(n)) continue;
     const role = n.role?.value ?? "";
-    let name = (n.name?.value ?? "").replace(/\s+/g, " ").trim();
-    const value = (n.value?.value ?? "").replace(/\s+/g, " ").trim();
+    let name = asText(n.name?.value);
+    const value = asText(n.value?.value);
     if (role === "StaticText") {
       const live = liveAncestor(n);
       if (!live) continue;
-      const parentName = (live.name?.value || (live.parentId ? byId.get(live.parentId)?.name?.value : "") || "live").slice(0, 40);
+      const parentName = (asText(live.name?.value) || asText(live.parentId ? byId.get(live.parentId)?.name?.value : "") || "live").slice(0, 40);
       const key = `live|${parentName}`;
       const ord = seen.get(key) ?? 0;
       seen.set(key, ord + 1);
@@ -122,6 +122,12 @@ export function projectState(state: State, query: string, options: { max?: numbe
   const chosen = hits.slice(0, max);
   const text = chosen.map((n) => `${n.id} ${n.role} ${n.name}${n.value ? " = " + n.value : ""}`).join("\n");
   return { nodes: chosen, text, chars: text.length, tokens: estimateTokens(text.length), matched: hits.length };
+}
+
+function asText(input: unknown): string {
+  if (typeof input === "string") return input.replace(/\s+/g, " ").trim();
+  if (input === null || input === undefined) return "";
+  return `${input}`.replace(/\s+/g, " ").trim();
 }
 
 function hash(input: string): string {

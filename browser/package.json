@@ -1,5 +1,5 @@
 {
-  "name": "quarry-browser",
+  "name": "@sables-phoenix/quarry-browser",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -19,5 +19,12 @@
     "@types/node": "^24.0.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "description": "semantic state layer for browser agents",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sables-phoenix/quarry.git",
+    "directory": "browser"
   }
 }

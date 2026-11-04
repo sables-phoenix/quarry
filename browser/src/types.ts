@@ -4,8 +4,8 @@ export type AxNode = {
   childIds?: string[];
   ignored?: boolean;
   role?: { value?: string };
-  name?: { value?: string };
-  value?: { value?: string };
+  name?: { value?: unknown };
+  value?: { value?: unknown };
   properties?: Array<{ name?: string; value?: { value?: unknown } }>;
 };
 

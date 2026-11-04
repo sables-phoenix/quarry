@@ -79,6 +79,21 @@ on a tiny local form the snapshot-only baseline is already cheap, so the ladder 
 
 the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win much on a small form with a dom-only agent.
 
+## real pages, ten flows
+
+10 flows across mdn, react docs, github, and wikipedia, each against chrome devtools mcp with a snapshot per step.
+
+| metric | value |
+| --- | --- |
+| answer found | 10 of 10 |
+| median token ratio | 30.3x |
+| total token ratio | 23.7x |
+| range | 13.8x to 43.4x |
+| model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
+| median tool time | 1.8 s per flow |
+
+the smallest win is a react docs page at 13.8x. the largest is mdn at 43.4x. rows are in `bench/real-flows.json`.
+
 ## formal model
 
 `formal/Replay.tla` models the protocol: idle, observing, acting, verifying, passed, failed. it checks four invariants with tlc across both a passing and a failing assertion set.

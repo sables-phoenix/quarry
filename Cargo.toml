@@ -1,9 +1,14 @@
 [package]
-name = "quarry"
+name = "quarry-web"
 version = "0.1.0"
 edition = "2021"
 description = "a web access layer for coding agents"
 license = "MIT"
+repository = "https://github.com/sables-phoenix/quarry"
+homepage = "https://github.com/sables-phoenix/quarry"
+readme = "README.md"
+keywords = ["web", "agent", "mcp", "scraping", "llm"]
+categories = ["web-programming", "command-line-utilities"]
 default-run = "quarry"
 
 [[bin]]

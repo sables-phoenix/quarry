@@ -153,15 +153,16 @@ quarry uses the first key it finds, then falls back to duckduckgo lite and bing:
 | screenshot per step | 81,960 |
 | replay | 190 |
 
-real pages, state graph against chrome devtools mcp:
+real pages, 10 flows across 4 apps, state graph against chrome devtools mcp:
 
-| flow | state graph | devtools mcp | ratio |
-| --- | --- | --- | --- |
-| mdn, two toc links | 1,338 | 57,625 | 43x |
-| react, two toc links | 3,255 | 49,001 | 15x |
-| github, issues to pull requests | 1,697 | 39,050 | 23x |
-| wikipedia, history to talk | 5,591 | 79,964 | 14x |
-| mdn, vary to validation | 1,335 | 57,625 | 43x |
+| metric | value |
+| --- | --- |
+| flows with the answer found | 10 of 10 |
+| median token ratio | 30.3x |
+| total token ratio | 23.7x |
+| range | 13.8x to 43.4x |
+| model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
+| median tool time | 1.8 s per flow |
 
 replay returns 10 tokens and zero model calls. a changed page string is caught with a 53 token witness.
 

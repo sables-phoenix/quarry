@@ -66,15 +66,17 @@ mcp config for opencode:
 | screenshot per step | 81,960 |
 | replay | 190 |
 
-5 real flows on 4 sites, state graph against chrome devtools mcp:
+10 real flows on 4 sites, state graph against chrome devtools mcp:
 
-| flow | state graph | devtools mcp |
-| --- | --- | --- |
-| mdn, two toc links | 1,338 | 57,625 |
-| react, two toc links | 3,255 | 49,001 |
-| github, issues to pull requests | 1,697 | 39,050 |
-| wikipedia, history to talk | 5,591 | 79,964 |
-| mdn, vary to validation | 1,335 | 57,625 |
+| metric | value |
+| --- | --- |
+| answer found | 10 of 10 |
+| median token ratio | 30.3x |
+| total token ratio | 23.7x |
+| range | 13.8x to 43.4x |
+| model calls | 30 vs 20 vs 0 on replay |
+
+run `node bench/real-flows.mjs` from this directory after `npm run build`.
 
 ## limits
 

@@ -1,0 +1,138 @@
+{
+  "summary": {
+    "flows": 10,
+    "ok": 10,
+    "median_ratio": 30.3,
+    "min_ratio": 13.8,
+    "max_ratio": 43.4,
+    "baseline_total": 599867,
+    "ssg_total": 25284,
+    "baseline_calls": 30,
+    "ssg_calls": 20,
+    "replay_calls": 0,
+    "median_ms": 1837,
+    "total_ratio": 23.7
+  },
+  "rows": [
+    {
+      "app": "mdn",
+      "flow": "Validation > ETag/If-None-Match",
+      "state_tokens": 1303,
+      "delta_tokens": 45,
+      "ssg_tokens": 1358,
+      "baseline_tokens": 57625,
+      "ratio": 42.4,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1457
+    },
+    {
+      "app": "react",
+      "flow": "Usage > Adding state to a component",
+      "state_tokens": 3285,
+      "delta_tokens": 16,
+      "ssg_tokens": 3311,
+      "baseline_tokens": 49001,
+      "ratio": 14.8,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 2595
+    },
+    {
+      "app": "github",
+      "flow": "Issues > Pull requests",
+      "state_tokens": 1171,
+      "delta_tokens": 108,
+      "ssg_tokens": 1289,
+      "baseline_tokens": 39050,
+      "ratio": 30.3,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 2362
+    },
+    {
+      "app": "wikipedia",
+      "flow": "History > Talk",
+      "state_tokens": 5159,
+      "delta_tokens": 123,
+      "ssg_tokens": 5292,
+      "baseline_tokens": 79964,
+      "ratio": 15.1,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1837
+    },
+    {
+      "app": "mdn",
+      "flow": "Vary > Validation",
+      "state_tokens": 1303,
+      "delta_tokens": 48,
+      "ssg_tokens": 1361,
+      "baseline_tokens": 57625,
+      "ratio": 42.3,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1423
+    },
+    {
+      "app": "react",
+      "flow": "Usage > Updating state based on the previous state",
+      "state_tokens": 3285,
+      "delta_tokens": 164,
+      "ssg_tokens": 3459,
+      "baseline_tokens": 47904,
+      "ratio": 13.8,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 2359
+    },
+    {
+      "app": "mdn",
+      "flow": "Fresh and stale based on age > Validation",
+      "state_tokens": 1303,
+      "delta_tokens": 42,
+      "ssg_tokens": 1355,
+      "baseline_tokens": 58807,
+      "ratio": 43.4,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1411
+    },
+    {
+      "app": "github",
+      "flow": "Pull requests > Issues",
+      "state_tokens": 1171,
+      "delta_tokens": 154,
+      "ssg_tokens": 1335,
+      "baseline_tokens": 39374,
+      "ratio": 29.5,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 2382
+    },
+    {
+      "app": "wikipedia",
+      "flow": "History > Read",
+      "state_tokens": 5159,
+      "delta_tokens": 0,
+      "ssg_tokens": 5169,
+      "baseline_tokens": 111729,
+      "ratio": 21.6,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1832
+    },
+    {
+      "app": "mdn",
+      "flow": "Types of caches > Shared cache",
+      "state_tokens": 1303,
+      "delta_tokens": 42,
+      "ssg_tokens": 1355,
+      "baseline_tokens": 58788,
+      "ratio": 43.4,
+      "model_calls": 2,
+      "ok": true,
+      "ms": 1345
+    }
+  ]
+}

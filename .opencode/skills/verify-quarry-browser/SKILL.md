@@ -1,15 +1,19 @@
 ---
 name: verify-quarry-browser
-description: Prove the browser delta ladder and replay protocol still work, and recheck the formal model. Use before shipping any change to browser-probe/ or formal/.
+description: Prove the browser state graph, delta summaries, replay, and formal model still work. Use before shipping any change to browser/, browser-probe/, or formal/.
 ---
 
-run `scripts/verify-browser.sh`. it starts the fixture site on port 8899 if needed.
+run `scripts/verify-browser-ssg.sh` for the shipped package and `scripts/verify-browser.sh` for the research prototype and the tla+ model.
 
-it proves:
+the shipped package check proves:
 
-1. four flows complete under the delta ladder and under replay
-2. at least three flows show a 5x or better token win over a screenshot per step
-3. replay catches a deliberately broken login page, and the failure report stays under 300 tokens
-4. tlc finds no invariant violation in the passing and failing assertion configurations
+1. stable node ids survive reordering
+2. a live region value change is a change, not a new node
+3. bulk removals are summarized below 40 tokens
+4. projection returns matches and reports misses
+5. 19 fixture flows pass first run and replay
+6. a wrong assertion fails with a witness that names the changed value
 
-set `CHROME` to the browser binary when it is not `chrome-headless-shell` on `PATH`.
+the research check proves the delta ladder token counts and runs tlc on both replay configurations.
+
+set `CHROME` when the browser binary is not `chrome-headless-shell` on `path`.

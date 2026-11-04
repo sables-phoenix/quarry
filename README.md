@@ -140,18 +140,34 @@ quarry uses the first key it finds, then falls back to duckduckgo lite and bing:
 | duckduckgo | none |
 | bing | none |
 
-## browser verification
+## browser state
 
-prototype, measured, not in the binary yet. the full writeup is in `browser.md`.
+`browser/` is a shipped node package and mcp server that drives chrome over cdp and returns semantic state instead of screenshots. the design memo is in `browser.md`.
 
-| flow | screenshot per step | delta ladder | replay |
+19 local flows, first run and replay:
+
+| arm | total tokens |
+| --- | --- |
+| scoped state, first run | 2,197 |
+| dom snapshot per step | 3,124 |
+| screenshot per step | 81,960 |
+| replay | 190 |
+
+real pages, state graph against chrome devtools mcp:
+
+| flow | state graph | devtools mcp | ratio |
 | --- | --- | --- | --- |
-| login | 5,464 | 191 | 10 |
-| increment twice | 4,098 | 131 | 10 |
-| filter a list | 2,732 | 496 | 10 |
-| visual chart | 2,732 | 264 | 10 |
+| mdn, two toc links | 1,338 | 57,625 | 43x |
+| react, two toc links | 3,255 | 49,001 | 15x |
+| github, issues to pull requests | 1,697 | 39,050 | 23x |
+| wikipedia, history to talk | 5,591 | 79,964 | 14x |
+| mdn, vary to validation | 1,335 | 57,625 | 43x |
 
-the finding that shaped it: a full accessibility snapshot costs 18,841 tokens on mdn, while a screenshot costs 1,366 and a state fingerprint costs 46. the cheap path is a fingerprint, then a text delta, then a cropped image, and a model-free replay after the first record.
+replay returns 10 tokens and zero model calls. a changed page string is caught with a 53 token witness.
+
+```bash
+node browser/quarry-browser.mjs mcp
+```
 
 ## security
 

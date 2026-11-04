@@ -1,6 +1,6 @@
 # browser verification
 
-status: prototype. the code is in `browser-probe/`, not in the rust binary yet. every number below was measured on this machine on 2026-11-04.
+status: shipped as `browser/`, a node package and mcp server. the rust binary keeps the text layer. every number below was measured on this machine on 2026-11-04.
 
 ## the finding that changed the design
 

@@ -1,0 +1,10 @@
+{
+  "name": "quarry-browser",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": { "quarry-browser": "./quarry-browser.mjs" },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  }
+}

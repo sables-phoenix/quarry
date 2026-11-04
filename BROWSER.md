@@ -41,6 +41,12 @@ a verification run is a recorded script plus two kinds of evidence.
 
 the model writes the test once. reruns are deterministic, cheap, and produce a diff a human can read.
 
+## what is new here
+
+each piece exists somewhere. playwright records traces and replays them. percy and applitools diff screenshots in ci. stagehand and browserbase cache actions. chrome devtools mcp exposes an accessibility snapshot. none of them combine the pieces into one per-step observation protocol with a token budget.
+
+the new part is the ladder itself: a state fingerprint is the default observation, text delta is the second, a cropped pixel diff is the third, and a full frame is the last resort. a recorded flow replays without a model, and the run reports a delta instead of a transcript. that is the concept worth testing.
+
 ## flow benchmark
 
 four flows on a local fixture site. one run each.

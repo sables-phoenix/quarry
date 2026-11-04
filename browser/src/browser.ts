@@ -9,7 +9,7 @@ export type { Step, Assertion };
 
 export class BrowserError extends Data.TaggedError("BrowserError")<{ message: string; cause?: unknown }> {}
 
-const CHROME = process.env.CHROME || "chrome-headless-shell";
+const chromeBinary = () => process.env.CHROME || "chrome-headless-shell";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const RESOLVE = `function deepAll(root, sel, out) {
@@ -151,7 +151,7 @@ export class Browser {
     const attempt = async (): Promise<Browser> => {
       const profile = mkdtempSync(join(tmpdir(), "quarry-b-"));
       const port = 9400 + Math.floor(Math.random() * 500);
-      const chrome = spawn(CHROME, [
+      const chrome = spawn(chromeBinary(), [
         "--headless", "--no-sandbox", "--disable-gpu", "--disable-dev-shm-usage", "--hide-scrollbars",
         `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, "about:blank",
       ], { stdio: ["ignore", "ignore", "pipe"] });
@@ -171,6 +171,7 @@ export class Browser {
             }
           }
         } catch {}
+        if (chrome.exitCode !== null) throw new Error(`chrome exited with ${chrome.exitCode}: ${stderr}`);
         await sleep(50);
       }
       if (!wsUrl) throw new Error(`chrome did not start: ${stderr}`);
@@ -220,16 +221,21 @@ export class Browser {
   act(steps: Step[], settle = 250): Effect.Effect<{ ok: boolean; failed?: Step; navigated?: boolean; ms: number }, BrowserError> {
     return this.wrap("act", async () => {
       const started = performance.now();
-      const filtered = steps.filter((step) => step.op !== "wait");
-      let result: { ok: boolean; failed?: Step; navigated?: boolean };
-      try {
-        result = JSON.parse(String(await this.evalRaw(`(${APPLY})(${JSON.stringify(filtered)})`))) as typeof result;
-      } catch {
-        result = { ok: true, navigated: true };
+      for (const step of steps) {
+        if (step.op === "wait") {
+          await sleep(step.ms ?? 300);
+          continue;
+        }
+        let parsed: { ok: boolean; failed?: Step; navigated?: boolean };
+        try {
+          parsed = JSON.parse(String(await this.evalRaw(`(${APPLY})(${JSON.stringify([step])})`))) as typeof parsed;
+        } catch {
+          parsed = { ok: true, navigated: true };
+        }
+        if (!parsed.ok) return { ...parsed, ms: Math.round(performance.now() - started) };
+        await sleep(settle);
       }
-      const waits = steps.filter((step) => step.op === "wait").map((step) => step.ms ?? 300);
-      await sleep(Math.max(settle, ...waits, 0));
-      return { ...result, ms: Math.round(performance.now() - started) };
+      return { ok: true, ms: Math.round(performance.now() - started) };
     });
   }
 

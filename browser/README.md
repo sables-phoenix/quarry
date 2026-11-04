@@ -78,6 +78,22 @@ mcp config for opencode:
 
 run `node bench/real-flows.mjs` from this directory after `npm run build`.
 
+## live site: klawva
+
+one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, select 24 hours, stop before payment. same steps and waits on both arms, separate browser instances.
+
+| arm | tokens | tool time | model calls |
+| --- | --- | --- | --- |
+| chrome devtools mcp, snapshot per step | 4,851 | 9.9 s | 11 |
+| quarry, first run | 826 | 7.6 s | 8 |
+| quarry, replay | 10 | 9.0 s | 0 |
+
+first run: 5.9x fewer tokens and 1.3x faster. replay: 485x fewer tokens and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 19.6 s for the first quarry run, and 9.0 s for replay.
+
+the replay time is not faster than the first run because the waits dominate. its win is tokens and model calls.
+
+evidence: `bench/klawva.json` and `bench/klawva-checkout.png`. no payment was made.
+
 ## limits
 
 - chrome is required. the driver is node, not the rust binary.

@@ -4,7 +4,7 @@ import { Session } from "../../browser/dist/session.js";
 import { serveFixtures } from "../../browser/dist/server.js";
 
 const FLOWS = [
-  { path: "/visual.html", step: { op: "click", role: "button", name: "regenerate" } },
+  { path: "/dashboard.html", step: { op: "click", role: "button", name: "increment" } },
   { path: "/tabs.html", step: { op: "click", role: "tab", name: "billing" } },
   { path: "/modal.html", step: { op: "click", role: "button", name: "delete account" } },
   { path: "/list.html", step: { op: "fill", role: "textbox", name: "filter", value: "item 4" } },

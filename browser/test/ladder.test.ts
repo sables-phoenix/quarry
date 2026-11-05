@@ -16,13 +16,14 @@ test("ladder returns a fingerprint then a crop", { skip: !candidate && "chrome n
   const port = typeof address === "object" && address ? address.port : 0;
   const session = await Effect.runPromise(Session.create());
   try {
-    await Effect.runPromise(session.open(`http://127.0.0.1:${port}/visual.html`));
+    await Effect.runPromise(session.open(`http://127.0.0.1:${port}/dashboard.html`));
     const fingerprint = await Effect.runPromise(session.fingerprint());
     assert.ok(fingerprint.tokens < 100, String(fingerprint.tokens));
     const full = await Effect.runPromise(session.look());
     assert.equal(full.kind, "full");
     assert.equal(full.tokens, 1366);
-    await Effect.runPromise(session.act([{ op: "click", role: "button", name: "regenerate" }]));
+    const acted = await Effect.runPromise(session.act([{ op: "click", role: "button", name: "increment" }]));
+    assert.equal(acted.ok, true);
     const next = await Effect.runPromise(session.look());
     assert.ok(next.tokens <= 1366, String(next.tokens));
     assert.ok(next.kind === "crop" || next.kind === "full");

@@ -62,9 +62,9 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | metric | value |
 | --- | --- |
 | flows | 4 |
-| ladder tokens | 3357 |
+| ladder tokens | 1989 |
 | full frame per step | 10928 |
-| crops | 2 |
+| crops | 3 |
 
 ## klawva hiring flow, quarry arms
 
@@ -81,14 +81,14 @@ one task, one model, no steps given, 3 runs per arm. supermemory disabled on bot
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 180.0 s | $0.028355 | 49019 | 1/3 |
+| quarry | 56.6 s | $0.006832 | 18588 | 2/3 |
 | chrome devtools | 20.0 s | $0.005274 | 18725 | 3/3 |
 
-chrome wins the open-ended task. quarry timed out twice at checkout.
+chrome wins the open-ended task. one quarry run timed out at checkout.
 
 ## model-driven, known flow
 
-same task, steps supplied, 3 runs per arm.
+same task, steps supplied, 3 runs per arm. this measures execution, not planning.
 
 | arm | wall, median | cost, median | success |
 | --- | --- | --- | --- |

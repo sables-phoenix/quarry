@@ -108,7 +108,8 @@ fn tools() -> Vec<Value> {
                 "properties": {
                     "urls": {"type": "array", "items": {"type": "string"}, "maxItems": 20},
                     "max_chars": {"type": "integer", "minimum": 500, "maximum": 100000, "default": 12000},
-                    "concurrency": {"type": "integer", "minimum": 1, "maximum": 12, "default": 6}
+                    "concurrency": {"type": "integer", "minimum": 1, "maximum": 12, "default": 6},
+                    "links": {"type": "boolean", "default": false}
                 },
                 "required": ["urls"]
             }

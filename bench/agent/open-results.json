@@ -5,25 +5,25 @@
   "runs": 3,
   "prompt": "Goal: hire the Klawva Cv Tailor on klawva.xyz and stop at checkout before paying. Never click PAY AND LAUNCH; stop when that text is visible. Use only the arm tools. Figure out the flow yourself. Reply DONE when the checkout page shows PAY AND LAUNCH, FAILED otherwise.",
   "quarry": {
-    "success": 1,
+    "success": 2,
     "wall_ms": [
       180000,
-      180000,
-      156000
+      56620,
+      48180
     ],
-    "median_wall_ms": 180000,
+    "median_wall_ms": 56620,
     "input_tokens": [
-      51265,
-      49019,
-      38713
+      55483,
+      18588,
+      13707
     ],
-    "median_input_tokens": 49019,
+    "median_input_tokens": 18588,
     "cost_usd": [
-      0.03235539,
-      0.02133729,
-      0.02835491
+      0.03075583,
+      0.0068319,
+      0.00545659
     ],
-    "median_cost_usd": 0.028355
+    "median_cost_usd": 0.006832
   },
   "chrome_devtools": {
     "success": 3,
@@ -46,5 +46,5 @@
     ],
     "median_cost_usd": 0.005274
   },
-  "notes": "one task, one model, one machine. supermemory disabled on both arms. two quarry runs hit the 180 s timeout at checkout; chrome finished all three. this is the result the open run actually produced."
+  "notes": "one task, one model, one machine. supermemory disabled on both arms. one quarry run hit the 180 s timeout at checkout; the other two finished in 57 s and 48 s after the controls observation shipped. chrome finished all three in 17 to 30 s."
 }

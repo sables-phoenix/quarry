@@ -56,6 +56,9 @@ export type Assertion =
   | { op: "text"; value: string }
   | { op: "not_text"; value: string }
   | { op: "count"; selector: string; value: number }
-  | { op: "url"; value: string };
+  | { op: "url"; value: string }
+  | { op: "exists"; name?: string; value?: string }
+  | { op: "present"; name?: string; value?: string }
+  | { op: "visible"; name?: string; value?: string };
 
 export type Flow = { url: string; steps: Step[]; asserts?: Assertion[] };

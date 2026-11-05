@@ -115,11 +115,11 @@ one task, one model, no steps given, 3 runs per arm. supermemory disabled on bot
 | quarry | ${(agent.open.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.open.quarry.median_cost_usd} | ${agent.open.quarry.median_input_tokens} | ${agent.open.quarry.success}/3 |
 | chrome devtools | ${(agent.open.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.open.chrome.median_cost_usd} | ${agent.open.chrome.median_input_tokens} | ${agent.open.chrome.success}/3 |
 
-chrome wins the open-ended task. quarry timed out twice at checkout.
+chrome wins the open-ended task. one quarry run timed out at checkout.
 
 ## model-driven, known flow
 
-same task, steps supplied, 3 runs per arm.
+same task, steps supplied, 3 runs per arm. this measures execution, not planning.
 
 | arm | wall, median | cost, median | success |
 | --- | --- | --- | --- |

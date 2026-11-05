@@ -55,37 +55,24 @@ the new part is the ladder itself: a state fingerprint is the default observatio
 
 ## flow benchmark
 
-four flows on a local fixture site. one run each.
+four fixture flows, one run each. the current numbers are in `bench/browser/ladder.json`.
 
-| flow | screenshot per step | delta ladder | replay | ladder win | replay win |
-| --- | --- | --- | --- | --- | --- |
-| login | 5,464 | 191 | 10 | 28.6x | 546x |
-| increment twice | 4,098 | 131 | 10 | 31.3x | 410x |
-| filter a list | 2,732 | 496 | 10 | 5.5x | 273x |
-| visual chart | 2,732 | 264 | 10 | 10.3x | 273x |
+| metric | value |
+| --- | --- |
+| flows | 4 |
+| ladder tokens | 1,989 |
+| full frame per step | 10,928 |
+| crops | 2 |
 
-`screenshot per step` charges 1,366 tokens for a full frame after every action, which is what a visual agent does today. `delta ladder` is the first run with observation. `replay` is the recorded script returning only assertion results.
-
-the tool time is similar across all three arms, 150 to 460 ms, because the browser work is the same. the wall clock win is the model round trip that replay removes. that was not measured here and should be.
-
-a deliberately broken login page is caught by replay: `replay_catches_regression` is true, and the failure report costs 79 tokens instead of a full page dump.
+`full frame per step` charges 1,366 tokens for a full frame after every action, which is what a visual agent does today. the ladder uses a fingerprint, then a text delta, then a crop when the pixel diff is small. image tokens use the area formula, not a tokenizer.
 
 ## against chrome devtools mcp on the same fixture
 
-the same login flow, driven by the `chrome-devtools` mcp server that ships with this environment, with a snapshot after each action:
+the fixture ladder is cheap on both sides. the real page comparison is the one that matters: a default chrome devtools snapshot of mdn is 22,960 tokens. the measured scoped state is 13,285 to 15,780 tokens across captures, a 1.5x to 1.7x win. react is the loss: 20,672 against 23,705.
 
-| arm | tokens |
-| --- | --- |
-| devtools mcp, snapshot per step | 236 |
-| devtools mcp, snapshot plus screenshot per step | 4,334 |
-| delta ladder | 191 |
-| replay | 10 |
+the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 2 of 3 against chrome devtools 3 of 3, and was slower.
 
-on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm is large: mdn is 22,960 tokens per snapshot. the measured scoped state for mdn is 13,285 tokens, a 1.7x win. react is the loss: 20,672 against 23,705.
-
-the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 1 of 3 against chrome devtools 3 of 3.
-
-## real pages, ten flows
+## real pages
 
 the current numbers are in `bench/SUMMARY.md`, `bench/browser/real-flows.json`, and `bench/browser/nav-flows.json`. the compression sample is ten page checks on four pages; the navigation sample is four cross-page flows. one capture each, exact o200k on both sides.
 

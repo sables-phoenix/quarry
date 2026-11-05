@@ -132,6 +132,20 @@ export class Session {
     });
   }
 
+  controls(): Effect.Effect<{ text: string; tokens: number }, BrowserError> {
+    const self = this;
+    return Effect.gen(function* () {
+      const state = yield* self.capture();
+      self.state = state;
+      const roles = new Set(["link", "button", "textbox", "tab", "checkbox", "radio", "combobox", "switch", "searchbox"]);
+      const text = state.nodes
+        .filter((node) => roles.has(node.role))
+        .map((node) => `${node.id} ${node.role} ${node.name}${node.value ? ` = ${node.value}` : ""}`)
+        .join("\n");
+      return { text, tokens: tokenCount(text) };
+    });
+  }
+
   look(): Effect.Effect<Look, BrowserError> {
     const self = this;
     return Effect.gen(function* () {

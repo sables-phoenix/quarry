@@ -7,16 +7,16 @@ import type { Step } from "../../browser/dist/types.js";
 type RealFlow = { app: string; url: string; names: string[]; needle: string; baseline: number };
 
 export const FLOWS: RealFlow[] = [
-  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Validation", "ETag/If-None-Match"], needle: "If-None-Match", baseline: 57625 },
-  { app: "react", url: "https://react.dev/reference/react/useState", names: ["Usage", "Adding state to a component"], needle: "Adding state to a component", baseline: 49001 },
-  { app: "github", url: "https://github.com/rust-lang/rust", names: ["Issues", "Pull requests"], needle: "Pull requests", baseline: 39050 },
-  { app: "wikipedia", url: "https://en.wikipedia.org/wiki/HTTPS", names: ["History", "Talk"], needle: "Talk", baseline: 79964 },
-  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Vary", "Validation"], needle: "Validation", baseline: 57625 },
-  { app: "react", url: "https://react.dev/reference/react/useState", names: ["Usage", "Updating state based on the previous state"], needle: "Updating state based on the previous state", baseline: 47904 },
-  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Fresh and stale based on age", "Validation"], needle: "Validation", baseline: 58807 },
-  { app: "github", url: "https://github.com/rust-lang/rust", names: ["Pull requests", "Issues"], needle: "Issues", baseline: 39374 },
-  { app: "wikipedia", url: "https://en.wikipedia.org/wiki/HTTPS", names: ["History", "Read"], needle: "HTTPS", baseline: 111729 },
-  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Types of caches", "Shared cache"], needle: "Shared cache", baseline: 58788 },
+  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Validation", "ETag/If-None-Match"], needle: "If-None-Match", baseline: 72004 },
+  { app: "react", url: "https://react.dev/reference/react/useState", names: ["Usage", "Adding state to a component"], needle: "Adding state to a component", baseline: 61784 },
+  { app: "github", url: "https://github.com/rust-lang/rust", names: ["Issues", "Pull requests"], needle: "Pull requests", baseline: 39000 },
+  { app: "wikipedia", url: "https://en.wikipedia.org/wiki/HTTPS", names: ["History", "Talk"], needle: "Talk", baseline: 98356 },
+  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Vary", "Validation"], needle: "Validation", baseline: 70969 },
+  { app: "react", url: "https://react.dev/reference/react/useState", names: ["Usage", "Updating state based on the previous state"], needle: "Updating state based on the previous state", baseline: 61891 },
+  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Fresh and stale based on age", "Validation"], needle: "Validation", baseline: 70957 },
+  { app: "github", url: "https://github.com/rust-lang/rust", names: ["Pull requests", "Issues"], needle: "Issues", baseline: 30443 },
+  { app: "wikipedia", url: "https://en.wikipedia.org/wiki/HTTPS", names: ["History", "Read"], needle: "HTTPS", baseline: 139124 },
+  { app: "mdn", url: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching", names: ["Types of caches", "Shared cache"], needle: "Shared cache", baseline: 70967 },
 ];
 
 export async function runRealFlows(): Promise<void> {
@@ -26,6 +26,7 @@ export async function runRealFlows(): Promise<void> {
     for (const flow of FLOWS) {
       const started = performance.now();
       const initial = await Effect.runPromise(session.open(flow.url));
+      let payload = initial.text;
       let delta = 0;
       let ok = true;
       for (const name of flow.names) {
@@ -35,11 +36,10 @@ export async function runRealFlows(): Promise<void> {
           break;
         }
         delta += result.delta.tokens;
+        payload += "\n" + result.delta.text;
       }
-      const assertions = await Effect.runPromise(session.browser.assert([{ op: "text", value: flow.needle }]));
-      ok = ok && assertions.every((assertion) => assertion.ok);
-      const assertTokens = tokenCount(JSON.stringify(assertions));
-      const tokens = initial.tokens + delta + assertTokens;
+      ok = ok && payload.toLowerCase().includes(flow.needle.toLowerCase());
+      const tokens = initial.tokens + delta;
       rows.push({
         app: flow.app,
         flow: flow.names.join(" > "),

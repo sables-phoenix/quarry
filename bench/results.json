@@ -8,8 +8,8 @@
     "median_bytes_ratio": 1,
     "total_baseline_tokens": 275808,
     "total_quarry_tokens": 274451,
-    "cold_ms_p50": 120,
-    "warm_ms_p50": 17,
+    "cold_ms_p50": 94,
+    "warm_ms_p50": 16.5,
     "total_ratio": 1
   },
   "rows": [
@@ -22,13 +22,13 @@
         "htmlTokens": 6243,
         "textChars": 4738,
         "textTokens": 936,
-        "ms": 259.9014169999999
+        "ms": 260.827596
       },
       "quarry_cold": {
         "tokens": 875,
         "chars": 4232,
         "bytes": 25652,
-        "ms": 235,
+        "ms": 173,
         "cache": "miss",
         "truncated": false
       },
@@ -47,16 +47,16 @@
         "status": 200,
         "bytes": 442002,
         "htmlChars": 441675,
-        "htmlTokens": 153464,
+        "htmlTokens": 153463,
         "textChars": 26095,
         "textTokens": 5926,
-        "ms": 63.15740500000004
+        "ms": 88.26571200000001
       },
       "quarry_cold": {
         "tokens": 5568,
         "chars": 23673,
         "bytes": 442002,
-        "ms": 43,
+        "ms": 44,
         "cache": "miss",
         "truncated": false
       },
@@ -75,22 +75,22 @@
         "status": 200,
         "bytes": 260853,
         "htmlChars": 260629,
-        "htmlTokens": 70077,
+        "htmlTokens": 70075,
         "textChars": 42350,
         "textTokens": 9021,
-        "ms": 319.62956899999995
+        "ms": 287.775497
       },
       "quarry_cold": {
         "tokens": 7890,
         "chars": 34214,
         "bytes": 260853,
-        "ms": 237,
+        "ms": 300,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 7890,
-        "ms": 17,
+        "ms": 16,
         "cache": "hit"
       },
       "text_ratio": 1.14,
@@ -106,19 +106,19 @@
         "htmlTokens": 17444,
         "textChars": 24655,
         "textTokens": 5500,
-        "ms": 12.69892300000015
+        "ms": 19.691992000000027
       },
       "quarry_cold": {
         "tokens": 6211,
         "chars": 27188,
         "bytes": 55998,
-        "ms": 19,
+        "ms": 18,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 6211,
-        "ms": 12,
+        "ms": 10,
         "cache": "hit"
       },
       "text_ratio": 0.89,
@@ -134,19 +134,19 @@
         "htmlTokens": 240447,
         "textChars": 10073,
         "textTokens": 2168,
-        "ms": 104.50598500000001
+        "ms": 122.56469399999992
       },
       "quarry_cold": {
         "tokens": 2043,
         "chars": 8678,
         "bytes": 792027,
-        "ms": 105,
+        "ms": 87,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 2043,
-        "ms": 17,
+        "ms": 16,
         "cache": "hit"
       },
       "text_ratio": 1.06,
@@ -162,13 +162,13 @@
         "htmlTokens": 366139,
         "textChars": 266059,
         "textTokens": 65558,
-        "ms": 51.155105999999705
+        "ms": 49.60342200000014
       },
       "quarry_cold": {
         "tokens": 75525,
         "chars": 282931,
         "bytes": 1108658,
-        "ms": 115,
+        "ms": 103,
         "cache": "miss",
         "truncated": false
       },
@@ -190,13 +190,13 @@
         "htmlTokens": 30289,
         "textChars": 62314,
         "textTokens": 13133,
-        "ms": 382.92895899999985
+        "ms": 164.13536599999998
       },
       "quarry_cold": {
         "tokens": 15319,
         "chars": 65203,
         "bytes": 118042,
-        "ms": 191,
+        "ms": 171,
         "cache": "miss",
         "truncated": false
       },
@@ -218,13 +218,13 @@
         "htmlTokens": 132726,
         "textChars": 34474,
         "textTokens": 6149,
-        "ms": 98.31721000000016
+        "ms": 155.64419999999973
       },
       "quarry_cold": {
         "tokens": 1914,
         "chars": 10137,
         "bytes": 506514,
-        "ms": 126,
+        "ms": 36,
         "cache": "miss",
         "truncated": false
       },
@@ -246,13 +246,13 @@
         "htmlTokens": 36096,
         "textChars": 97840,
         "textTokens": 21759,
-        "ms": 73.41403400000036
+        "ms": 99.84751200000028
       },
       "quarry_cold": {
         "tokens": 23925,
         "chars": 101901,
         "bytes": 142916,
-        "ms": 89,
+        "ms": 101,
         "cache": "miss",
         "truncated": false
       },
@@ -274,19 +274,19 @@
         "htmlTokens": 6941,
         "textChars": 3911,
         "textTokens": 798,
-        "ms": 134.9281289999999
+        "ms": 116.69695700000011
       },
       "quarry_cold": {
         "tokens": 901,
         "chars": 3893,
         "bytes": 25411,
-        "ms": 125,
+        "ms": 279,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 901,
-        "ms": 11,
+        "ms": 10,
         "cache": "hit"
       },
       "text_ratio": 0.89,
@@ -302,19 +302,19 @@
         "htmlTokens": 41251,
         "textChars": 5355,
         "textTokens": 980,
-        "ms": 93.67559299999994
+        "ms": 31.082146000000193
       },
       "quarry_cold": {
         "tokens": 623,
         "chars": 2884,
         "bytes": 153353,
-        "ms": 168,
+        "ms": 214,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 623,
-        "ms": 13,
+        "ms": 12,
         "cache": "hit"
       },
       "text_ratio": 1.57,
@@ -330,19 +330,19 @@
         "htmlTokens": 5071,
         "textChars": 3478,
         "textTokens": 695,
-        "ms": 48.16269300000022
+        "ms": 24.69633199999953
       },
       "quarry_cold": {
         "tokens": 545,
         "chars": 2847,
         "bytes": 18594,
-        "ms": 31,
+        "ms": 29,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 545,
-        "ms": 9,
+        "ms": 10,
         "cache": "hit"
       },
       "text_ratio": 1.28,
@@ -358,13 +358,13 @@
         "htmlTokens": 135857,
         "textChars": 40227,
         "textTokens": 9209,
-        "ms": 14.892108000000007
+        "ms": 17.135967000000164
       },
       "quarry_cold": {
         "tokens": 4350,
         "chars": 21593,
         "bytes": 445667,
-        "ms": 34,
+        "ms": 35,
         "cache": "miss",
         "truncated": false
       },
@@ -386,19 +386,19 @@
         "htmlTokens": 372330,
         "textChars": 450782,
         "textTokens": 99173,
-        "ms": 197.4160869999996
+        "ms": 124.83557999999994
       },
       "quarry_cold": {
         "tokens": 100489,
         "chars": 442805,
         "bytes": 1187554,
-        "ms": 256,
+        "ms": 185,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 100489,
-        "ms": 63,
+        "ms": 64,
         "cache": "hit"
       },
       "text_ratio": 0.99,
@@ -414,19 +414,19 @@
         "htmlTokens": 192799,
         "textChars": 41423,
         "textTokens": 9244,
-        "ms": 47.10481199999958
+        "ms": 21.83908800000063
       },
       "quarry_cold": {
         "tokens": 8362,
         "chars": 35574,
         "bytes": 616088,
-        "ms": 41,
+        "ms": 38,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 8362,
-        "ms": 19,
+        "ms": 23,
         "cache": "hit"
       },
       "text_ratio": 1.11,
@@ -439,22 +439,22 @@
         "status": 200,
         "bytes": 101568,
         "htmlChars": 101334,
-        "htmlTokens": 24382,
+        "htmlTokens": 24379,
         "textChars": 11894,
         "textTokens": 2327,
-        "ms": 274.8609409999999
+        "ms": 1751.4093590000002
       },
       "quarry_cold": {
         "tokens": 2207,
         "chars": 10766,
-        "bytes": 101572,
-        "ms": 1687,
+        "bytes": 101568,
+        "ms": 1211,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 2207,
-        "ms": 12,
+        "ms": 13,
         "cache": "hit"
       },
       "text_ratio": 1.05,
@@ -470,19 +470,19 @@
         "htmlTokens": 208323,
         "textChars": 28646,
         "textTokens": 5423,
-        "ms": 30.42368399999941
+        "ms": 60.431352999999945
       },
       "quarry_cold": {
         "tokens": 2957,
         "chars": 12855,
         "bytes": 571005,
-        "ms": 55,
+        "ms": 45,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 2957,
-        "ms": 21,
+        "ms": 20,
         "cache": "hit"
       },
       "text_ratio": 1.83,
@@ -498,13 +498,13 @@
         "htmlTokens": 98749,
         "textChars": 25615,
         "textTokens": 4645,
-        "ms": 172.8575010000004
+        "ms": 228.3535069999998
       },
       "quarry_cold": {
         "tokens": 1734,
         "chars": 7920,
         "bytes": 337199,
-        "ms": 175,
+        "ms": 75,
         "cache": "miss",
         "truncated": false
       },
@@ -526,7 +526,7 @@
         "htmlTokens": 965364,
         "textChars": 36440,
         "textTokens": 7640,
-        "ms": 174.95968899999934
+        "ms": 234.00987700000042
       },
       "quarry_cold": {
         "tokens": 7929,
@@ -554,7 +554,7 @@
         "htmlTokens": 108291,
         "textChars": 26030,
         "textTokens": 5524,
-        "ms": 30.246672999999646
+        "ms": 81.46409700000004
       },
       "quarry_cold": {
         "tokens": 5084,
@@ -566,7 +566,7 @@
       },
       "quarry_warm": {
         "tokens": 5084,
-        "ms": 16,
+        "ms": 17,
         "cache": "hit"
       },
       "text_ratio": 1.09,

@@ -11,8 +11,7 @@ const select = load("./select.json");
 const external = load("./external.json");
 const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
-const klawva = JSON.parse(readFileSync(new URL("./browser/klawva-quarry.json", import.meta.url), "utf8")) as { first: { tokens: number; median_ms: number }; replay: { tokens: number; median_ms: number } };
-const klawvaSite = load("./browser/klawva.json");
+const klawva = JSON.parse(readFileSync(new URL("./browser/klawva.json", import.meta.url), "utf8")) as { chrome: { tokens: number; median_ms: number }; quarry_first: { tokens: number; median_ms: number }; quarry_replay: { tokens: number; median_ms: number } };
 
 const md = `# bench summary
 
@@ -69,10 +68,10 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 
 | arm | tokens | tool time | runs |
 | --- | --- | --- | --- |
-| first run | ${klawva.first.tokens} | ${klawva.first.median_ms} ms | 5 |
-| replay | ${klawva.replay.tokens} | ${klawva.replay.median_ms} ms | 5 |
+| first run | ${klawva.quarry_first.tokens} | ${klawva.quarry_first.median_ms} ms | 5 |
+| replay | ${klawva.quarry_replay.tokens} | ${klawva.quarry_replay.median_ms} ms | 5 |
 
-chrome devtools baseline on the same flow: ${(klawvaSite as any).exact_o200k?.chrome_devtools?.tokens ?? "see klawva.json"} tokens, ${(klawvaSite as any).exact_o200k?.chrome_devtools?.median_ms ?? "?"} ms.
+chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${klawva.chrome.median_ms} ms.
 
 ## caveats
 

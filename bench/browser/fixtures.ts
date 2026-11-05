@@ -1,34 +1,13 @@
 import { writeFileSync } from "node:fs";
-import { createServer } from "node:http";
-import { readFileSync } from "node:fs";
-import { extname, join } from "node:path";
 import { Effect } from "effect";
 import { Session } from "../../browser/dist/session.js";
 import { FLOWS } from "../../browser/dist/flows.js";
 import { tokenCount } from "../../browser/dist/state.js";
+import { serveFixtures } from "../../browser/dist/server.js";
 import type { Step } from "../../browser/dist/types.js";
 
-const types: Record<string, string> = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css" };
-
-function serve(root: string): Promise<ReturnType<typeof createServer>> {
-  return new Promise((resolve) => {
-    const server = createServer((request, response) => {
-      const path = (request.url ?? "/").split("?")[0];
-      try {
-        const body = readFileSync(join(root, path === "/" ? "/index.html" : path));
-        response.writeHead(200, { "content-type": types[extname(path)] ?? "application/octet-stream" });
-        response.end(body);
-      } catch {
-        response.writeHead(404);
-        response.end();
-      }
-    });
-    server.listen(0, "127.0.0.1", () => resolve(server));
-  });
-}
-
 export async function runFixtures(): Promise<void> {
-  const server = await serve(new URL("../../browser/fixtures", import.meta.url).pathname);
+  const server = await serveFixtures(new URL("../../browser/fixtures", import.meta.url).pathname);
   const address = server.address();
   const port = typeof address === "object" && address ? address.port : 0;
   const base = `http://127.0.0.1:${port}`;

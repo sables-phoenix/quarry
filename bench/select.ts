@@ -8,10 +8,10 @@ export const CASES = [
   ["https://nodejs.org/api/fs.html", "how do i read a file synchronously", "readFileSync"],
   ["https://www.typescriptlang.org/docs/handbook/2/generics.html", "constrain a type parameter", "extends"],
   ["https://docs.github.com/en/rest/using-the-rest-api/getting-started-with-the-rest-api", "how do i authenticate a request", "token"],
-  ["https://sqlite.org/lang_select.html", "how does group by work", "GROUP BY"],
-  ["https://kubernetes.io/docs/concepts/overview/", "what is a pod", "pod"],
-  ["https://docs.docker.com/engine/network/", "what is the default bridge network", "bridge"],
-  ["https://web.dev/articles/rendering-performance", "how does the browser render a page", "render"],
+  ["https://sqlite.org/lang_select.html", "how do i aggregate rows into groups", "GROUP BY"],
+  ["https://kubernetes.io/docs/concepts/workloads/pods/", "how do i run a set of containers together", "pod"],
+  ["https://docs.docker.com/engine/network/", "how do containers talk to each other by default", "bridge"],
+  ["https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control", "how do i stop a response being stored", "no-store"],
 ] as const;
 
 type Section = { anchor: string; text: string; body: string };

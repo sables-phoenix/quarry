@@ -1,143 +1,48 @@
 {
-  "site": "https://klawva.xyz",
+  "site": "https://klawva.xyz/employees",
   "flow": "employees -> cv tailor -> hire -> checkout brief",
   "stopped_before": "PAY AND LAUNCH",
-  "date": "2026-11-04",
-  "chrome_devtools": {
-    "tool_calls": 11,
-    "observations": 6,
-    "screenshots": 0,
-    "tokens": 4851,
-    "ms": 9907
+  "date": "2026-11-05",
+  "tokenizer": "o200k_base",
+  "chrome": {
+    "runs_ms": [
+      3408,
+      2734,
+      2599,
+      3049,
+      2634
+    ],
+    "median_ms": 2734,
+    "tokens": 4164,
+    "observations": 4,
+    "tool_calls": 18
   },
   "quarry_first": {
-    "tool_calls": 8,
-    "observations": 8,
-    "tokens": 826,
-    "ms": 9222
+    "tokens": 454,
+    "median_ms": 2104,
+    "runs_ms": [
+      3056,
+      2104,
+      2064,
+      2145,
+      2096
+    ]
   },
   "quarry_replay": {
-    "tool_calls": 1,
-    "observations": 0,
-    "tokens": 10,
-    "ms": 8984,
-    "model_calls": 0
+    "tokens": 1,
+    "median_ms": 1476,
+    "runs_ms": [
+      1935,
+      1476,
+      1855,
+      1473,
+      1472
+    ]
   },
   "ratios": {
-    "tokens_first": 5.87,
-    "time_first": 1.07,
-    "tokens_replay_vs_chrome": 485.1,
-    "replay_event_vs_chrome_time": 4.08,
-    "replay_event_vs_first_time": 3.8
+    "first_vs_chrome": 9.17,
+    "replay_vs_chrome": 4164,
+    "replay_vs_first": 454
   },
-  "screenshot_baseline_tokens": 8196,
-  "screenshot_baseline_ratio": 9.9,
-  "model_ms_assumed": 1500,
-  "model_adjusted_seconds": {
-    "chrome": 26.4,
-    "quarry_first": 21.2,
-    "quarry_replay_event_waits": 2.4
-  },
-  "notes": "fixed-wait numbers are kept above for history. the matched event-wait section is the honest comparison. tokens are chars/4 estimates and actions are scripted.",
-  "quarry_replay_event_waits": {
-    "runs_ms": [
-      2789,
-      2426,
-      2022
-    ],
-    "median_ms": 2426,
-    "tokens": 10,
-    "model_calls": 0
-  },
-  "matched_event_waits": {
-    "chrome_devtools": {
-      "runs_ms": [
-        3806,
-        2900,
-        2966
-      ],
-      "median_ms": 2966,
-      "tokens_runs": [
-        4793,
-        4779,
-        4881
-      ],
-      "median_tokens": 4793,
-      "calls": 11
-    },
-    "quarry_first": {
-      "runs_ms": [
-        2615,
-        1867,
-        1867
-      ],
-      "median_ms": 1867,
-      "tokens": 350,
-      "calls": 8
-    },
-    "quarry_replay": {
-      "runs_ms": [
-        2789,
-        2426,
-        2022
-      ],
-      "median_ms": 2426,
-      "tokens": 10,
-      "calls": 0
-    },
-    "end_to_end_seconds_at_1_5s": {
-      "chrome": 19.5,
-      "quarry_first": 13.9,
-      "replay": 2.4
-    },
-    "notes": "same flow, event waits, 3 runs each. tokens are chars/4 estimates. actions are scripted, not chosen by a model. quarry first run batted actions, so it took fewer observations than the chrome arm snapshot per step."
-  },
-  "exact_o200k": {
-    "tokenizer": "o200k_base",
-    "chrome_devtools": {
-      "runs_ms": [
-        3408,
-        2734,
-        2599,
-        3049,
-        2634
-      ],
-      "median_ms": 2734,
-      "tokens": 4164,
-      "observations": 4,
-      "tool_calls": 18
-    },
-    "quarry_first": {
-      "runs_ms": [
-        2902,
-        2253,
-        2245,
-        1605,
-        1599
-      ],
-      "median_ms": 2245,
-      "tokens": 454,
-      "observations": 7,
-      "tool_calls": 8
-    },
-    "quarry_replay": {
-      "runs_ms": [
-        1892,
-        1481,
-        1480,
-        1526,
-        1910
-      ],
-      "median_ms": 1526,
-      "tokens": 1,
-      "observations": 1,
-      "tool_calls": 1
-    },
-    "ratios": {
-      "first_vs_chrome": 9.17,
-      "replay_vs_chrome": 4164,
-      "replay_vs_first": 454
-    },
-    "notes": "5 runs per arm, same flow, same event waits. tokens are exact o200k counts of the text content field. action confirmation strings and structuredContent are excluded on both sides. model latency was not measured."
-  }
+  "notes": "5 runs per arm, same flow, same event waits. exact o200k counts of the text content field. action confirmations and structuredContent excluded. no payment was made."
 }

@@ -2,6 +2,8 @@
 
 tables before the live-site section use `chars / 4` estimates. the live-site table and `bench/browser/` use exact o200k counts.
 
+limits: `limits.md`.
+
 status: shipped as `browser/`, a node package and mcp server. the rust binary keeps the text layer. every number below was measured on this machine on 2026-11-04.
 
 ## the finding that changed the design
@@ -83,18 +85,7 @@ the honest rule: the ladder wins when the page is large, when the step is visual
 
 ## real pages, ten flows
 
-10 flows across mdn, react docs, github, and wikipedia, each against chrome devtools mcp with a snapshot per step.
-
-| metric | value |
-| --- | --- |
-| DOM assertion passed | 10 of 10, checks the page, not the state payload |
-| median token ratio | 21.6x, approximate |
-| total token ratio | 16.7x, approximate |
-| range | 10.2x to 31.7x, approximate |
-
-baseline tokens are chars/4; quarry tokens are exact. ratios are directional.
-
-the smallest is 10.2x. the largest is 31.7x. rows are in `bench/browser/real-flows.json`.
+the current numbers are in `bench/SUMMARY.md` and `bench/browser/real-flows.json`. the sample is ten flows on four sites, one run each, with exact o200k counts on both sides. the actions are scripted.
 
 ## formal model
 

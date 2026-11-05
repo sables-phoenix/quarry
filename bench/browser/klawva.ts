@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { Effect } from "effect";
 import { Session } from "../../browser/dist/session.js";
 import { tokenCount } from "../../browser/dist/state.js";
@@ -56,7 +56,11 @@ export async function runKlawva(): Promise<void> {
     first: { median_ms: median(first.map((row) => row.ms as number)), tokens: median(first.map((row) => row.tokens as number)), runs: first },
     replay: { median_ms: median(replay.map((row) => row.ms as number)), tokens: median(replay.map((row) => row.tokens as number)), runs: replay },
   };
-  writeFileSync(new URL("./klawva-quarry.json", import.meta.url), JSON.stringify(summary, null, 2));
+  const file = new URL("./klawva.json", import.meta.url);
+  let existing: Record<string, unknown> = {};
+  try { existing = JSON.parse(readFileSync(file, "utf8")) as Record<string, unknown>; } catch {}
+  const merged = { ...existing, site: SITE, flow: "employees -> cv tailor -> hire -> checkout brief", stopped_before: "PAY AND LAUNCH", tokenizer: "o200k_base", quarry_first: { tokens: summary.first.tokens, median_ms: summary.first.median_ms, runs_ms: summary.first.runs.map((r) => r.ms) }, quarry_replay: { tokens: summary.replay.tokens, median_ms: summary.replay.median_ms, runs_ms: summary.replay.runs.map((r) => r.ms) } };
+  writeFileSync(file, JSON.stringify(merged, null, 2) + "\n");
   console.log(JSON.stringify(summary, null, 2));
 }
 

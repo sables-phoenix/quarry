@@ -3,10 +3,10 @@
     "tokenizer": "o200k_base",
     "cases": 10,
     "recall": 1,
-    "median_ratio": 4.86,
-    "total_full_tokens": 133398,
-    "total_selected_tokens": 14425,
-    "total_ratio": 9.25
+    "median_ratio": 5.75,
+    "total_full_tokens": 138688,
+    "total_selected_tokens": 13584,
+    "total_ratio": 10.21
   },
   "rows": [
     {
@@ -89,7 +89,7 @@
     },
     {
       "url": "https://sqlite.org/lang_select.html",
-      "question": "how does group by work",
+      "question": "how do i aggregate rows into groups",
       "full_tokens": 7929,
       "selected_tokens": 1628,
       "ratio": 4.87,
@@ -100,38 +100,42 @@
       ]
     },
     {
-      "url": "https://kubernetes.io/docs/concepts/overview/",
-      "question": "what is a pod",
-      "full_tokens": 1914,
-      "selected_tokens": 1507,
-      "ratio": 1.27,
+      "url": "https://kubernetes.io/docs/concepts/workloads/pods/",
+      "question": "how do i run a set of containers together",
+      "full_tokens": 4706,
+      "selected_tokens": 1058,
+      "ratio": 4.45,
       "found": true,
       "sections": [
-        "full"
+        "pods-with-multiple-containers",
+        "what-is-a-pod",
+        "note"
       ]
     },
     {
       "url": "https://docs.docker.com/engine/network/",
-      "question": "what is the default bridge network",
+      "question": "how do containers talk to each other by default",
       "full_tokens": 2957,
-      "selected_tokens": 1178,
-      "ratio": 2.51,
+      "selected_tokens": 1843,
+      "ratio": 1.6,
       "found": true,
       "sections": [
         "user-defined-networks",
-        "connecting-to-multiple-networks",
-        "drivers"
+        "ip-address-and-hostname",
+        "published-ports"
       ]
     },
     {
-      "url": "https://web.dev/articles/rendering-performance",
-      "question": "how does the browser render a page",
-      "full_tokens": 2207,
-      "selected_tokens": 1632,
-      "ratio": 1.35,
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control",
+      "question": "how do i stop a response being stored",
+      "full_tokens": 4705,
+      "selected_tokens": 575,
+      "ratio": 8.18,
       "found": true,
       "sections": [
-        "full"
+        "vocabulary",
+        "private",
+        "use-cases"
       ]
     }
   ]

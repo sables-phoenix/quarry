@@ -10,8 +10,8 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | median vs visible text | 1.06x |
 | median vs raw html | 16.18x |
 | total vs visible text | 1x |
-| cold p50 | 120 ms |
-| warm p50 | 17 ms |
+| cold p50 | 94 ms |
+| warm p50 | 16.5 ms |
 
 ## selection
 
@@ -19,8 +19,8 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | --- | --- |
 | cases | 10 |
 | recall | 1 |
-| median | 4.86x |
-| total | 9.25x |
+| median | 5.75x |
+| total | 10.21x |
 
 ## hosted reader
 
@@ -45,16 +45,16 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | --- | --- |
 | flows | 10 |
 | pass | 10 |
-| median | 21.6x |
-| total | 16.7x |
-| range | 10.2x to 31.7x |
+| median | 19.5x |
+| total | 20.5x |
+| range | 12.6x to 39x |
 
 ## klawva hiring flow, quarry arms
 
 | arm | tokens | tool time | runs |
 | --- | --- | --- | --- |
-| first run | 454 | 2134 ms | 5 |
-| replay | 1 | 2139 ms | 5 |
+| first run | 454 | 2104 ms | 5 |
+| replay | 1 | 1476 ms | 5 |
 
 chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 

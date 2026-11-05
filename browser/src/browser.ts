@@ -162,11 +162,16 @@ export class Browser {
         `--remote-debugging-port=${port}`, `--user-data-dir=${profile}`, "about:blank",
       ], { stdio: ["ignore", "ignore", "pipe"] });
       let stderr = "";
+      const spawnState: { error: Error | null } = { error: null };
+      chrome.on("error", (error) => {
+        spawnState.error = error;
+      });
       chrome.stderr?.on("data", (chunk: Buffer) => {
         stderr = (stderr + chunk.toString()).slice(-2000);
       });
       let wsUrl: string | null = null;
       for (let i = 0; i < 1200; i++) {
+        if (spawnState.error) throw new Error(`chrome failed to start: ${spawnState.error.message}`);
         try {
           const response = await fetch(`http://127.0.0.1:${port}/json`);
           if (response.ok) {

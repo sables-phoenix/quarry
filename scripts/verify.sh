@@ -67,6 +67,8 @@ npx tsx bench/text.ts > "$WORK/bench.log" 2>&1 || fail "bench failed: $(tail -5 
 npx tsx bench/check.ts text || fail "bench gate"
 npx tsx bench/select.ts > "$WORK/select.log" 2>&1 || fail "selection bench failed: $(tail -5 "$WORK/select.log")"
 npx tsx bench/check.ts select || fail "selection gate"
+npx tsx bench/summary.ts || fail "summary"
+npx tsx bench/check-docs.ts || fail "docs drift"
 pass "benchmark gates"
 
 echo "all checks passed"

@@ -1,6 +1,6 @@
 # browser verification
 
-tables before the live-site section use `chars / 4` estimates. the live-site table and `browser/bench/` use exact o200k counts.
+tables before the live-site section use `chars / 4` estimates. the live-site table and `bench/browser/` use exact o200k counts.
 
 status: shipped as `browser/`, a node package and mcp server. the rust binary keeps the text layer. every number below was measured on this machine on 2026-11-04.
 
@@ -88,13 +88,13 @@ the honest rule: the ladder wins when the page is large, when the step is visual
 | metric | value |
 | --- | --- |
 | answer found | 10 of 10 |
-| median token ratio | 30.3x |
-| total token ratio | 23.7x |
-| range | 13.8x to 43.4x |
+| median token ratio | 21.6x |
+| total token ratio | 16.7x |
+| range | 10.2x to 31.7x |
 | model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
 | median tool time | 1.8 s per flow |
 
-the smallest win is a react docs page at 13.8x. the largest is mdn at 43.4x. rows are in `bench/real-flows.json`.
+the smallest win is a react docs page at 13.8x. the largest is mdn at 43.4x. rows are in `bench/browser/real-flows.json`.
 
 ## formal model
 

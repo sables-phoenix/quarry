@@ -3,14 +3,14 @@
     "tokenizer": "o200k_base",
     "pages": 20,
     "ok": 20,
-    "median_text_ratio": 1.08,
-    "median_html_ratio": 16.57,
+    "median_text_ratio": 1.06,
+    "median_html_ratio": 16.18,
     "median_bytes_ratio": 1,
-    "total_baseline_tokens": 276588,
+    "total_baseline_tokens": 275808,
     "total_quarry_tokens": 274451,
-    "cold_ms_p50": 134.5,
-    "warm_ms_p50": 17.5,
-    "total_ratio": 1.01
+    "cold_ms_p50": 120,
+    "warm_ms_p50": 17,
+    "total_ratio": 1
   },
   "rows": [
     {
@@ -22,13 +22,13 @@
         "htmlTokens": 6243,
         "textChars": 4738,
         "textTokens": 936,
-        "ms": 254.99874100000005
+        "ms": 259.9014169999999
       },
       "quarry_cold": {
         "tokens": 875,
         "chars": 4232,
         "bytes": 25652,
-        "ms": 226,
+        "ms": 235,
         "cache": "miss",
         "truncated": false
       },
@@ -47,16 +47,16 @@
         "status": 200,
         "bytes": 442002,
         "htmlChars": 441675,
-        "htmlTokens": 153454,
+        "htmlTokens": 153464,
         "textChars": 26095,
         "textTokens": 5926,
-        "ms": 47.03293499999995
+        "ms": 63.15740500000004
       },
       "quarry_cold": {
         "tokens": 5568,
         "chars": 23673,
         "bytes": 442002,
-        "ms": 46,
+        "ms": 43,
         "cache": "miss",
         "truncated": false
       },
@@ -78,19 +78,19 @@
         "htmlTokens": 70077,
         "textChars": 42350,
         "textTokens": 9021,
-        "ms": 399.593885
+        "ms": 319.62956899999995
       },
       "quarry_cold": {
         "tokens": 7890,
         "chars": 34214,
         "bytes": 260853,
-        "ms": 290,
+        "ms": 237,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 7890,
-        "ms": 18,
+        "ms": 17,
         "cache": "hit"
       },
       "text_ratio": 1.14,
@@ -106,19 +106,19 @@
         "htmlTokens": 17444,
         "textChars": 24655,
         "textTokens": 5500,
-        "ms": 16.47868500000004
+        "ms": 12.69892300000015
       },
       "quarry_cold": {
         "tokens": 6211,
         "chars": 27188,
         "bytes": 55998,
-        "ms": 21,
+        "ms": 19,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 6211,
-        "ms": 11,
+        "ms": 12,
         "cache": "hit"
       },
       "text_ratio": 0.89,
@@ -134,19 +134,19 @@
         "htmlTokens": 240447,
         "textChars": 10073,
         "textTokens": 2168,
-        "ms": 223.46158400000013
+        "ms": 104.50598500000001
       },
       "quarry_cold": {
         "tokens": 2043,
         "chars": 8678,
         "bytes": 792027,
-        "ms": 160,
+        "ms": 105,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 2043,
-        "ms": 18,
+        "ms": 17,
         "cache": "hit"
       },
       "text_ratio": 1.06,
@@ -162,19 +162,19 @@
         "htmlTokens": 366139,
         "textChars": 266059,
         "textTokens": 65558,
-        "ms": 67.22414299999991
+        "ms": 51.155105999999705
       },
       "quarry_cold": {
         "tokens": 75525,
         "chars": 282931,
         "bytes": 1108658,
-        "ms": 136,
+        "ms": 115,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 75525,
-        "ms": 65,
+        "ms": 64,
         "cache": "hit"
       },
       "text_ratio": 0.87,
@@ -190,13 +190,13 @@
         "htmlTokens": 30289,
         "textChars": 62314,
         "textTokens": 13133,
-        "ms": 162.58219099999997
+        "ms": 382.92895899999985
       },
       "quarry_cold": {
         "tokens": 15319,
         "chars": 65203,
         "bytes": 118042,
-        "ms": 406,
+        "ms": 191,
         "cache": "miss",
         "truncated": false
       },
@@ -218,13 +218,13 @@
         "htmlTokens": 132726,
         "textChars": 34474,
         "textTokens": 6149,
-        "ms": 101.3620719999999
+        "ms": 98.31721000000016
       },
       "quarry_cold": {
         "tokens": 1914,
         "chars": 10137,
         "bytes": 506514,
-        "ms": 133,
+        "ms": 126,
         "cache": "miss",
         "truncated": false
       },
@@ -246,19 +246,19 @@
         "htmlTokens": 36096,
         "textChars": 97840,
         "textTokens": 21759,
-        "ms": 88.59283499999992
+        "ms": 73.41403400000036
       },
       "quarry_cold": {
         "tokens": 23925,
         "chars": 101901,
         "bytes": 142916,
-        "ms": 100,
+        "ms": 89,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 23925,
-        "ms": 15,
+        "ms": 16,
         "cache": "hit"
       },
       "text_ratio": 0.91,
@@ -274,13 +274,13 @@
         "htmlTokens": 6941,
         "textChars": 3911,
         "textTokens": 798,
-        "ms": 120.27501800000027
+        "ms": 134.9281289999999
       },
       "quarry_cold": {
         "tokens": 901,
         "chars": 3893,
         "bytes": 25411,
-        "ms": 123,
+        "ms": 125,
         "cache": "miss",
         "truncated": false
       },
@@ -302,13 +302,13 @@
         "htmlTokens": 41251,
         "textChars": 5355,
         "textTokens": 980,
-        "ms": 74.04392499999994
+        "ms": 93.67559299999994
       },
       "quarry_cold": {
         "tokens": 623,
         "chars": 2884,
         "bytes": 153353,
-        "ms": 209,
+        "ms": 168,
         "cache": "miss",
         "truncated": false
       },
@@ -330,19 +330,19 @@
         "htmlTokens": 5071,
         "textChars": 3478,
         "textTokens": 695,
-        "ms": 30.849967000000106
+        "ms": 48.16269300000022
       },
       "quarry_cold": {
         "tokens": 545,
         "chars": 2847,
         "bytes": 18594,
-        "ms": 32,
+        "ms": 31,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 545,
-        "ms": 10,
+        "ms": 9,
         "cache": "hit"
       },
       "text_ratio": 1.28,
@@ -358,19 +358,19 @@
         "htmlTokens": 135857,
         "textChars": 40227,
         "textTokens": 9209,
-        "ms": 18.4776580000007
+        "ms": 14.892108000000007
       },
       "quarry_cold": {
         "tokens": 4350,
         "chars": 21593,
         "bytes": 445667,
-        "ms": 35,
+        "ms": 34,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 4350,
-        "ms": 24,
+        "ms": 23,
         "cache": "hit"
       },
       "text_ratio": 2.12,
@@ -386,19 +386,19 @@
         "htmlTokens": 372330,
         "textChars": 450782,
         "textTokens": 99173,
-        "ms": 179.04995600000075
+        "ms": 197.4160869999996
       },
       "quarry_cold": {
         "tokens": 100489,
         "chars": 442805,
         "bytes": 1187554,
-        "ms": 220,
+        "ms": 256,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 100489,
-        "ms": 64,
+        "ms": 63,
         "cache": "hit"
       },
       "text_ratio": 0.99,
@@ -414,19 +414,19 @@
         "htmlTokens": 192799,
         "textChars": 41423,
         "textTokens": 9244,
-        "ms": 22.841347999999925
+        "ms": 47.10481199999958
       },
       "quarry_cold": {
         "tokens": 8362,
         "chars": 35574,
         "bytes": 616088,
-        "ms": 33,
+        "ms": 41,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 8362,
-        "ms": 20,
+        "ms": 19,
         "cache": "hit"
       },
       "text_ratio": 1.11,
@@ -437,29 +437,29 @@
       "url": "https://web.dev/articles/rendering-performance",
       "baseline": {
         "status": 200,
-        "bytes": 105691,
-        "htmlChars": 105390,
-        "htmlTokens": 26157,
-        "textChars": 13612,
-        "textTokens": 3107,
-        "ms": 430.8090859999993
+        "bytes": 101568,
+        "htmlChars": 101334,
+        "htmlTokens": 24382,
+        "textChars": 11894,
+        "textTokens": 2327,
+        "ms": 274.8609409999999
       },
       "quarry_cold": {
         "tokens": 2207,
         "chars": 10766,
         "bytes": 101572,
-        "ms": 3126,
+        "ms": 1687,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 2207,
-        "ms": 13,
+        "ms": 12,
         "cache": "hit"
       },
-      "text_ratio": 1.41,
-      "html_ratio": 11.85,
-      "bytes_ratio": 1.04
+      "text_ratio": 1.05,
+      "html_ratio": 11.05,
+      "bytes_ratio": 1
     },
     {
       "url": "https://docs.docker.com/engine/network/",
@@ -470,13 +470,13 @@
         "htmlTokens": 208323,
         "textChars": 28646,
         "textTokens": 5423,
-        "ms": 45.64490999999907
+        "ms": 30.42368399999941
       },
       "quarry_cold": {
         "tokens": 2957,
         "chars": 12855,
         "bytes": 571005,
-        "ms": 49,
+        "ms": 55,
         "cache": "miss",
         "truncated": false
       },
@@ -495,16 +495,16 @@
         "status": 200,
         "bytes": 337199,
         "htmlChars": 337175,
-        "htmlTokens": 98752,
+        "htmlTokens": 98749,
         "textChars": 25615,
         "textTokens": 4645,
-        "ms": 115.2008249999999
+        "ms": 172.8575010000004
       },
       "quarry_cold": {
         "tokens": 1734,
         "chars": 7920,
         "bytes": 337199,
-        "ms": 169,
+        "ms": 175,
         "cache": "miss",
         "truncated": false
       },
@@ -526,13 +526,13 @@
         "htmlTokens": 965364,
         "textChars": 36440,
         "textTokens": 7640,
-        "ms": 209.54792899999848
+        "ms": 174.95968899999934
       },
       "quarry_cold": {
         "tokens": 7929,
         "chars": 36850,
         "bytes": 2033807,
-        "ms": 244,
+        "ms": 245,
         "cache": "miss",
         "truncated": false
       },
@@ -549,28 +549,28 @@
       "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
       "baseline": {
         "status": 200,
-        "bytes": 301060,
-        "htmlChars": 300905,
-        "htmlTokens": 108248,
+        "bytes": 301249,
+        "htmlChars": 301094,
+        "htmlTokens": 108291,
         "textChars": 26030,
         "textTokens": 5524,
-        "ms": 17.446721000000252
+        "ms": 30.246672999999646
       },
       "quarry_cold": {
         "tokens": 5084,
         "chars": 22723,
-        "bytes": 301060,
-        "ms": 43,
+        "bytes": 301249,
+        "ms": 30,
         "cache": "miss",
         "truncated": false
       },
       "quarry_warm": {
         "tokens": 5084,
-        "ms": 17,
+        "ms": 16,
         "cache": "hit"
       },
       "text_ratio": 1.09,
-      "html_ratio": 21.29,
+      "html_ratio": 21.3,
       "bytes_ratio": 1
     }
   ]

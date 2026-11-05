@@ -23,8 +23,8 @@ coding agents pay for the web in tokens, round trips, and wall clock. the built-
 | median tokens, quarry vs visible text | 1.06x fewer |
 | median tokens, quarry vs raw html | 16.2x fewer |
 | extracted text vs full page | 1.9x fewer on articles, 1.1x on docs |
-| cold fetch, p50 | 72 ms |
-| warm cache fetch, p50 | 24 ms |
+| cold fetch, p50 | 120 ms |
+| warm cache fetch, p50 | 17 ms |
 | warm cache network bytes | 0 |
 | ten urls, one batch call vs ten fetches | 4x faster |
 | tokens vs a hosted reader (jina), median | 1.65x fewer |
@@ -147,19 +147,19 @@ quarry uses the first key it finds, then falls back to duckduckgo lite and bing:
 
 | arm | total tokens |
 | --- | --- |
-| scoped state, first run | 2,197 |
+| scoped state, first run | 1,842 |
 | dom snapshot per step | 3,124 |
 | screenshot per step | 81,960 |
-| replay | 190 |
+| replay | 19 |
 
 real pages, 10 flows across 4 apps, state graph against chrome devtools mcp:
 
 | metric | value |
 | --- | --- |
 | flows with the answer found | 10 of 10 |
-| median token ratio | 30.3x |
-| total token ratio | 23.7x |
-| range | 13.8x to 43.4x |
+| median token ratio | 21.6x |
+| total token ratio | 16.7x |
+| range | 10.2x to 31.7x |
 | model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
 | median tool time | 1.8 s per flow |
 
@@ -175,7 +175,7 @@ a live run on klawva.xyz, hiring flow up to checkout, 5 runs per arm, exact o200
 
 actions were scripted and model latency was not measured.
 
-details and the checkout screenshot are in `browser/bench/`.
+details and the checkout screenshot are in `bench/browser/`.
 
  a changed page string is caught with a 53 token witness.
 

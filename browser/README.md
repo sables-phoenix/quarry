@@ -61,22 +61,22 @@ mcp config for opencode:
 
 | arm | total tokens |
 | --- | --- |
-| scoped state, first run | 2,197 |
+| scoped state, first run | 1,842 |
 | dom snapshot per step | 3,124 |
 | screenshot per step | 81,960 |
-| replay | 190 |
+| replay | 19 |
 
 10 real flows on 4 sites, state graph against chrome devtools mcp:
 
 | metric | value |
 | --- | --- |
 | answer found | 10 of 10 |
-| median token ratio | 30.3x |
-| total token ratio | 23.7x |
-| range | 13.8x to 43.4x |
+| median token ratio | 21.6x |
+| total token ratio | 16.7x |
+| range | 10.2x to 31.7x |
 | model calls | 30 vs 20 vs 0 on replay |
 
-run `node bench/real-flows.mjs` from this directory after `npm run build`.
+run `npx tsx bench/browser/real-flows.ts` from the repo root after `npm --prefix browser run build`.
 
 ## live site: klawva
 
@@ -94,7 +94,7 @@ model latency was not measured. no end-to-end number is claimed.
 
 caveats. the actions were scripted, not chosen by a model. the chrome snapshots contain every control while quarry's deltas are summaries, so a real model may need more state than 454 tokens. separate browsers, one machine, one flow.
 
-the older `chars / 4` numbers are in `bench/klawva.json` as history. evidence: `bench/klawva-checkout.png`. no payment was made.
+the older `chars / 4` numbers are in `bench/browser/klawva.json` as history. evidence: `bench/browser/klawva-checkout.png`. no payment was made.
 
 ## limits
 

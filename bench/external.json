@@ -4,9 +4,9 @@
     "urls": 6,
     "ok": 6,
     "median_token_ratio": 1.65,
-    "median_ms_ratio": 2651.5,
+    "median_ms_ratio": 454.5,
     "quarry_tokens": 103514,
-    "jina_tokens": 1047516
+    "jina_tokens": 1048304
   },
   "rows": [
     {
@@ -14,84 +14,84 @@
       "jina": {
         "status": 200,
         "tokens": 1409,
-        "ms": 3452
+        "ms": 276
       },
       "quarry": {
         "tokens": 875,
-        "ms": 224
+        "ms": 0
       },
       "token_ratio": 1.61,
-      "ms_ratio": 15.41
+      "ms_ratio": 276
     },
     {
       "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
       "jina": {
         "status": 200,
-        "tokens": 7584,
-        "ms": 2705
+        "tokens": 7603,
+        "ms": 259
       },
       "quarry": {
         "tokens": 7890,
         "ms": 0
       },
       "token_ratio": 0.96,
-      "ms_ratio": 2705
+      "ms_ratio": 259
     },
     {
       "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
       "jina": {
         "status": 200,
-        "tokens": 10931,
-        "ms": 1815
+        "tokens": 11452,
+        "ms": 341
       },
       "quarry": {
         "tokens": 6211,
         "ms": 0
       },
-      "token_ratio": 1.76,
-      "ms_ratio": 1815
+      "token_ratio": 1.84,
+      "ms_ratio": 341
     },
     {
       "url": "https://nodejs.org/api/fs.html",
       "jina": {
         "status": 200,
-        "tokens": 53674,
-        "ms": 9196
+        "tokens": 53903,
+        "ms": 568
       },
       "quarry": {
         "tokens": 75525,
         "ms": 0
       },
       "token_ratio": 0.71,
-      "ms_ratio": 9196
+      "ms_ratio": 568
     },
     {
       "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
       "jina": {
         "status": 200,
-        "tokens": 8518,
-        "ms": 2598
+        "tokens": 8537,
+        "ms": 1395
       },
       "quarry": {
         "tokens": 5084,
         "ms": 0
       },
       "token_ratio": 1.68,
-      "ms_ratio": 2598
+      "ms_ratio": 1395
     },
     {
       "url": "https://sqlite.org/lang_select.html",
       "jina": {
         "status": 200,
         "tokens": 965400,
-        "ms": 3882
+        "ms": 3907
       },
       "quarry": {
         "tokens": 7929,
         "ms": 0
       },
       "token_ratio": 121.76,
-      "ms_ratio": 3882
+      "ms_ratio": 3907
     }
   ]
 }

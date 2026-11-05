@@ -6,7 +6,9 @@
     "bench:text": "tsx bench/text.ts",
     "bench:select": "tsx bench/select.ts",
     "bench:external": "tsx bench/external.ts",
-    "bench:check": "tsx bench/check.ts"
+    "bench:check": "tsx bench/check.ts",
+    "bench": "tsx bench/run-all.ts",
+    "bench:summary": "tsx bench/summary.ts"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
@@ -14,5 +16,8 @@
     "htmlparser2": "^10.0.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "effect": "^4.1.2"
   }
 }

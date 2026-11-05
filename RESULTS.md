@@ -23,10 +23,10 @@ quarry's row is the extracted markdown with links dropped.
 | --- | --- |
 | pages with a usable baseline | 19 of 20 |
 | median tokens, quarry vs visible text | 1.06x fewer |
-| median tokens, quarry vs raw html | 16.17x fewer |
+| median tokens, quarry vs raw html | 16.18x fewer |
 | total tokens, quarry vs visible text | 1.00x fewer |
-| cold fetch, p50 | 72.5 ms |
-| warm cache fetch, p50 | 24.4 ms |
+| cold fetch, p50 | 120 ms |
+| warm cache fetch, p50 | 17 ms |
 | warm cache network bytes | 0 |
 | pages flagged as js shells | 0 |
 

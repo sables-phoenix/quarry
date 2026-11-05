@@ -1,0 +1,124 @@
+{
+  "summary": {
+    "flows": 10,
+    "ok": 10,
+    "median_ratio": 21.6,
+    "min_ratio": 10.2,
+    "max_ratio": 31.7,
+    "baseline_total": 599867,
+    "ssg_total": 35992,
+    "total_ratio": 16.7
+  },
+  "rows": [
+    {
+      "app": "mdn",
+      "flow": "Validation > ETag/If-None-Match",
+      "state_tokens": 1799,
+      "delta_tokens": 40,
+      "ssg_tokens": 1857,
+      "baseline_tokens": 57625,
+      "ratio": 31,
+      "ok": true,
+      "ms": 2156
+    },
+    {
+      "app": "react",
+      "flow": "Usage > Adding state to a component",
+      "state_tokens": 3999,
+      "delta_tokens": 25,
+      "ssg_tokens": 4042,
+      "baseline_tokens": 49001,
+      "ratio": 12.1,
+      "ok": true,
+      "ms": 2647
+    },
+    {
+      "app": "github",
+      "flow": "Issues > Pull requests",
+      "state_tokens": 1704,
+      "delta_tokens": 93,
+      "ssg_tokens": 1812,
+      "baseline_tokens": 39050,
+      "ratio": 21.6,
+      "ok": true,
+      "ms": 2498
+    },
+    {
+      "app": "wikipedia",
+      "flow": "History > Talk",
+      "state_tokens": 7663,
+      "delta_tokens": 125,
+      "ssg_tokens": 7802,
+      "baseline_tokens": 79964,
+      "ratio": 10.2,
+      "ok": true,
+      "ms": 1571
+    },
+    {
+      "app": "mdn",
+      "flow": "Vary > Validation",
+      "state_tokens": 1799,
+      "delta_tokens": 33,
+      "ssg_tokens": 1846,
+      "baseline_tokens": 57625,
+      "ratio": 31.2,
+      "ok": true,
+      "ms": 1328
+    },
+    {
+      "app": "react",
+      "flow": "Usage > Updating state based on the previous state",
+      "state_tokens": 3999,
+      "delta_tokens": 199,
+      "ssg_tokens": 4218,
+      "baseline_tokens": 47904,
+      "ratio": 11.4,
+      "ok": true,
+      "ms": 2884
+    },
+    {
+      "app": "mdn",
+      "flow": "Fresh and stale based on age > Validation",
+      "state_tokens": 1799,
+      "delta_tokens": 40,
+      "ssg_tokens": 1853,
+      "baseline_tokens": 58807,
+      "ratio": 31.7,
+      "ok": true,
+      "ms": 1368
+    },
+    {
+      "app": "github",
+      "flow": "Pull requests > Issues",
+      "state_tokens": 2804,
+      "delta_tokens": 215,
+      "ssg_tokens": 3033,
+      "baseline_tokens": 39374,
+      "ratio": 13,
+      "ok": true,
+      "ms": 2417
+    },
+    {
+      "app": "wikipedia",
+      "flow": "History > Read",
+      "state_tokens": 7663,
+      "delta_tokens": 0,
+      "ssg_tokens": 7677,
+      "baseline_tokens": 111729,
+      "ratio": 14.6,
+      "ok": true,
+      "ms": 1757
+    },
+    {
+      "app": "mdn",
+      "flow": "Types of caches > Shared cache",
+      "state_tokens": 1799,
+      "delta_tokens": 38,
+      "ssg_tokens": 1852,
+      "baseline_tokens": 58788,
+      "ratio": 31.7,
+      "ok": true,
+      "ms": 1373
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "tokenizer": "o200k_base",
+  "first": {
+    "median_ms": 2134,
+    "tokens": 454,
+    "runs": [
+      {
+        "run": 0,
+        "ms": 2353,
+        "tokens": 454,
+        "ok": true
+      },
+      {
+        "run": 1,
+        "ms": 1693,
+        "tokens": 454,
+        "ok": true
+      },
+      {
+        "run": 2,
+        "ms": 2730,
+        "tokens": 454,
+        "ok": true
+      },
+      {
+        "run": 3,
+        "ms": 2076,
+        "tokens": 454,
+        "ok": true
+      },
+      {
+        "run": 4,
+        "ms": 2134,
+        "tokens": 454,
+        "ok": true
+      }
+    ]
+  },
+  "replay": {
+    "median_ms": 2139,
+    "tokens": 1,
+    "runs": [
+      {
+        "run": 0,
+        "ms": 2294,
+        "tokens": 1,
+        "ok": true
+      },
+      {
+        "run": 1,
+        "ms": 2139,
+        "tokens": 1,
+        "ok": true
+      },
+      {
+        "run": 2,
+        "ms": 2189,
+        "tokens": 1,
+        "ok": true
+      },
+      {
+        "run": 3,
+        "ms": 1587,
+        "tokens": 1,
+        "ok": true
+      },
+      {
+        "run": 4,
+        "ms": 1586,
+        "tokens": 1,
+        "ok": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "summary": {
+    "flows": 19,
+    "ok": 19,
+    "first_total": 1842,
+    "replay_total": 19,
+    "screenshot_total": 81960,
+    "first_median": 67
+  },
+  "rows": [
+    {
+      "flow": "login ok",
+      "steps": 3,
+      "first_tokens": 107,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1844
+    },
+    {
+      "flow": "login error",
+      "steps": 3,
+      "first_tokens": 59,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1798
+    },
+    {
+      "flow": "signup validation",
+      "steps": 3,
+      "first_tokens": 67,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1796
+    },
+    {
+      "flow": "wizard",
+      "steps": 4,
+      "first_tokens": 116,
+      "replay_tokens": 1,
+      "screenshot_tokens": 6830,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 2304
+    },
+    {
+      "flow": "todo add",
+      "steps": 2,
+      "first_tokens": 73,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1288
+    },
+    {
+      "flow": "todo toggle",
+      "steps": 3,
+      "first_tokens": 83,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1797
+    },
+    {
+      "flow": "list filter",
+      "steps": 1,
+      "first_tokens": 666,
+      "replay_tokens": 1,
+      "screenshot_tokens": 2732,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 820
+    },
+    {
+      "flow": "pagination",
+      "steps": 2,
+      "first_tokens": 71,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1288
+    },
+    {
+      "flow": "modal confirm",
+      "steps": 2,
+      "first_tokens": 79,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1284
+    },
+    {
+      "flow": "modal cancel",
+      "steps": 2,
+      "first_tokens": 79,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1286
+    },
+    {
+      "flow": "tabs",
+      "steps": 1,
+      "first_tokens": 55,
+      "replay_tokens": 1,
+      "screenshot_tokens": 2732,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 777
+    },
+    {
+      "flow": "table sort",
+      "steps": 1,
+      "first_tokens": 40,
+      "replay_tokens": 1,
+      "screenshot_tokens": 2732,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 783
+    },
+    {
+      "flow": "async load",
+      "steps": 2,
+      "first_tokens": 60,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 2782
+    },
+    {
+      "flow": "form submit",
+      "steps": 3,
+      "first_tokens": 77,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1799
+    },
+    {
+      "flow": "disabled",
+      "steps": 2,
+      "first_tokens": 57,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1287
+    },
+    {
+      "flow": "spa route",
+      "steps": 1,
+      "first_tokens": 15,
+      "replay_tokens": 1,
+      "screenshot_tokens": 2732,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 779
+    },
+    {
+      "flow": "shadow dom",
+      "steps": 1,
+      "first_tokens": 41,
+      "replay_tokens": 1,
+      "screenshot_tokens": 2732,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 775
+    },
+    {
+      "flow": "iframe",
+      "steps": 2,
+      "first_tokens": 30,
+      "replay_tokens": 1,
+      "screenshot_tokens": 4098,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1420
+    },
+    {
+      "flow": "dialog chain",
+      "steps": 3,
+      "first_tokens": 67,
+      "replay_tokens": 1,
+      "screenshot_tokens": 5464,
+      "first_ok": true,
+      "replay_ok": true,
+      "ms": 1794
+    }
+  ]
+}

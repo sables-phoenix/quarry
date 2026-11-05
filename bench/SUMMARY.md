@@ -28,6 +28,7 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | --- | --- |
 | pages | 6 |
 | median token ratio vs jina | 1.65x |
+| losses | nodejs.org 0.71x, developer.mozilla.org 0.96x |
 
 ## browser, 19 local flows
 
@@ -35,26 +36,27 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | --- | --- |
 | flows | 19 |
 | pass | 19 |
-| first run tokens | 1842 |
+| first run tokens | 2821 |
 | replay tokens | 19 |
-| screenshot per step tokens | 81960 |
+| screenshot formula, one frame per step | 81960 |
 
 ## browser, 10 real flows
 
 | metric | value |
 | --- | --- |
-| flows | 10 |
+| tasks | 10 |
+| pages | 4 |
 | pass | 10 |
-| median | 19.5x |
-| total | 20.5x |
-| range | 12.6x to 39x |
+| median | 5.4x |
+| total | 4.9x |
+| range | 2.6x to 15.7x |
 
 ## klawva hiring flow, quarry arms
 
 | arm | tokens | tool time | runs |
 | --- | --- | --- | --- |
-| first run | 454 | 2104 ms | 5 |
-| replay | 1 | 1476 ms | 5 |
+| first run | 624 | 2132 ms | 5 |
+| replay | 1 | 1919 ms | 5 |
 
 chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 
@@ -64,14 +66,14 @@ one task, one model, guided execution, 3 runs per arm.
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 17.7 s | $0.00181 | 6,768 | 3/3 |
-| chrome devtools | 49.0 s | $0.00901 | 24,638 | 3/3 |
+| quarry | 12.5 s | $0.001953 | 7341 | 3/3 |
+| chrome devtools | 49.0 s | $0.009008 | 24638 | 3/3 |
 
-open-ended, one run each: quarry 15.6 s and $0.00288, chrome 119.5 s and $0.01368. the quarry open run used a recorded flow from supermemory.
+open-ended, one run each: quarry 17.5 s and $0.002477, chrome 119.5 s and $0.013676. the quarry open run used a recorded flow from supermemory.
 
 ## caveats
 
-- the 10 real-flow baselines are chars divided by 4 estimates. the klawva comparison is exact on both sides.
-- the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen.
+- the 10 real-flow baselines are exact o200k for one capture run. the sample is 10 tasks on 4 pages.
+- the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen. the model-driven section is a separate run.
 - browser screenshot tokens use the 1,366-token frame formula, not a tokenizer.
 - network latency varies. tool time is measured, model latency is not.

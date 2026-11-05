@@ -18,25 +18,25 @@
     "tool_calls": 18
   },
   "quarry_first": {
-    "tokens": 454,
-    "median_ms": 2104,
+    "tokens": 624,
+    "median_ms": 2132,
     "runs_ms": [
-      3056,
-      2104,
-      2064,
-      2145,
-      2096
+      2766,
+      2215,
+      2110,
+      1700,
+      2132
     ]
   },
   "quarry_replay": {
     "tokens": 1,
-    "median_ms": 1476,
+    "median_ms": 1919,
     "runs_ms": [
-      1935,
-      1476,
-      1855,
-      1473,
-      1472
+      1919,
+      2007,
+      2251,
+      1485,
+      1911
     ]
   },
   "ratios": {

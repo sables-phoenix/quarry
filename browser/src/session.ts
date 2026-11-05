@@ -44,13 +44,21 @@ export class Session {
     return Browser.launch().pipe(Effect.map((browser) => new Session(browser, new Graph(), null)));
   }
 
+  private capture(): Effect.Effect<State, BrowserError> {
+    const self = this;
+    return Effect.gen(function* () {
+      const ax = yield* self.browser.ax();
+      const current = yield* self.browser.url();
+      const visible = String(yield* self.browser.evalJs("document.body.innerText")).replace(/\s+/g, " ");
+      return buildState(ax as AxNode[], current, { visibleText: visible });
+    });
+  }
+
   open(url: string): Effect.Effect<State, BrowserError> {
     const self = this;
     return Effect.gen(function* () {
       yield* self.browser.navigate(url);
-      const ax = yield* self.browser.ax();
-      const current = yield* self.browser.url();
-      const state = buildState(ax as AxNode[], current);
+      const state = yield* self.capture();
       self.state = state;
       yield* Effect.sync(() => self.graph.rememberState(state));
       return state;
@@ -63,9 +71,7 @@ export class Session {
       if (!self.state) return yield* Effect.fail(new BrowserError({ message: "open a page first" }));
       const before = self.state;
       const result = yield* self.browser.act(steps);
-      const ax = yield* self.browser.ax();
-      const current = yield* self.browser.url();
-      const after = buildState(ax as AxNode[], current);
+      const after = yield* self.capture();
       const delta = diffStates(before, after);
       self.state = after;
       yield* Effect.sync(() => {
@@ -80,13 +86,9 @@ export class Session {
     const self = this;
     return Effect.gen(function* () {
       yield* self.browser.navigate(flow.url);
-      const beforeAx = yield* self.browser.ax();
-      const beforeUrl = yield* self.browser.url();
-      const before = buildState(beforeAx as AxNode[], beforeUrl);
+      const before = yield* self.capture();
       const run = yield* self.browser.act(flow.steps);
-      const afterAx = yield* self.browser.ax();
-      const afterUrl = yield* self.browser.url();
-      const after = buildState(afterAx as AxNode[], afterUrl);
+      const after = yield* self.capture();
       const assertions = yield* self.browser.assert(flow.asserts ?? []);
       const ok = run.ok && assertions.every((assertion) => assertion.ok);
       const witness = ok ? "" : diffStates(before, after).text;

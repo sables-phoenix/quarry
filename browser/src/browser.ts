@@ -135,6 +135,10 @@ class Cdp {
     });
   }
 
+  isOpen(): boolean {
+    return this.ws.readyState === WebSocket.OPEN;
+  }
+
   close(): void {
     this.ws.close();
   }
@@ -216,7 +220,8 @@ export class Browser {
   navigate(url: string): Effect.Effect<void, BrowserError> {
     return this.wrap("navigate", async () => {
       const loaded = this.cdp.once("Page.loadEventFired", 20000);
-      await this.cdp.send("Page.navigate", { url });
+      const result = (await this.cdp.send("Page.navigate", { url })) as { errorText?: string };
+      if (result.errorText) throw new Error(`navigate: ${result.errorText}`);
       await loaded;
       await sleep(120);
     });
@@ -276,6 +281,10 @@ export class Browser {
 
   assert(assertions: Assertion[]): Effect.Effect<Array<{ op: string; value: unknown; ok: boolean }>, BrowserError> {
     return this.wrap("assert", async () => JSON.parse(String(await this.evalRaw(`(${ASSERT})(${JSON.stringify(assertions)})`))) as Array<{ op: string; value: unknown; ok: boolean }>);
+  }
+
+  isOpen(): boolean {
+    return this.cdp.isOpen();
   }
 
   close(): Effect.Effect<void> {

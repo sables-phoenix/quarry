@@ -49,6 +49,30 @@ test("bulk removals are summarized", () => {
   assert.ok(delta.tokens < 40);
 });
 
+test("paragraph text is included", () => {
+  const root = node("root", null, "RootWebArea", "page");
+  const main = node("main", "root", "main", "");
+  const paragraph = node("p", "main", "paragraph", "");
+  const text = node("t", "p", "StaticText", "this is body prose that matters");
+  root.childIds = ["main"];
+  main.childIds = ["p"];
+  paragraph.childIds = ["t"];
+  const state = buildState([root, main, paragraph, text], "https://example.com/");
+  assert.equal(state.nodes.some((n) => n.role === "text" && n.name.includes("body prose")), true);
+});
+
+test("hidden text is filtered by visible text", () => {
+  const root = node("root", null, "RootWebArea", "page");
+  const main = node("main", "root", "main", "");
+  const paragraph = node("p", "main", "paragraph", "");
+  const text = node("t", "p", "StaticText", "hidden localized copy");
+  root.childIds = ["main"];
+  main.childIds = ["p"];
+  paragraph.childIds = ["t"];
+  const state = buildState([root, main, paragraph, text], "https://example.com/", { visibleText: "visible copy only" });
+  assert.equal(state.nodes.some((n) => n.name.includes("hidden localized")), false);
+});
+
 test("projection keeps matches and reports misses", () => {
   const state = buildState(tree(["etag validation", "billing", "etag header"]), "https://example.com/");
   const projection = projectState(state, "etag validation");

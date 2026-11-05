@@ -19,7 +19,8 @@ const TOOLS = [
 let session: Session | null = null;
 
 async function getSession(): Promise<Session> {
-  if (session) return session;
+  if (session && session.browser.isOpen()) return session;
+  if (session) await Effect.runPromise(session.close());
   session = await Effect.runPromise(Session.create());
   return session;
 }

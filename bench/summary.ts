@@ -11,7 +11,13 @@ const select = load("./select.json");
 const external = load("./external.json");
 const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
-const agent = load("./agent/results.json");
+const agent = JSON.parse(readFileSync(new URL("./agent/results.json", import.meta.url), "utf8")) as {
+  guided: {
+    quarry: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number };
+    chrome: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number };
+  };
+  open: { quarry: { wall_ms: number; cost_usd: number }; chrome: { wall_ms: number; cost_usd: number } };
+};
 const klawva = JSON.parse(readFileSync(new URL("./browser/klawva.json", import.meta.url), "utf8")) as { chrome: { tokens: number; median_ms: number }; quarry_first: { tokens: number; median_ms: number }; quarry_replay: { tokens: number; median_ms: number } };
 
 const md = `# bench summary
@@ -44,6 +50,12 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | --- | --- |
 | pages | ${external.summary.urls} |
 | median token ratio vs jina | ${external.summary.median_token_ratio}x |
+| losses | ${(external.rows ?? [])
+  .filter((row) => typeof row.token_ratio === "number")
+  .sort((a, b) => (a.token_ratio as number) - (b.token_ratio as number))
+  .slice(0, 2)
+  .map((row) => `${String(row.url).replace("https://", "").split("/")[0]} ${row.token_ratio}x`)
+  .join(", ")} |
 
 ## browser, 19 local flows
 
@@ -53,13 +65,14 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | pass | ${fixtures.summary.ok} |
 | first run tokens | ${fixtures.summary.first_total} |
 | replay tokens | ${fixtures.summary.replay_total} |
-| screenshot per step tokens | ${fixtures.summary.screenshot_total} |
+| screenshot formula, one frame per step | ${fixtures.summary.screenshot_total} |
 
 ## browser, 10 real flows
 
 | metric | value |
 | --- | --- |
-| flows | ${real.summary.flows} |
+| tasks | ${real.summary.flows} |
+| pages | 4 |
 | pass | ${real.summary.ok} |
 | median | ${real.summary.median_ratio}x |
 | total | ${real.summary.total_ratio}x |
@@ -80,15 +93,15 @@ one task, one model, guided execution, 3 runs per arm.
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 17.7 s | $0.00181 | 6,768 | 3/3 |
-| chrome devtools | 49.0 s | $0.00901 | 24,638 | 3/3 |
+| quarry | ${(agent.guided.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.quarry.median_cost_usd} | ${agent.guided.quarry.median_input_tokens} | ${agent.guided.quarry.success}/3 |
+| chrome devtools | ${(agent.guided.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.chrome.median_cost_usd} | ${agent.guided.chrome.median_input_tokens} | ${agent.guided.chrome.success}/3 |
 
-open-ended, one run each: quarry 15.6 s and $0.00288, chrome 119.5 s and $0.01368. the quarry open run used a recorded flow from supermemory.
+open-ended, one run each: quarry ${(agent.open.quarry.wall_ms / 1000).toFixed(1)} s and $${agent.open.quarry.cost_usd}, chrome ${(agent.open.chrome.wall_ms / 1000).toFixed(1)} s and $${agent.open.chrome.cost_usd}. the quarry open run used a recorded flow from supermemory.
 
 ## caveats
 
-- the 10 real-flow baselines are chars divided by 4 estimates. the klawva comparison is exact on both sides.
-- the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen.
+- the 10 real-flow baselines are exact o200k for one capture run. the sample is 10 tasks on 4 pages.
+- the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen. the model-driven section is a separate run.
 - browser screenshot tokens use the 1,366-token frame formula, not a tokenizer.
 - network latency varies. tool time is measured, model latency is not.
 `;

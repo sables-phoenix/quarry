@@ -2,123 +2,123 @@
   "summary": {
     "flows": 10,
     "ok": 10,
-    "median_ratio": 19.5,
-    "min_ratio": 12.6,
-    "max_ratio": 39,
+    "median_ratio": 5.4,
+    "min_ratio": 2.6,
+    "max_ratio": 15.7,
     "baseline_total": 715495,
-    "ssg_total": 34935,
-    "total_ratio": 20.5
+    "ssg_total": 147447,
+    "total_ratio": 4.9
   },
   "rows": [
     {
       "app": "mdn",
       "flow": "Validation > ETag/If-None-Match",
-      "state_tokens": 1799,
-      "delta_tokens": 46,
-      "ssg_tokens": 1845,
+      "state_tokens": 13285,
+      "delta_tokens": 83,
+      "ssg_tokens": 13368,
       "baseline_tokens": 72004,
-      "ratio": 39,
+      "ratio": 5.4,
       "ok": true,
-      "ms": 2001
+      "ms": 2034
     },
     {
       "app": "react",
       "flow": "Usage > Adding state to a component",
-      "state_tokens": 3999,
+      "state_tokens": 23705,
       "delta_tokens": 25,
-      "ssg_tokens": 4024,
+      "ssg_tokens": 23730,
       "baseline_tokens": 61784,
-      "ratio": 15.4,
+      "ratio": 2.6,
       "ok": true,
-      "ms": 2702
+      "ms": 2752
     },
     {
       "app": "github",
       "flow": "Issues > Pull requests",
-      "state_tokens": 1704,
-      "delta_tokens": 299,
-      "ssg_tokens": 2003,
+      "state_tokens": 2364,
+      "delta_tokens": 113,
+      "ssg_tokens": 2477,
       "baseline_tokens": 39000,
-      "ratio": 19.5,
+      "ratio": 15.7,
       "ok": true,
-      "ms": 2340
+      "ms": 2503
     },
     {
       "app": "wikipedia",
       "flow": "History > Talk",
-      "state_tokens": 7663,
-      "delta_tokens": 125,
-      "ssg_tokens": 7788,
+      "state_tokens": 20938,
+      "delta_tokens": 175,
+      "ssg_tokens": 21113,
       "baseline_tokens": 98356,
-      "ratio": 12.6,
+      "ratio": 4.7,
       "ok": true,
-      "ms": 1775
+      "ms": 1610
     },
     {
       "app": "mdn",
       "flow": "Vary > Validation",
-      "state_tokens": 1799,
-      "delta_tokens": 38,
-      "ssg_tokens": 1837,
+      "state_tokens": 12496,
+      "delta_tokens": 86,
+      "ssg_tokens": 12582,
       "baseline_tokens": 70969,
-      "ratio": 38.6,
+      "ratio": 5.6,
       "ok": true,
-      "ms": 1436
+      "ms": 1447
     },
     {
       "app": "react",
       "flow": "Usage > Updating state based on the previous state",
-      "state_tokens": 3999,
+      "state_tokens": 23705,
       "delta_tokens": 199,
-      "ssg_tokens": 4198,
+      "ssg_tokens": 23904,
       "baseline_tokens": 61891,
-      "ratio": 14.7,
+      "ratio": 2.6,
       "ok": true,
-      "ms": 2518
+      "ms": 2711
     },
     {
       "app": "mdn",
       "flow": "Fresh and stale based on age > Validation",
-      "state_tokens": 1799,
-      "delta_tokens": 40,
-      "ssg_tokens": 1839,
+      "state_tokens": 13285,
+      "delta_tokens": 84,
+      "ssg_tokens": 13369,
       "baseline_tokens": 70957,
-      "ratio": 38.6,
+      "ratio": 5.3,
       "ok": true,
-      "ms": 1411
+      "ms": 1444
     },
     {
       "app": "github",
       "flow": "Pull requests > Issues",
-      "state_tokens": 1704,
-      "delta_tokens": 197,
-      "ssg_tokens": 1901,
+      "state_tokens": 2364,
+      "delta_tokens": 229,
+      "ssg_tokens": 2593,
       "baseline_tokens": 30443,
-      "ratio": 16,
+      "ratio": 11.7,
       "ok": true,
-      "ms": 2366
+      "ms": 2517
     },
     {
       "app": "wikipedia",
       "flow": "History > Read",
-      "state_tokens": 7663,
+      "state_tokens": 20938,
       "delta_tokens": 0,
-      "ssg_tokens": 7663,
+      "ssg_tokens": 20938,
       "baseline_tokens": 139124,
-      "ratio": 18.2,
+      "ratio": 6.6,
       "ok": true,
-      "ms": 1874
+      "ms": 1964
     },
     {
       "app": "mdn",
       "flow": "Types of caches > Shared cache",
-      "state_tokens": 1799,
-      "delta_tokens": 38,
-      "ssg_tokens": 1837,
+      "state_tokens": 13285,
+      "delta_tokens": 88,
+      "ssg_tokens": 13373,
       "baseline_tokens": 70967,
-      "ratio": 38.6,
+      "ratio": 5.3,
       "ok": true,
-      "ms": 1494
+      "ms": 1452
     }
   ]
 }

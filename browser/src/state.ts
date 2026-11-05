@@ -9,11 +9,14 @@ const KEEP = new Set([
   "combobox", "switch", "tab", "alert", "dialog", "status", "searchbox",
 ]);
 
+const CONTENT = new Set(["paragraph", "listitem", "blockquote", "code", "cell", "generic", "section", "article"]);
+const TEXT_OWNER = new Set(["heading", "link", "button", "textbox", "checkbox", "radio", "tab", "combobox", "switch"]);
+
 export function tokenCount(text: string): number {
   return encode(text).length;
 }
 
-export function buildState(nodes: AxNode[], url: string, options: { scope?: string; maxName?: number } = {}): State {
+export function buildState(nodes: AxNode[], url: string, options: { scope?: string; maxName?: number; visibleText?: string } = {}): State {
   const scope = options.scope ?? "auto";
   const maxName = options.maxName ?? 180;
   const byId = new Map(nodes.map((n) => [n.nodeId, n]));
@@ -32,6 +35,16 @@ export function buildState(nodes: AxNode[], url: string, options: { scope?: stri
     rootId = landmark?.nodeId ?? null;
   }
   const inScope = (n: AxNode): boolean => !rootId || n.nodeId === rootId || chain(n).includes(rootId);
+  const contentAncestor = (n: AxNode): AxNode | null => {
+    let cur = n.parentId ? byId.get(n.parentId) : undefined;
+    for (let i = 0; cur && i < 6; i++) {
+      const role = cur.role?.value ?? "";
+      if (TEXT_OWNER.has(role)) return null;
+      if (CONTENT.has(role)) return cur;
+      cur = cur.parentId ? byId.get(cur.parentId) : undefined;
+    }
+    return null;
+  };
   const liveAncestor = (n: AxNode): AxNode | null => {
     let cur = n.parentId ? byId.get(n.parentId) : undefined;
     for (let i = 0; cur && i < 6; i++) {
@@ -41,6 +54,7 @@ export function buildState(nodes: AxNode[], url: string, options: { scope?: stri
     }
     return null;
   };
+  const visible = options.visibleText?.replace(/\s+/g, " ").toLowerCase();
   const seen = new Map<string, number>();
   const out: StateNode[] = [];
   for (const n of nodes) {
@@ -50,12 +64,22 @@ export function buildState(nodes: AxNode[], url: string, options: { scope?: stri
     const value = asText(n.value?.value);
     if (role === "StaticText") {
       const live = liveAncestor(n);
-      if (!live) continue;
-      const parentName = (asText(live.name?.value) || asText(live.parentId ? byId.get(live.parentId)?.name?.value : "") || "live").slice(0, 40);
-      const key = `live|${parentName}`;
+      if (live) {
+        const parentName = (asText(live.name?.value) || asText(live.parentId ? byId.get(live.parentId)?.name?.value : "") || "live").slice(0, 40);
+        const key = `live|${parentName}`;
+        const ord = seen.get(key) ?? 0;
+        seen.set(key, ord + 1);
+        out.push({ id: hash(`${key}#${ord}`), role: "live", name: parentName, value: name.slice(0, 60) });
+        continue;
+      }
+      if (!contentAncestor(n)) continue;
+      const body = name || value;
+      if (!body) continue;
+      if (visible !== undefined && !visible.includes(body.toLowerCase())) continue;
+      const key = `text|${body.slice(0, 120)}`;
       const ord = seen.get(key) ?? 0;
       seen.set(key, ord + 1);
-      out.push({ id: hash(`${key}#${ord}`), role: "live", name: parentName, value: name.slice(0, 60) });
+      out.push({ id: hash(`${key}#${ord}`), role: "text", name: body.slice(0, 300), value: "" });
       continue;
     }
     if (!KEEP.has(role) || (!name && !value)) continue;

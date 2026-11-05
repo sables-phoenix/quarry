@@ -6,40 +6,86 @@
     "runs": 3,
     "prompt": "the model was given the steps and the tools, and had to execute them",
     "quarry": {
-      "wall_ms": [17680, 17790, 15530],
-      "median_wall_ms": 17680,
-      "cost_usd": [0.00181, 0.002214, 0.001689],
-      "median_cost_usd": 0.00181,
-      "input_tokens": [7685, 6768, 5262],
-      "median_input_tokens": 6768,
-      "cache_read": [16320, 32640, 23936],
+      "wall_ms": [
+        13730,
+        10840,
+        12500
+      ],
+      "median_wall_ms": 12500,
+      "cost_usd": [
+        0.001953,
+        0.001769,
+        0.002025
+      ],
+      "median_cost_usd": 0.001953,
+      "input_tokens": [
+        8933,
+        5780,
+        7341
+      ],
+      "median_input_tokens": 7341,
+      "cache_read": [
+        11968,
+        25024,
+        23936
+      ],
       "median_cache_read": 23936,
       "success": 3
     },
     "chrome": {
-      "wall_ms": [49030, 46250, 70090],
+      "wall_ms": [
+        49030,
+        46250,
+        70090
+      ],
       "median_wall_ms": 49030,
-      "cost_usd": [0.01026, 0.006476, 0.009008],
+      "cost_usd": [
+        0.01026,
+        0.006476,
+        0.009008
+      ],
       "median_cost_usd": 0.009008,
-      "input_tokens": [29110, 22244, 24638],
+      "input_tokens": [
+        29110,
+        22244,
+        24638
+      ],
       "median_input_tokens": 24638,
-      "cache_read": [183872, 93568, 161024],
+      "cache_read": [
+        183872,
+        93568,
+        161024
+      ],
       "median_cache_read": 161024,
       "success": 3
     },
     "ratios": {
-      "wall": 2.77,
-      "cost": 4.98,
-      "input_tokens": 3.64,
+      "wall": 3.92,
+      "cost": 4.61,
+      "input_tokens": 3.36,
       "cache_read": 6.73
     }
   },
   "open": {
     "runs": 1,
     "prompt": "goal only, no steps",
-    "quarry": { "wall_ms": 15570, "cost_usd": 0.002882, "input_tokens": 10373, "success": 1 },
-    "chrome": { "wall_ms": 119480, "cost_usd": 0.013676, "input_tokens": 32569, "success": 1 },
-    "ratios": { "wall": 7.67, "cost": 4.75, "input_tokens": 3.14 },
+    "quarry": {
+      "wall_ms": 17510,
+      "cost_usd": 0.002477,
+      "input_tokens": 10688,
+      "success": 1
+    },
+    "chrome": {
+      "wall_ms": 119480,
+      "cost_usd": 0.013676,
+      "input_tokens": 32569,
+      "success": 1
+    },
+    "ratios": {
+      "wall": 6.82,
+      "cost": 5.52,
+      "input_tokens": 3.05
+    },
     "confound": "the quarry run recalled a recorded flow from supermemory. the chrome run did not."
   },
   "pre_fix_quarry": {
@@ -49,5 +95,5 @@
     "success": 1,
     "note": "same task before the quarry tool descriptions were expanded. excluded from the medians."
   },
-  "notes": "one task, one model, one machine. charges come from the opencode session info. the guided prompt lists the steps, so this measures execution and tool ergonomics, not planning. the open run is contaminated by supermemory."
+  "notes": "one task, one model, one machine. the quarry state now includes body prose. charges come from the opencode session info. the guided prompt lists the steps, so this measures execution and tool ergonomics, not planning. the open run is contaminated by supermemory."
 }

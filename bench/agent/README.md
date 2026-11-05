@@ -17,23 +17,23 @@ the scripted benches measure what each tool returns. this one measures a model c
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 17.7 s | $0.00181 | 6,768 | 3/3 |
+| quarry | 12.5 s | $0.00195 | 7,341 | 3/3 |
 | chrome devtools | 49.0 s | $0.00901 | 24,638 | 3/3 |
 
-quarry: 2.8x faster, 5.0x cheaper, 3.6x fewer input tokens.
+quarry: 3.9x faster, 4.6x cheaper, 3.4x fewer input tokens.
 
 ## open results
 
 | arm | wall | cost | input tokens | success |
 | --- | --- | --- | --- | --- |
-| quarry | 15.6 s | $0.00288 | 10,373 | 1/1 |
+| quarry | 17.5 s | $0.00248 | 10,688 | 1/1 |
 | chrome devtools | 119.5 s | $0.01368 | 32,569 | 1/1 |
 
-quarry: 7.7x faster, 4.7x cheaper.
+quarry: 6.8x faster, 5.5x cheaper.
 
 ## what changed the result
 
-the first quarry run took 54.8 s and $0.024 with the old terse tool descriptions. the model spent most of it discovering the step shapes. expanding the descriptions with examples cut the run to 17.7 s and $0.0018. tool descriptions mattered more than the observation format.
+the first quarry run took 54.8 s and $0.024 with terse tool descriptions. expanding them with examples cut the run to 12.5 s and $0.002. tool descriptions mattered more than the observation format.
 
 ## caveats
 

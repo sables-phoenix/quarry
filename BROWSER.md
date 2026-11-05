@@ -100,7 +100,7 @@ both configurations pass. this is a model of the policy, not a proof of the impl
 
 ## what is not built
 
-- the browser driver is node. it is not in the rust binary and does not ship in the mcp server yet.
+- the browser driver is node. it ships as `browser/dist/cli.js`; it is not in the rust binary.
 - locators use role plus visible name. no shadow dom, iframes, or file uploads.
 - the pixel threshold is a fixed sum of channel differences. antialiasing can produce false changes.
 - no network assertions, no console error assertions, no accessibility audit assertions.

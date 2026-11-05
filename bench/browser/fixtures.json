@@ -2,21 +2,21 @@
   "summary": {
     "flows": 19,
     "ok": 19,
-    "first_total": 1842,
+    "first_total": 2821,
     "replay_total": 19,
     "screenshot_total": 81960,
-    "first_median": 67
+    "first_median": 78
   },
   "rows": [
     {
       "flow": "login ok",
       "steps": 3,
-      "first_tokens": 107,
+      "first_tokens": 116,
       "replay_tokens": 1,
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1844
+      "ms": 1875
     },
     {
       "flow": "login error",
@@ -26,7 +26,7 @@
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1798
+      "ms": 1807
     },
     {
       "flow": "signup validation",
@@ -36,97 +36,97 @@
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1796
+      "ms": 1809
     },
     {
       "flow": "wizard",
       "steps": 4,
-      "first_tokens": 116,
+      "first_tokens": 152,
       "replay_tokens": 1,
       "screenshot_tokens": 6830,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 2304
+      "ms": 2314
     },
     {
       "flow": "todo add",
       "steps": 2,
-      "first_tokens": 73,
+      "first_tokens": 78,
       "replay_tokens": 1,
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1288
+      "ms": 1306
     },
     {
       "flow": "todo toggle",
       "steps": 3,
-      "first_tokens": 83,
+      "first_tokens": 88,
       "replay_tokens": 1,
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1797
+      "ms": 1811
     },
     {
       "flow": "list filter",
       "steps": 1,
-      "first_tokens": 666,
+      "first_tokens": 1285,
       "replay_tokens": 1,
       "screenshot_tokens": 2732,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 820
+      "ms": 850
     },
     {
       "flow": "pagination",
       "steps": 2,
-      "first_tokens": 71,
+      "first_tokens": 249,
       "replay_tokens": 1,
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1288
+      "ms": 1297
     },
     {
       "flow": "modal confirm",
       "steps": 2,
-      "first_tokens": 79,
+      "first_tokens": 93,
       "replay_tokens": 1,
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1284
+      "ms": 1293
     },
     {
       "flow": "modal cancel",
       "steps": 2,
-      "first_tokens": 79,
+      "first_tokens": 93,
       "replay_tokens": 1,
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1286
+      "ms": 1292
     },
     {
       "flow": "tabs",
       "steps": 1,
-      "first_tokens": 55,
+      "first_tokens": 74,
       "replay_tokens": 1,
       "screenshot_tokens": 2732,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 777
+      "ms": 782
     },
     {
       "flow": "table sort",
       "steps": 1,
-      "first_tokens": 40,
+      "first_tokens": 100,
       "replay_tokens": 1,
       "screenshot_tokens": 2732,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 783
+      "ms": 788
     },
     {
       "flow": "async load",
@@ -136,7 +136,7 @@
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 2782
+      "ms": 2790
     },
     {
       "flow": "form submit",
@@ -146,17 +146,17 @@
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1799
+      "ms": 1818
     },
     {
       "flow": "disabled",
       "steps": 2,
-      "first_tokens": 57,
+      "first_tokens": 62,
       "replay_tokens": 1,
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1287
+      "ms": 1291
     },
     {
       "flow": "spa route",
@@ -166,7 +166,7 @@
       "screenshot_tokens": 2732,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 779
+      "ms": 782
     },
     {
       "flow": "shadow dom",
@@ -176,7 +176,7 @@
       "screenshot_tokens": 2732,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 775
+      "ms": 780
     },
     {
       "flow": "iframe",
@@ -186,17 +186,17 @@
       "screenshot_tokens": 4098,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1420
+      "ms": 1401
     },
     {
       "flow": "dialog chain",
       "steps": 3,
-      "first_tokens": 67,
+      "first_tokens": 82,
       "replay_tokens": 1,
       "screenshot_tokens": 5464,
       "first_ok": true,
       "replay_ok": true,
-      "ms": 1794
+      "ms": 1803
     }
   ]
 }

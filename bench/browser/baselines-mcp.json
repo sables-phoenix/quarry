@@ -1,0 +1,25 @@
+{
+  "method": "chrome-devtools-mcp take_snapshot, o200k",
+  "rows": [
+    {
+      "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+      "chars": 75362,
+      "tokens": 22960
+    },
+    {
+      "url": "https://react.dev/reference/react/useState",
+      "chars": 64154,
+      "tokens": 20672
+    },
+    {
+      "url": "https://github.com/rust-lang/rust",
+      "chars": 51771,
+      "tokens": 15987
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/HTTPS",
+      "chars": 147234,
+      "tokens": 45652
+    }
+  ]
+}

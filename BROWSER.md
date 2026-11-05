@@ -1,6 +1,6 @@
 # browser verification
 
-tables before the live-site section use `chars / 4` estimates. the live-site table and `bench/browser/` use exact o200k counts.
+token counts use o200k on the returned text. image tokens use the width times height formula.
 
 limits: `limits.md`.
 
@@ -10,16 +10,16 @@ status: shipped as `browser/`, a node package and mcp server. the rust binary ke
 
 the obvious plan was to send the accessibility tree instead of screenshots, because text should be cheaper than pixels. that plan is wrong on real pages.
 
-| page | chrome devtools mcp snapshot | full a11y tree, compacted | screenshot at 1280x800 |
+| page | chrome devtools snapshot | quarry state | screenshot at 1280x800 |
 | --- | --- | --- | --- |
-| mdn http caching | 18,841 tokens | 39,363 tokens | 1,366 tokens |
-| react usestate | 16,039 tokens | 56,611 tokens | 1,366 tokens |
-| github rust repo | not measured | 9,605 tokens | 1,366 tokens |
-| local login form | 70 tokens | 116 tokens | 1,366 tokens |
+| mdn http caching | 22,960 tokens | 13,285 tokens | 1,366 tokens |
+| react usestate | 20,672 tokens | 23,705 tokens | 1,366 tokens |
+| github rust repo | 15,987 tokens | 2,364 tokens | 1,366 tokens |
+| wikipedia https | 45,652 tokens | 20,938 tokens | 1,366 tokens |
 
-measured with `chrome-devtools` mcp `take_snapshot`, and with a cdp probe that serializes the full accessibility tree. screenshot tokens use the anthropic formula, width times height divided by 750. openai tiles land at 1,105 for the same frame.
+measured with `chrome-devtools-mcp` `take_snapshot` at the default verbosity, and with `browser_state`. screenshot tokens use the anthropic formula, width times height divided by 750. openai tiles land at 1,105 for the same frame.
 
-a full accessibility tree is 7 to 41 times more expensive than a screenshot on documentation pages. that is why agents that dump the a11y tree feel slow and expensive, and why agents that take a screenshot every step also feel expensive. neither is the right default.
+the chrome snapshot is 7 to 23 times more expensive than a screenshot on these pages. that is why agents that dump the a11y tree feel slow and expensive, and why agents that take a screenshot every step also feel expensive. neither is the right default.
 
 ## what is cheap
 
@@ -81,13 +81,13 @@ the same login flow, driven by the `chrome-devtools` mcp server that ships with 
 | delta ladder | 191 |
 | replay | 10 |
 
-on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm collapses: mdn is 18,841 tokens per snapshot. the measured scoped state for mdn is 13,285 tokens.
+on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm is large: mdn is 22,960 tokens per snapshot. the measured scoped state for mdn is 13,285 tokens, a 1.7x win. react is the loss: 20,672 against 23,705.
 
 the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 1 of 3 against chrome devtools 3 of 3.
 
 ## real pages, ten flows
 
-the current numbers are in `bench/SUMMARY.md`, `bench/browser/real-flows.json`, and `bench/browser/nav-flows.json`. the compression sample is ten page checks on four pages; the navigation sample is four cross-page flows. one run each, exact o200k on both sides.
+the current numbers are in `bench/SUMMARY.md`, `bench/browser/real-flows.json`, and `bench/browser/nav-flows.json`. the compression sample is ten page checks on four pages; the navigation sample is four cross-page flows. one capture each, exact o200k on both sides.
 
 ## formal model
 

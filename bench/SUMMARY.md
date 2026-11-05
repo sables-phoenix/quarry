@@ -46,9 +46,9 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | checks | 10 |
 | pages | 4 |
 | pass | 10 |
-| median | 5.3x |
-| total | 4.7x |
-| range | 2.6x to 16.5x |
+| median | 1.7x |
+| total | 1.7x |
+| range | 0.9x to 6.8x |
 
 ## browser, cross-page flows
 

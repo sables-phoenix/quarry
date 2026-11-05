@@ -22,8 +22,12 @@ try {
   console.warn("external bench failed");
 }
 run("npx", ["tsx", "bench/browser/fixtures.ts"]);
+run("npx", ["tsx", "bench/browser/baselines-mcp.ts"]);
 try {
   run("npx", ["tsx", "bench/browser/real-flows.ts"]);
+  run("npx", ["tsx", "bench/browser/nav-flows.ts"]);
+  run("npx", ["tsx", "bench/browser/ladder.ts"]);
+  run("npx", ["tsx", "bench/browser/js-pages.ts"]);
 } catch {
   console.warn("real-flow bench failed");
 }

@@ -37,7 +37,7 @@ full-page extraction alone is not where the win is. selection is. given one ques
 | answer present in the returned text | 10 of 10 |
 | median token reduction per question | 4.9x |
 | total token reduction across the set | 9.3x |
-| best case | 35x, the node.js fs page |
+| best case | 37.4x, the node.js fs page |
 
 see `results.md` for the method and every row.
 

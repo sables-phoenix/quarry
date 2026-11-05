@@ -80,21 +80,21 @@ run `node bench/real-flows.mjs` from this directory after `npm run build`.
 
 ## live site: klawva
 
-one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, select 24 hours, stop before payment. same steps, same event waits, 3 runs per arm.
+one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, select 24 hours, stop before payment. 5 runs per arm, same event waits.
 
-| arm | tokens | tool time, median | calls |
-| --- | --- | --- | --- |
-| chrome devtools mcp, snapshot per step | 4,793 | 3.0 s | 11 |
-| quarry first run, batched | 350 | 1.9 s | 8 |
-| quarry replay | 10 | 2.4 s | 0 |
+| arm | observation tokens, o200k | tool time, median | observations | tool calls |
+| --- | --- | --- | --- | --- |
+| chrome devtools mcp, snapshot per step | 4,164 | 2.73 s | 4 | 18 |
+| quarry first run, batched | 454 | 2.25 s | 7 | 8 |
+| quarry replay | 1 | 1.53 s | 1 | 1 |
 
-with a 1.5 s model call the end-to-end estimate is 19.5 s for devtools, 13.9 s for the first quarry run, and 2.4 s for replay.
+tokens are exact counts from the o200k tokenizer on the text content field. action confirmation strings and structured content are excluded on both sides. first run is 9.17x fewer tokens than the chrome arm. replay is 4,164x fewer and 454x fewer than the first run.
 
-three caveats. token counts are `chars / 4` estimates, not a tokenizer. the actions were scripted by us, not chosen by a model, so the token numbers measure what each tool returns, not what a model needs to decide. the first quarry run batched actions and therefore observed less than the chrome arm, which took a snapshot after every step.
+model latency was not measured. no end-to-end number is claimed.
 
-the earlier fixed-wait numbers (9.9 s chrome, 9.2 s first run, 9.0 s replay) are in `bench/klawva.json` for history. they mixed fixed and event waits and should not be used for the speed claim.
+caveats. the actions were scripted, not chosen by a model. the chrome snapshots contain every control while quarry's deltas are summaries, so a real model may need more state than 454 tokens. separate browsers, one machine, one flow.
 
-evidence: `bench/klawva.json` and `bench/klawva-checkout.png`. no payment was made.
+the older `chars / 4` numbers are in `bench/klawva.json` as history. evidence: `bench/klawva-checkout.png`. no payment was made.
 
 ## limits
 

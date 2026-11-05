@@ -1,7 +1,7 @@
 import { Effect } from "effect";
 import { Browser, BrowserError } from "./browser.js";
 import { Graph } from "./graph.js";
-import { buildState, diffStates, projectState } from "./state.js";
+import { buildState, diffStates, projectState, tokenCount } from "./state.js";
 import type { Assertion, AxNode, Delta, Flow, Projection, State, Step } from "./types.js";
 
 export type ActResult = {
@@ -91,7 +91,7 @@ export class Session {
       const ok = run.ok && assertions.every((assertion) => assertion.ok);
       const witness = ok ? "" : diffStates(before, after).text;
       self.state = after;
-      return { ok, failed: run.failed, assertions, witness, tokens: ok ? 10 : 10 + Math.ceil(witness.length / 4) + 40, state: after };
+      return { ok, failed: run.failed, assertions, witness, tokens: tokenCount(ok ? "pass" : `fail\n${witness}`), state: after };
     });
   }
 

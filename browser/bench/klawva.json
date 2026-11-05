@@ -91,5 +91,53 @@
       "replay": 2.4
     },
     "notes": "same flow, event waits, 3 runs each. tokens are chars/4 estimates. actions are scripted, not chosen by a model. quarry first run batted actions, so it took fewer observations than the chrome arm snapshot per step."
+  },
+  "exact_o200k": {
+    "tokenizer": "o200k_base",
+    "chrome_devtools": {
+      "runs_ms": [
+        3408,
+        2734,
+        2599,
+        3049,
+        2634
+      ],
+      "median_ms": 2734,
+      "tokens": 4164,
+      "observations": 4,
+      "tool_calls": 18
+    },
+    "quarry_first": {
+      "runs_ms": [
+        2902,
+        2253,
+        2245,
+        1605,
+        1599
+      ],
+      "median_ms": 2245,
+      "tokens": 454,
+      "observations": 7,
+      "tool_calls": 8
+    },
+    "quarry_replay": {
+      "runs_ms": [
+        1892,
+        1481,
+        1480,
+        1526,
+        1910
+      ],
+      "median_ms": 1526,
+      "tokens": 1,
+      "observations": 1,
+      "tool_calls": 1
+    },
+    "ratios": {
+      "first_vs_chrome": 9.17,
+      "replay_vs_chrome": 4164,
+      "replay_vs_first": 454
+    },
+    "notes": "5 runs per arm, same flow, same event waits. tokens are exact o200k counts of the text content field. action confirmation strings and structuredContent are excluded on both sides. model latency was not measured."
   }
 }

@@ -166,15 +166,15 @@ real pages, 10 flows across 4 apps, state graph against chrome devtools mcp:
 
 replay returns 10 tokens and zero model calls.
 
-a live run on klawva.xyz, hiring flow up to checkout, same event waits, 3 runs each:
+a live run on klawva.xyz, hiring flow up to checkout, 5 runs per arm, exact o200k tokens:
 
-| arm | tokens | tool time | calls |
+| arm | observation tokens | tool time | observations |
 | --- | --- | --- | --- |
-| chrome devtools mcp | 4,793 | 3.0 s | 11 |
-| quarry first run | 350 | 1.9 s | 8 |
-| quarry replay | 10 | 2.4 s | 0 |
+| chrome devtools mcp | 4,164 | 2.73 s | 4 |
+| quarry first run | 454 | 2.25 s | 7 |
+| quarry replay | 1 | 1.53 s | 1 |
 
-tokens are chars/4 estimates and the steps were scripted, not model-chosen.
+actions were scripted and model latency was not measured.
 
 details and the checkout screenshot are in `browser/bench/`.
 

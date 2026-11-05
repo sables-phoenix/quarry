@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { encode } from "gpt-tokenizer";
 
 import type { AxNode, State, StateNode, Delta, Projection } from "./types.js";
 export type { AxNode, State, StateNode, Delta, Projection };
@@ -8,8 +9,8 @@ const KEEP = new Set([
   "combobox", "switch", "tab", "alert", "dialog", "status", "searchbox",
 ]);
 
-export function estimateTokens(chars: number): number {
-  return Math.ceil(chars / 4);
+export function tokenCount(text: string): number {
+  return encode(text).length;
 }
 
 export function buildState(nodes: AxNode[], url: string, options: { scope?: string; maxName?: number } = {}): State {
@@ -73,7 +74,7 @@ export function buildState(nodes: AxNode[], url: string, options: { scope?: stri
     nodes: out,
     text,
     chars: text.length,
-    tokens: estimateTokens(text.length),
+    tokens: tokenCount(text),
     map: new Map(out.map((n) => [n.id, n])),
   };
 }
@@ -98,7 +99,7 @@ export function diffStates(a: State, b: State): Delta {
     changed: changed.length,
     text,
     chars: text.length,
-    tokens: estimateTokens(text.length),
+    tokens: tokenCount(text),
     empty: text.length === 0,
   };
 }
@@ -121,7 +122,7 @@ export function projectState(state: State, query: string, options: { max?: numbe
   if (hits.length === 0) return null;
   const chosen = hits.slice(0, max);
   const text = chosen.map((n) => `${n.id} ${n.role} ${n.name}${n.value ? " = " + n.value : ""}`).join("\n");
-  return { nodes: chosen, text, chars: text.length, tokens: estimateTokens(text.length), matched: hits.length };
+  return { nodes: chosen, text, chars: text.length, tokens: tokenCount(text), matched: hits.length };
 }
 
 function asText(input: unknown): string {

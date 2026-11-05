@@ -4,7 +4,7 @@ a semantic state layer for browser verification and replay, written in typescrip
 
 ## why
 
-an accessibility snapshot of mdn is about 18,841 tokens. a screenshot is 1,366. a scoped state is about 1,288, and a delta after one click is 7 to 40. on the measured flows the state is 2.6x to 15.7x smaller than a chrome devtools snapshot, and replay returns one token with no model call.
+an accessibility snapshot of mdn is about 18,841 tokens. a screenshot is 1,366. a scoped state is about 13,285 on mdn, and a delta after one click is tens of tokens. on the measured flows the state is 2.6x to 15.7x smaller than a chrome devtools snapshot, and replay returns one token with no model call.
 
 ## what it does
 

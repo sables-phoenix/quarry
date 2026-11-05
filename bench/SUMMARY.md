@@ -87,7 +87,7 @@ quarry was cheaper but slower and one run answered the wrong header. this is the
 | --- | --- |
 | pages | 3 |
 | text unusable | 1 |
-| quarry text tokens | 2704 |
+| quarry text tokens | 2589 |
 | browser state tokens | 7484 |
 
 only excalidraw needed a browser. linear and notion were cheaper through the text layer.

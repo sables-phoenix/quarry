@@ -24,12 +24,7 @@ quarry: 3.9x faster, 4.6x cheaper, 3.4x fewer input tokens.
 
 ## open results
 
-| arm | wall | cost | input tokens | success |
-| --- | --- | --- | --- | --- |
-| quarry | 17.5 s | $0.00248 | 10,688 | 1/1 |
-| chrome devtools | 119.5 s | $0.01368 | 32,569 | 1/1 |
-
-quarry: 6.8x faster, 5.5x cheaper.
+excluded. the quarry arm recalled a recorded flow from supermemory and the chrome arm did not.
 
 ## what changed the result
 

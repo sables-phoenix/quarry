@@ -160,9 +160,6 @@ impl Fetcher {
 
         if !status.is_success() {
             let code = status.as_u16();
-            if code == 403 || code == 429 || code == 401 {
-                bail!("upstream returned HTTP {code} for {url}");
-            }
             bail!("upstream returned HTTP {code} for {url}");
         }
 

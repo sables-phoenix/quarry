@@ -3,7 +3,7 @@
     "pages": 3,
     "text_unusable": 1,
     "state_total": 7484,
-    "text_total": 2704
+    "text_total": 2589
   },
   "rows": [
     {
@@ -17,7 +17,7 @@
     {
       "url": "https://linear.app/",
       "text_chars": 9253,
-      "text_tokens": 2314,
+      "text_tokens": 2205,
       "needs_browser": false,
       "text_usable": true,
       "state_tokens": 6160
@@ -25,7 +25,7 @@
     {
       "url": "https://www.notion.so/product",
       "text_chars": 1533,
-      "text_tokens": 384,
+      "text_tokens": 378,
       "needs_browser": false,
       "text_usable": true,
       "state_tokens": 799

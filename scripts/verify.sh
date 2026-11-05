@@ -62,10 +62,11 @@ cargo test -q 2>&1 | tail -3
 pass "cargo test"
 
 echo "7. benchmark gates"
-python3 bench/bench.py > "$WORK/bench.log" 2>&1 || fail "bench failed: $(tail -5 "$WORK/bench.log")"
-python3 scripts/check_bench.py bench/results.json || fail "bench gate"
-python3 bench/select.py > "$WORK/select.log" 2>&1 || fail "selection bench failed: $(tail -5 "$WORK/select.log")"
-python3 scripts/check_select.py bench/select.json || fail "selection gate"
+[ -d node_modules ] || npm install --silent
+npx tsx bench/text.ts > "$WORK/bench.log" 2>&1 || fail "bench failed: $(tail -5 "$WORK/bench.log")"
+npx tsx bench/check.ts text || fail "bench gate"
+npx tsx bench/select.ts > "$WORK/select.log" 2>&1 || fail "selection bench failed: $(tail -5 "$WORK/select.log")"
+npx tsx bench/check.ts select || fail "selection gate"
 pass "benchmark gates"
 
 echo "all checks passed"

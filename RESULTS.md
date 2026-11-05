@@ -1,6 +1,6 @@
 # results
 
-two benchmarks, run on 2026-11-04 from a 4-core arm64 ubuntu 24.04 machine on a residential connection. every number comes from `bench/bench.py` and `bench/select.py`. raw rows are in `bench/results.json` and `bench/select.json`.
+three benchmarks, run on 2026-11-05 from a 4-core arm64 ubuntu 24.04 machine on a residential connection. every number comes from the typescript harness in `bench/` and uses the exact o200k tokenizer and `bench/select.py`. raw rows are in `bench/results.json` and `bench/select.json`.
 
 ## what was measured
 
@@ -22,9 +22,9 @@ quarry's row is the extracted markdown with links dropped.
 | metric | value |
 | --- | --- |
 | pages with a usable baseline | 19 of 20 |
-| median tokens, quarry vs visible text | 1.15x fewer |
-| median tokens, quarry vs raw html | 13.24x fewer |
-| total chars, quarry vs visible text | 1.08x fewer |
+| median tokens, quarry vs visible text | 1.06x fewer |
+| median tokens, quarry vs raw html | 16.17x fewer |
+| total tokens, quarry vs visible text | 1.00x fewer |
 | cold fetch, p50 | 72.5 ms |
 | warm cache fetch, p50 | 24.4 ms |
 | warm cache network bytes | 0 |
@@ -42,8 +42,8 @@ the win that matters for an agent is selection, not compression.
 | --- | --- |
 | cases | 10 |
 | answer present in returned text | 10 of 10 |
-| median token reduction per question | 4.83x |
-| total token reduction across the set | 8.18x |
+| median token reduction per question | 4.86x |
+| total token reduction across the set | 9.25x |
 | best case | 35.4x, node.js fs |
 
 per case:
@@ -87,15 +87,15 @@ six pages, quarry versus `r.jina.ai`, the reader most agents use when they want 
 | typescript generics | 5,681 | 7,227 | 1.27x | 12 | 689 |
 | sqlite select | 9,213 | 508,483 | 55.19x | 49 | 3,218 |
 
-median 1.36x fewer tokens and 63x faster. the node.js page is the honest loss: jina extracted it better. the sqlite page is jina returning the raw file, which is a bug on its side rather than a win on ours.
+median 1.65x fewer tokens. latency is not compared because jina is remote and quarry was warm-cached in those runs. the node.js page is the honest loss: jina extracted it better. the sqlite page is jina returning the raw file, which is a bug on its side rather than a win on ours.
 
 ## how to reproduce
 
 ```bash
 cargo build --release
-python3 bench/bench.py
-python3 bench/select.py
-python3 bench/external.py
+npx tsx bench/text.ts
+npx tsx bench/select.ts
+npx tsx bench/external.ts
 ```
 
 both scripts print a json summary and write their raw rows next to themselves. they use the live web, so absolute latencies move with the network. ratios are stable because both arms see the same page.

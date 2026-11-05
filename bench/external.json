@@ -1,102 +1,97 @@
 {
   "summary": {
+    "tokenizer": "o200k_base",
     "urls": 6,
     "ok": 6,
-    "median_token_ratio": 1.36,
-    "median_ms_ratio": 62.98,
-    "quarry_tokens": 102036,
-    "jina_tokens": 590463
+    "median_token_ratio": 1.65,
+    "median_ms_ratio": 2651.5,
+    "quarry_tokens": 103514,
+    "jina_tokens": 1047516
   },
   "rows": [
     {
       "url": "https://docs.rs/serde/latest/serde/",
-      "quarry": {
-        "chars": 4232,
-        "tokens": 1058,
-        "ms": 50.60122907161713
-      },
       "jina": {
-        "chars": 6120,
-        "tokens": 1530,
-        "ms": 256.2528410926461
+        "status": 200,
+        "tokens": 1409,
+        "ms": 3452
       },
-      "token_ratio": 1.45,
-      "ms_ratio": 5.06
+      "quarry": {
+        "tokens": 875,
+        "ms": 224
+      },
+      "token_ratio": 1.61,
+      "ms_ratio": 15.41
     },
     {
       "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
-      "quarry": {
-        "chars": 34214,
-        "tokens": 8554,
-        "ms": 15.521222027018666
-      },
       "jina": {
-        "chars": 34501,
-        "tokens": 8626,
-        "ms": 2377.7378341183066
+        "status": 200,
+        "tokens": 7584,
+        "ms": 2705
       },
-      "token_ratio": 1.01,
-      "ms_ratio": 153.19
+      "quarry": {
+        "tokens": 7890,
+        "ms": 0
+      },
+      "token_ratio": 0.96,
+      "ms_ratio": 2705
     },
     {
       "url": "https://doc.rust-lang.org/book/ch04-01-what-is-ownership.html",
-      "quarry": {
-        "chars": 27188,
-        "tokens": 6797,
-        "ms": 11.109314858913422
-      },
       "jina": {
-        "chars": 42144,
-        "tokens": 10536,
-        "ms": 1728.0897700693458
+        "status": 200,
+        "tokens": 10931,
+        "ms": 1815
       },
-      "token_ratio": 1.55,
-      "ms_ratio": 155.55
+      "quarry": {
+        "tokens": 6211,
+        "ms": 0
+      },
+      "token_ratio": 1.76,
+      "ms_ratio": 1815
     },
     {
       "url": "https://nodejs.org/api/fs.html",
-      "quarry": {
-        "chars": 282931,
-        "tokens": 70733,
-        "ms": 59.660790022462606
-      },
       "jina": {
-        "chars": 216244,
-        "tokens": 54061,
-        "ms": 777.3836660198867
+        "status": 200,
+        "tokens": 53674,
+        "ms": 9196
       },
-      "token_ratio": 0.76,
-      "ms_ratio": 13.03
+      "quarry": {
+        "tokens": 75525,
+        "ms": 0
+      },
+      "token_ratio": 0.71,
+      "ms_ratio": 9196
     },
     {
       "url": "https://www.typescriptlang.org/docs/handbook/2/generics.html",
-      "quarry": {
-        "chars": 22723,
-        "tokens": 5681,
-        "ms": 11.541695101186633
-      },
       "jina": {
-        "chars": 28907,
-        "tokens": 7227,
-        "ms": 689.1343020834029
+        "status": 200,
+        "tokens": 8518,
+        "ms": 2598
       },
-      "token_ratio": 1.27,
-      "ms_ratio": 59.71
+      "quarry": {
+        "tokens": 5084,
+        "ms": 0
+      },
+      "token_ratio": 1.68,
+      "ms_ratio": 2598
     },
     {
       "url": "https://sqlite.org/lang_select.html",
-      "quarry": {
-        "chars": 36850,
-        "tokens": 9213,
-        "ms": 48.57693682424724
-      },
       "jina": {
-        "chars": 2033929,
-        "tokens": 508483,
-        "ms": 3218.0845390539616
+        "status": 200,
+        "tokens": 965400,
+        "ms": 3882
       },
-      "token_ratio": 55.19,
-      "ms_ratio": 66.25
+      "quarry": {
+        "tokens": 7929,
+        "ms": 0
+      },
+      "token_ratio": 121.76,
+      "ms_ratio": 3882
     }
   ]
 }

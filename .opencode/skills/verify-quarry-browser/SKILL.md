@@ -3,7 +3,7 @@ name: verify-quarry-browser
 description: Prove the browser state graph, delta summaries, replay, and formal model still work. Use before shipping any change to browser/, browser-probe/, or formal/.
 ---
 
-run `scripts/verify-browser-ssg.sh` for the shipped package and `scripts/verify-browser.sh` for the research prototype and the tla+ model.
+run `scripts/verify-browser-ssg.sh`. it covers the shipped package and the tla+ model.
 
 the shipped package check proves:
 

@@ -1,5 +1,7 @@
 # browser verification
 
+tables before the live-site section use `chars / 4` estimates. the live-site table and `browser/bench/` use exact o200k counts.
+
 status: shipped as `browser/`, a node package and mcp server. the rust binary keeps the text layer. every number below was measured on this machine on 2026-11-04.
 
 ## the finding that changed the design

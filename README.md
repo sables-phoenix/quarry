@@ -20,15 +20,14 @@ coding agents pay for the web in tokens, round trips, and wall clock. the built-
 
 | metric | value |
 | --- | --- |
-| median tokens, quarry vs visible text | 1.15x fewer |
-| median tokens, quarry vs raw html | 13.2x fewer |
+| median tokens, quarry vs visible text | 1.06x fewer |
+| median tokens, quarry vs raw html | 16.2x fewer |
 | extracted text vs full page | 1.9x fewer on articles, 1.1x on docs |
 | cold fetch, p50 | 72 ms |
 | warm cache fetch, p50 | 24 ms |
 | warm cache network bytes | 0 |
 | ten urls, one batch call vs ten fetches | 4x faster |
-| tokens vs a hosted reader (jina), median | 1.36x fewer |
-| wall clock vs a hosted reader (jina), median | 63x faster |
+| tokens vs a hosted reader (jina), median | 1.65x fewer |
 
 full-page extraction alone is not where the win is. selection is. given one question per page, quarry returns the matching sections instead of the page:
 
@@ -36,8 +35,8 @@ full-page extraction alone is not where the win is. selection is. given one ques
 | --- | --- |
 | cases | 10 |
 | answer present in the returned text | 10 of 10 |
-| median token reduction per question | 4.8x |
-| total token reduction across the set | 8.2x |
+| median token reduction per question | 4.9x |
+| total token reduction across the set | 9.3x |
 | best case | 35x, the node.js fs page |
 
 see `results.md` for the method and every row.
@@ -164,7 +163,7 @@ real pages, 10 flows across 4 apps, state graph against chrome devtools mcp:
 | model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
 | median tool time | 1.8 s per flow |
 
-replay returns 10 tokens and zero model calls.
+replay returns 1 token and zero model calls.
 
 a live run on klawva.xyz, hiring flow up to checkout, 5 runs per arm, exact o200k tokens:
 

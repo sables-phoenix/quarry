@@ -14,7 +14,7 @@
     "tool_calls": 8,
     "observations": 8,
     "tokens": 826,
-    "ms": 7612
+    "ms": 9222
   },
   "quarry_replay": {
     "tool_calls": 1,
@@ -25,7 +25,7 @@
   },
   "ratios": {
     "tokens_first": 5.87,
-    "time_first": 1.3,
+    "time_first": 1.07,
     "tokens_replay_vs_chrome": 485.1
   },
   "screenshot_baseline_tokens": 8196,
@@ -33,8 +33,8 @@
   "model_ms_assumed": 1500,
   "model_adjusted_seconds": {
     "chrome": 26.4,
-    "quarry_first": 19.6,
+    "quarry_first": 21.2,
     "quarry_replay": 9.0
   },
-  "notes": "same steps, same waits, separate browser instances. chrome arm used accessibility snapshots per step. no payment was made."
+  "notes": "first run re-measured after the sequential act fix. the earlier 7.6 s used the old batched act that waited once per call. waits dominate the flow."
 }

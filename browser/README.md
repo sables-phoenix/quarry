@@ -85,12 +85,12 @@ one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, se
 | arm | tokens | tool time | model calls |
 | --- | --- | --- | --- |
 | chrome devtools mcp, snapshot per step | 4,851 | 9.9 s | 11 |
-| quarry, first run | 826 | 7.6 s | 8 |
+| quarry, first run | 826 | 9.2 s | 8 |
 | quarry, replay | 10 | 9.0 s | 0 |
 
-first run: 5.9x fewer tokens and 1.3x faster. replay: 485x fewer tokens and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 19.6 s for the first quarry run, and 9.0 s for replay.
+first run: 5.9x fewer tokens and about even on tool time. replay: 485x fewer tokens and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 21.2 s for the first quarry run, and 9.0 s for replay.
 
-the replay time is not faster than the first run because the waits dominate. its win is tokens and model calls.
+the replay time is about the same because the waits dominate. its win is tokens and model calls.
 
 evidence: `bench/klawva.json` and `bench/klawva-checkout.png`. no payment was made.
 

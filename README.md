@@ -171,7 +171,7 @@ a live run on klawva.xyz, hiring flow up to checkout, same steps on both arms:
 | arm | tokens | tool time | model calls |
 | --- | --- | --- | --- |
 | chrome devtools mcp | 4,851 | 9.9 s | 11 |
-| quarry first run | 826 | 7.6 s | 8 |
+| quarry first run | 826 | 9.2 s | 8 |
 | quarry replay | 10 | 9.0 s | 0 |
 
 details and the checkout screenshot are in `browser/bench/`.

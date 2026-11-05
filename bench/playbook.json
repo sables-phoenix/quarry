@@ -1,0 +1,298 @@
+{
+  "tokenizer": "o200k_base",
+  "replay": [
+    {
+      "name": "klawva",
+      "ok": 10,
+      "runs": 10,
+      "median_ms": 2001,
+      "tokens": 1,
+      "detail": [
+        {
+          "run": 0,
+          "ms": 2370,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 1,
+          "ms": 2013,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 2,
+          "ms": 2086,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 3,
+          "ms": 2001,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 4,
+          "ms": 1476,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 5,
+          "ms": 1518,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 6,
+          "ms": 1478,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 7,
+          "ms": 2600,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 8,
+          "ms": 1571,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 9,
+          "ms": 1476,
+          "tokens": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "login",
+      "ok": 10,
+      "runs": 10,
+      "median_ms": 895,
+      "tokens": 1,
+      "detail": [
+        {
+          "run": 0,
+          "ms": 920,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 1,
+          "ms": 893,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 2,
+          "ms": 894,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 3,
+          "ms": 894,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 4,
+          "ms": 895,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 5,
+          "ms": 895,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 6,
+          "ms": 896,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 7,
+          "ms": 894,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 8,
+          "ms": 894,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 9,
+          "ms": 906,
+          "tokens": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "ok": 10,
+      "runs": 10,
+      "median_ms": 392,
+      "tokens": 1,
+      "detail": [
+        {
+          "run": 0,
+          "ms": 392,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 1,
+          "ms": 392,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 2,
+          "ms": 394,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 3,
+          "ms": 393,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 4,
+          "ms": 394,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 5,
+          "ms": 392,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 6,
+          "ms": 392,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 7,
+          "ms": 391,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 8,
+          "ms": 392,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 9,
+          "ms": 390,
+          "tokens": 1,
+          "ok": true
+        }
+      ]
+    },
+    {
+      "name": "modal",
+      "ok": 10,
+      "runs": 10,
+      "median_ms": 389,
+      "tokens": 1,
+      "detail": [
+        {
+          "run": 0,
+          "ms": 391,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 1,
+          "ms": 388,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 2,
+          "ms": 390,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 3,
+          "ms": 388,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 4,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 5,
+          "ms": 388,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 6,
+          "ms": 390,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 7,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 8,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 9,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        }
+      ]
+    }
+  ],
+  "replay_summary": {
+    "flows": 4,
+    "runs": 40,
+    "ok": 40
+  },
+  "retrieval": {
+    "docs": 24,
+    "without_site_hint": {
+      "top1": 0.25,
+      "top3": 0.3333333333333333
+    },
+    "with_site_hint": {
+      "top1": 0.5,
+      "top3": 1
+    },
+    "method": "token overlap over site, task, and playbook words"
+  }
+}

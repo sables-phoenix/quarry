@@ -22,6 +22,7 @@ try {
   console.warn("external bench failed");
 }
 run("npx", ["tsx", "bench/browser/fixtures.ts"]);
+run("npx", ["tsx", "bench/playbook.ts"]);
 run("npx", ["tsx", "bench/browser/baselines-mcp.ts"]);
 try {
   run("npx", ["tsx", "bench/browser/real-flows.ts"]);

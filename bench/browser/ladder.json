@@ -1,15 +1,15 @@
 {
   "summary": {
     "flows": 4,
-    "ladder_total": 1989,
+    "ladder_total": 7454,
     "screenshot_total": 10928,
     "crops": 3
   },
   "rows": [
     {
       "path": "/dashboard.html",
-      "fingerprint_tokens": 45,
-      "after_fingerprint_tokens": 44,
+      "fingerprint_tokens": 44,
+      "after_fingerprint_tokens": 45,
       "first_look": "full",
       "after_look": "crop",
       "after_tokens": 1,
@@ -17,8 +17,8 @@
     },
     {
       "path": "/tabs.html",
-      "fingerprint_tokens": 46,
-      "after_fingerprint_tokens": 44,
+      "fingerprint_tokens": 45,
+      "after_fingerprint_tokens": 46,
       "first_look": "full",
       "after_look": "crop",
       "after_tokens": 3,
@@ -26,8 +26,8 @@
     },
     {
       "path": "/modal.html",
-      "fingerprint_tokens": 45,
-      "after_fingerprint_tokens": 46,
+      "fingerprint_tokens": 44,
+      "after_fingerprint_tokens": 44,
       "first_look": "full",
       "after_look": "full",
       "after_tokens": 1366,
@@ -35,8 +35,8 @@
     },
     {
       "path": "/list.html",
-      "fingerprint_tokens": 44,
-      "after_fingerprint_tokens": 44,
+      "fingerprint_tokens": 45,
+      "after_fingerprint_tokens": 46,
       "first_look": "full",
       "after_look": "crop",
       "after_tokens": 261,

@@ -41,7 +41,7 @@ export async function runLadder(): Promise<void> {
   }
   const summary = {
     flows: rows.length,
-    ladder_total: rows.reduce((sum, row) => sum + (row.fingerprint_tokens as number) + (row.after_fingerprint_tokens as number) + (row.after_tokens as number), 0),
+    ladder_total: rows.reduce((sum, row) => sum + (row.fingerprint_tokens as number) + 1366 + (row.after_fingerprint_tokens as number) + (row.after_tokens as number), 0),
     screenshot_total: rows.reduce((sum, row) => sum + (row.screenshot_per_step as number), 0),
     crops: rows.filter((row) => row.after_look === "crop").length,
   };

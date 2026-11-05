@@ -60,9 +60,9 @@ four fixture flows, one run each. the current numbers are in `bench/browser/ladd
 | metric | value |
 | --- | --- |
 | flows | 4 |
-| ladder tokens | 1,989 |
+| ladder tokens | 7,454 |
 | full frame per step | 10,928 |
-| crops | 2 |
+| crops | 3 |
 
 `full frame per step` charges 1,366 tokens for a full frame after every action, which is what a visual agent does today. the ladder uses a fingerprint, then a text delta, then a crop when the pixel diff is small. image tokens use the area formula, not a tokenizer.
 

@@ -1,4 +1,4 @@
-import { spawn, type ChildProcess } from "node:child_process";
+import { execFileSync, spawn, type ChildProcess } from "node:child_process";
 import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -9,7 +9,18 @@ export type { Step, Assertion };
 
 export class BrowserError extends Data.TaggedError("BrowserError")<{ message: string; cause?: unknown }> {}
 
-const chromeBinary = () => process.env.CHROME || "chrome-headless-shell";
+const chromeBinary = () => {
+  if (process.env.CHROME) return process.env.CHROME;
+  for (const name of ["chrome-headless-shell", "chromium", "google-chrome", "chromium-browser"]) {
+    try {
+      const found = execFileSync("which", [name], { encoding: "utf8" }).trim();
+      if (found) return found;
+    } catch {
+      continue;
+    }
+  }
+  return "chrome-headless-shell";
+};
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const RESOLVE = `function deepAll(root, sel, out) {

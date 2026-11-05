@@ -7,7 +7,7 @@
     "min_ratio": 0.9,
     "max_ratio": 6.8,
     "baseline_total": 256462,
-    "ssg_total": 154639,
+    "ssg_total": 149649,
     "total_ratio": 1.7
   },
   "rows": [
@@ -19,7 +19,7 @@
       "baseline_tokens": 22960,
       "ratio": 1.7,
       "ok": true,
-      "ms": 560
+      "ms": 552
     },
     {
       "app": "react",
@@ -29,7 +29,7 @@
       "baseline_tokens": 20672,
       "ratio": 0.9,
       "ok": true,
-      "ms": 1202
+      "ms": 1244
     },
     {
       "app": "github",
@@ -39,7 +39,7 @@
       "baseline_tokens": 15987,
       "ratio": 6.8,
       "ok": true,
-      "ms": 1731
+      "ms": 1680
     },
     {
       "app": "wikipedia",
@@ -49,7 +49,7 @@
       "baseline_tokens": 45652,
       "ratio": 2.2,
       "ok": true,
-      "ms": 744
+      "ms": 727
     },
     {
       "app": "mdn",
@@ -59,7 +59,7 @@
       "baseline_tokens": 22960,
       "ratio": 1.5,
       "ok": true,
-      "ms": 619
+      "ms": 566
     },
     {
       "app": "react",
@@ -69,17 +69,17 @@
       "baseline_tokens": 20672,
       "ratio": 0.9,
       "ok": true,
-      "ms": 1065
+      "ms": 1043
     },
     {
       "app": "mdn",
       "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
       "needle": "freshness",
-      "state_tokens": 15780,
+      "state_tokens": 13285,
       "baseline_tokens": 22960,
-      "ratio": 1.5,
+      "ratio": 1.7,
       "ok": true,
-      "ms": 565
+      "ms": 546
     },
     {
       "app": "github",
@@ -89,7 +89,7 @@
       "baseline_tokens": 15987,
       "ratio": 6.8,
       "ok": true,
-      "ms": 1225
+      "ms": 1208
     },
     {
       "app": "wikipedia",
@@ -99,17 +99,17 @@
       "baseline_tokens": 45652,
       "ratio": 2.2,
       "ok": true,
-      "ms": 736
+      "ms": 732
     },
     {
       "app": "mdn",
       "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
       "needle": "shared cache",
-      "state_tokens": 15780,
+      "state_tokens": 13285,
       "baseline_tokens": 22960,
-      "ratio": 1.5,
+      "ratio": 1.7,
       "ok": true,
-      "ms": 623
+      "ms": 494
     }
   ]
 }

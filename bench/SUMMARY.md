@@ -62,7 +62,7 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | metric | value |
 | --- | --- |
 | flows | 4 |
-| ladder tokens | 1989 |
+| ladder tokens | 7454 |
 | full frame per step | 10928 |
 | crops | 3 |
 

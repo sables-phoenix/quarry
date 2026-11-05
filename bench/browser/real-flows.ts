@@ -48,7 +48,7 @@ export async function runRealFlows(): Promise<void> {
     checks: rows.length,
     pages: new Set(rows.map((row) => row.url)).size,
     ok: ok.length,
-    median_ratio: ratios[Math.floor(ratios.length / 2)] ?? 0,
+    median_ratio: ratios.length === 0 ? 0 : ratios.length % 2 === 1 ? ratios[Math.floor(ratios.length / 2)] : Number((((ratios[ratios.length / 2 - 1] ?? 0) + (ratios[ratios.length / 2] ?? 0)) / 2).toFixed(1)),
     min_ratio: Math.min(...ratios),
     max_ratio: Math.max(...ratios),
     baseline_total: rows.reduce((sum, row) => sum + (row.baseline_tokens as number), 0),

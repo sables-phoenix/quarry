@@ -62,19 +62,21 @@ mcp config for opencode:
 | arm | total tokens |
 | --- | --- |
 | scoped state, first run | 1,842 |
-| dom snapshot per step | 3,124 |
-| screenshot per step | 81,960 |
 | replay | 19 |
+| screenshot formula, one frame per step | 81,960 |
+
+the screenshot row is a formula, not a measured screenshot.
 
 10 real flows on 4 sites, state graph against chrome devtools mcp:
 
 | metric | value |
 | --- | --- |
-| answer found | 10 of 10 |
-| median token ratio | 21.6x |
-| total token ratio | 16.7x |
-| range | 10.2x to 31.7x |
-| model calls | 30 vs 20 vs 0 on replay |
+| DOM assertion passed | 10 of 10, checks the page, not the state payload |
+| median token ratio | 21.6x, approximate |
+| total token ratio | 16.7x, approximate |
+| range | 10.2x to 31.7x, approximate |
+
+baseline tokens are chars/4; quarry tokens are exact. ratios are directional.
 
 run `npx tsx bench/browser/real-flows.ts` from the repo root after `npm --prefix browser run build`.
 

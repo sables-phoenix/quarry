@@ -87,14 +87,14 @@ the honest rule: the ladder wins when the page is large, when the step is visual
 
 | metric | value |
 | --- | --- |
-| answer found | 10 of 10 |
-| median token ratio | 21.6x |
-| total token ratio | 16.7x |
-| range | 10.2x to 31.7x |
-| model calls, devtools vs state graph vs replay | 30 vs 20 vs 0 |
-| median tool time | 1.8 s per flow |
+| DOM assertion passed | 10 of 10, checks the page, not the state payload |
+| median token ratio | 21.6x, approximate |
+| total token ratio | 16.7x, approximate |
+| range | 10.2x to 31.7x, approximate |
 
-the smallest win is a react docs page at 13.8x. the largest is mdn at 43.4x. rows are in `bench/browser/real-flows.json`.
+baseline tokens are chars/4; quarry tokens are exact. ratios are directional.
+
+the smallest is 10.2x. the largest is 31.7x. rows are in `bench/browser/real-flows.json`.
 
 ## formal model
 

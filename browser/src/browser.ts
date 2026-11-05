@@ -248,8 +248,13 @@ export class Browser {
         let parsed: { ok: boolean; failed?: Step; navigated?: boolean };
         try {
           parsed = JSON.parse(String(await this.evalRaw(`(${APPLY})(${JSON.stringify([step])})`))) as typeof parsed;
-        } catch {
-          parsed = { ok: true, navigated: true };
+        } catch (error) {
+          const message = String(error);
+          if (/Execution context was destroyed|Target closed|Cannot find context|detached/i.test(message)) {
+            parsed = { ok: true, navigated: true };
+          } else {
+            return { ok: false, failed: step, ms: Math.round(performance.now() - started) };
+          }
         }
         if (!parsed.ok) return { ...parsed, ms: Math.round(performance.now() - started) };
         if (next?.op !== "wait_for") await sleep(settle);

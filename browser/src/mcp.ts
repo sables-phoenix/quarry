@@ -17,18 +17,11 @@ const TOOLS = [
 ];
 
 let session: Session | null = null;
-let sessionError: unknown = null;
 
 async function getSession(): Promise<Session> {
   if (session) return session;
-  if (sessionError) throw sessionError;
-  try {
-    session = await Effect.runPromise(Session.create());
-    return session;
-  } catch (error) {
-    sessionError = error;
-    throw error;
-  }
+  session = await Effect.runPromise(Session.create());
+  return session;
 }
 
 async function call(name: string, args: Record<string, unknown>): Promise<Response> {

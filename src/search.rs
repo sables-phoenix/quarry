@@ -10,13 +10,25 @@ pub async fn search(client: &reqwest::Client, query: &str, limit: usize) -> Resu
         keywords.as_str()
     };
     if let Ok(key) = std::env::var("BRAVE_API_KEY") {
-        return brave(client, query, limit, &key).await;
+        if let Ok(hits) = brave(client, query, limit, &key).await {
+            if !hits.is_empty() {
+                return Ok(hits);
+            }
+        }
     }
     if let Ok(key) = std::env::var("EXA_API_KEY") {
-        return exa(client, query, limit, &key).await;
+        if let Ok(hits) = exa(client, query, limit, &key).await {
+            if !hits.is_empty() {
+                return Ok(hits);
+            }
+        }
     }
     if let Ok(key) = std::env::var("TAVILY_API_KEY") {
-        return tavily(client, query, limit, &key).await;
+        if let Ok(hits) = tavily(client, query, limit, &key).await {
+            if !hits.is_empty() {
+                return Ok(hits);
+            }
+        }
     }
     duckduckgo(client, query, limit).await
 }

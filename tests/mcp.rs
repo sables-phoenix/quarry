@@ -12,7 +12,11 @@ fn mcp_lists_text_tools() {
         .expect("spawn quarry mcp");
     {
         let stdin = child.stdin.as_mut().expect("stdin");
-        writeln!(stdin, r#"{{"jsonrpc":"2.0","id":1,"method":"initialize","params":{{}}}}"#).unwrap();
+        writeln!(
+            stdin,
+            r#"{{"jsonrpc":"2.0","id":1,"method":"initialize","params":{{}}}}"#
+        )
+        .unwrap();
         writeln!(stdin, r#"{{"jsonrpc":"2.0","id":2,"method":"tools/list"}}"#).unwrap();
     }
     let output = child.wait_with_output().expect("wait");

@@ -11,7 +11,7 @@ const select = load("./select.json");
 const external = load("./external.json");
 const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
-const textAgent = JSON.parse(readFileSync(new URL("./agent/text-results.json", import.meta.url), "utf8")) as { quarry: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number }; webfetch: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number } };
+const text10 = JSON.parse(readFileSync(new URL("./agent/text-10.json", import.meta.url), "utf8")) as { summary: { quarry: { correct: number; cases: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number }; webfetch: { correct: number; cases: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number } } };
 const jsPages = load("./browser/js-pages.json");
 const ladder = load("./browser/ladder.json");
 const playbook = JSON.parse(readFileSync(new URL("./playbook.json", import.meta.url), "utf8")) as { replay_summary: { flows: number; runs: number; ok: number }; replay: Array<{ name: string; median_ms: number; tokens: number }>; retrieval: { with_site_hint: { top3: number } } };
@@ -140,14 +140,14 @@ same task, steps supplied, 3 runs per arm. this measures execution, not planning
 
 ## text vs built-in webfetch
 
-one question, 3 runs per arm, same model.
+10 documentation questions, 2 runs per arm, same model.
 
 | arm | correct | wall, median | input tokens, median | cost, median |
 | --- | --- | --- | --- | --- |
-| quarry | ${textAgent.quarry.correct}/3 | ${(textAgent.quarry.median_wall_ms / 1000).toFixed(1)} s | ${textAgent.quarry.median_input_tokens} | $${textAgent.quarry.median_cost_usd} |
-| opencode webfetch | ${textAgent.webfetch.correct}/3 | ${(textAgent.webfetch.median_wall_ms / 1000).toFixed(1)} s | ${textAgent.webfetch.median_input_tokens} | $${textAgent.webfetch.median_cost_usd} |
+| quarry | ${text10.summary.quarry.correct}/${text10.summary.quarry.cases} | ${(text10.summary.quarry.median_wall_ms / 1000).toFixed(1)} s | ${Math.round(text10.summary.quarry.median_input_tokens)} | $${text10.summary.quarry.median_cost_usd.toFixed(5)} |
+| opencode webfetch | ${text10.summary.webfetch.correct}/${text10.summary.webfetch.cases} | ${(text10.summary.webfetch.median_wall_ms / 1000).toFixed(1)} s | ${Math.round(text10.summary.webfetch.median_input_tokens)} | $${text10.summary.webfetch.median_cost_usd.toFixed(5)} |
 
-quarry was cheaper but slower and one run answered the wrong header. this is the honest result.
+quarry uses fewer input tokens but is slower and more expensive in this sample. one quarry failure was a model turn that did not call the tool.
 
 ## browser-only pages
 

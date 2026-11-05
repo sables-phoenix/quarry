@@ -82,7 +82,7 @@ chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 | flows | 4 |
 | replays | 40 |
 | pass | 40 |
-| klawva median | 1794 ms |
+| klawva median | 2133 ms |
 | tokens per replay | 1 |
 | retrieval top 3 with site hint | 1 |
 
@@ -108,14 +108,14 @@ same task, steps supplied, 3 runs per arm. this measures execution, not planning
 
 ## text vs built-in webfetch
 
-one question, 3 runs per arm, same model.
+10 documentation questions, 2 runs per arm, same model.
 
 | arm | correct | wall, median | input tokens, median | cost, median |
 | --- | --- | --- | --- | --- |
-| quarry | 2/3 | 8.6 s | 9085 | $0.001827 |
-| opencode webfetch | 3/3 | 6.7 s | 14835 | $0.002251 |
+| quarry | 19/20 | 10.5 s | 6713 | $0.00179 |
+| opencode webfetch | 20/20 | 4.1 s | 9511 | $0.00144 |
 
-quarry was cheaper but slower and one run answered the wrong header. this is the honest result.
+quarry uses fewer input tokens but is slower and more expensive in this sample. one quarry failure was a model turn that did not call the tool.
 
 ## browser-only pages
 

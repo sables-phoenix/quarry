@@ -11,6 +11,7 @@ const select = load("./select.json");
 const external = load("./external.json");
 const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
+const agent = load("./agent/results.json");
 const klawva = JSON.parse(readFileSync(new URL("./browser/klawva.json", import.meta.url), "utf8")) as { chrome: { tokens: number; median_ms: number }; quarry_first: { tokens: number; median_ms: number }; quarry_replay: { tokens: number; median_ms: number } };
 
 const md = `# bench summary
@@ -72,6 +73,17 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | replay | ${klawva.quarry_replay.tokens} | ${klawva.quarry_replay.median_ms} ms | 5 |
 
 chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${klawva.chrome.median_ms} ms.
+
+## model-driven
+
+one task, one model, guided execution, 3 runs per arm.
+
+| arm | wall, median | cost, median | input tokens, median | success |
+| --- | --- | --- | --- | --- |
+| quarry | 17.7 s | $0.00181 | 6,768 | 3/3 |
+| chrome devtools | 49.0 s | $0.00901 | 24,638 | 3/3 |
+
+open-ended, one run each: quarry 15.6 s and $0.00288, chrome 119.5 s and $0.01368. the quarry open run used a recorded flow from supermemory.
 
 ## caveats
 

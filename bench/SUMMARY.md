@@ -58,6 +58,17 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 
 chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 
+## model-driven
+
+one task, one model, guided execution, 3 runs per arm.
+
+| arm | wall, median | cost, median | input tokens, median | success |
+| --- | --- | --- | --- | --- |
+| quarry | 17.7 s | $0.00181 | 6,768 | 3/3 |
+| chrome devtools | 49.0 s | $0.00901 | 24,638 | 3/3 |
+
+open-ended, one run each: quarry 15.6 s and $0.00288, chrome 119.5 s and $0.01368. the quarry open run used a recorded flow from supermemory.
+
 ## caveats
 
 - the 10 real-flow baselines are chars divided by 4 estimates. the klawva comparison is exact on both sides.

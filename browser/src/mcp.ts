@@ -7,12 +7,12 @@ type Request = { id?: unknown; method?: string; params?: { name?: string; argume
 type Response = { content: Array<{ type: string; text: string }>; structuredContent?: Record<string, unknown>; isError?: boolean };
 
 const TOOLS = [
-  { name: "browser_open", description: "Open a url and return its scoped semantic state with a stable hash.", inputSchema: { type: "object", properties: { url: { type: "string" } }, required: ["url"] } },
+  { name: "browser_open", description: "Open a url and return the scoped semantic state. Example: browser_open({url:'https://example.com'}). Call this first.", inputSchema: { type: "object", properties: { url: { type: "string" } }, required: ["url"] } },
   { name: "browser_state", description: "Return the current semantic state, its hash, and its token estimate.", inputSchema: { type: "object", properties: {} } },
   { name: "browser_project", description: "Return only the state nodes that match a query.", inputSchema: { type: "object", properties: { query: { type: "string" } }, required: ["query"] } },
-  { name: "browser_act", description: "Run a batch of typed steps and return the summarized state delta.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
+  { name: "browser_act", description: "Run typed steps and return a summarized delta. Step examples: {op:'click',role:'link',name:'Docs'}, {op:'fill',role:'textbox',name:'email',value:'a@b.c'}, {op:'wait_for',text:'Checkout',timeout:8000}, {op:'wait',ms:300}. Roles: link, button, textbox, tab, checkbox. Always call browser_open first.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
   { name: "browser_assert", description: "Check typed assertions against the current page.", inputSchema: { type: "object", properties: { asserts: { type: "array", items: { type: "object" } } }, required: ["asserts"] } },
-  { name: "browser_replay", description: "Open a flow url, run its steps, check its assertions, and return only a witness on failure.", inputSchema: { type: "object", properties: { url: { type: "string" }, steps: { type: "array", items: { type: "object" } }, asserts: { type: "array", items: { type: "object" } } }, required: ["url", "steps"] } },
+  { name: "browser_replay", description: "Run a recorded flow. Shape: {url, steps:[...], asserts:[{op:'text',value:'Checkout'}]}. Returns 1 token on pass, a witness on failure. Prefer browser_open + browser_act while exploring.", inputSchema: { type: "object", properties: { url: { type: "string" }, steps: { type: "array", items: { type: "object" } }, asserts: { type: "array", items: { type: "object" } } }, required: ["url", "steps"] } },
   { name: "browser_jump", description: "Navigate to a previously recorded state hash using the shortest known action path.", inputSchema: { type: "object", properties: { target: { type: "string" } }, required: ["target"] } },
 ];
 

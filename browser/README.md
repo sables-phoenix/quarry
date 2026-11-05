@@ -31,7 +31,16 @@ a default chrome devtools snapshot of mdn is 22,960 tokens. a screenshot is 1,36
 | `browser_look` | full frame, then a crop when the change is small |
 | `browser_assert` | check typed assertions |
 | `browser_replay` | run a flow and return pass, or a witness |
+| `browser_playbook_save` | save an exact flow locally, optionally sync a pointer |
+| `browser_playbook_find` | find flows by site and goal, local first |
+| `browser_playbook_run` | replay a saved flow and record the result |
 | `browser_jump` | reach a recorded hash by the shortest known path |
+
+## playbooks
+
+a playbook is the durable form of a discovered flow. it holds the site, goal, url, exact steps, assertions, verification time, and success count. the store lives at `~/.cache/quarry/playbooks` unless `QUARRY_PLAYBOOKS` points elsewhere.
+
+the steps stay local. if Living Brain is configured, quarry can write a pointer page with `quarry-playbook-id` and retrieve it later. the page is the shared index entry, not the executable copy. configure `LIVING_BRAIN_API_KEY`, `LIVING_BRAIN_SUBJECT_ID`, and `LIVING_BRAIN_BRAIN_ID` to enable the adapter.
 
 ## use
 

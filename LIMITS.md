@@ -14,6 +14,15 @@ what quarry does not do, and what the numbers do not cover.
 - the MCP runs one browser. a closed browser is recreated on the next call; in-flight work is lost.
 - the graph is local and capped at 1,000 states.
 
+## playbooks
+
+- the local store is a directory of JSON files. it has no encryption and no access control.
+- playbook matching is token overlap over site and goal. a site hint makes the top three reliable on the 24-playbook test. a vague goal without a site does not.
+- a playbook is only as good as its labels. a site change that renames a control makes replay fail until a person updates the steps.
+- Living Brain stores a pointer page, not the executable steps. if the local artifact is deleted, the shared page cannot replay it.
+- the hosted fidelity test is blocked while the Living Brain balance is empty. a 402 is not a pass.
+- no secrets belong in a playbook or a pointer page.
+
 ## benchmarks
 
 - actions are scripted, not chosen by a model.

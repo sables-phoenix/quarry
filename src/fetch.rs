@@ -82,7 +82,7 @@ impl Fetcher {
         let now = unix_now();
 
         let cached = read_meta(&meta_path).ok();
-        let mut cache = CacheState::Miss;
+        let cache = CacheState::Miss;
         let mut conditional = Vec::new();
 
         if let Some(m) = &cached {

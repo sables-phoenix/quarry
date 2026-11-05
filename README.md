@@ -127,6 +127,12 @@ npm --prefix browser run build
 node browser/dist/cli.js mcp
 ```
 
+## playbook memory
+
+a playbook is an exact flow for one site and one goal, saved locally with its steps and assertions. replay is the part that works: 40/40 runs across four flows, 1 token per replay, 2.0 s median for the Klawva checkout flow. the open agent path on the same Klawva task was 1/3 at the 180 s cap.
+
+Living Brain is an optional shared index, not the executor. quarry keeps the executable steps locally and can write a pointer page to a brain. the hosted fidelity test is blocked because the prepaid balance is empty. `bench/livingbrain-check.ts` exits 2 while blocked.
+
 ## security
 
 - only `http` and `https` are fetched.

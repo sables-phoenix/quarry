@@ -5,66 +5,66 @@
       "name": "klawva",
       "ok": 10,
       "runs": 10,
-      "median_ms": 2001,
+      "median_ms": 1799,
       "tokens": 1,
       "detail": [
         {
           "run": 0,
-          "ms": 2370,
+          "ms": 2509,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 1,
-          "ms": 2013,
+          "ms": 2254,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 2,
-          "ms": 2086,
+          "ms": 1774,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 3,
-          "ms": 2001,
+          "ms": 1799,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 4,
-          "ms": 1476,
+          "ms": 2119,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 5,
-          "ms": 1518,
+          "ms": 1781,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 6,
-          "ms": 1478,
+          "ms": 1475,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 7,
-          "ms": 2600,
+          "ms": 1467,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 8,
-          "ms": 1571,
+          "ms": 1809,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 9,
-          "ms": 1476,
+          "ms": 1472,
           "tokens": 1,
           "ok": true
         }
@@ -74,18 +74,18 @@
       "name": "login",
       "ok": 10,
       "runs": 10,
-      "median_ms": 895,
+      "median_ms": 894,
       "tokens": 1,
       "detail": [
         {
           "run": 0,
-          "ms": 920,
+          "ms": 919,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 1,
-          "ms": 893,
+          "ms": 897,
           "tokens": 1,
           "ok": true
         },
@@ -97,13 +97,13 @@
         },
         {
           "run": 3,
-          "ms": 894,
+          "ms": 893,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 4,
-          "ms": 895,
+          "ms": 894,
           "tokens": 1,
           "ok": true
         },
@@ -115,25 +115,25 @@
         },
         {
           "run": 6,
-          "ms": 896,
+          "ms": 893,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 7,
-          "ms": 894,
+          "ms": 892,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 8,
-          "ms": 894,
+          "ms": 893,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 9,
-          "ms": 906,
+          "ms": 894,
           "tokens": 1,
           "ok": true
         }
@@ -143,66 +143,66 @@
       "name": "tabs",
       "ok": 10,
       "runs": 10,
-      "median_ms": 392,
+      "median_ms": 389,
       "tokens": 1,
       "detail": [
         {
           "run": 0,
-          "ms": 392,
+          "ms": 390,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 1,
-          "ms": 392,
+          "ms": 389,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 2,
-          "ms": 394,
+          "ms": 389,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 3,
-          "ms": 393,
+          "ms": 390,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 4,
-          "ms": 394,
+          "ms": 387,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 5,
-          "ms": 392,
+          "ms": 387,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 6,
-          "ms": 392,
+          "ms": 388,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 7,
-          "ms": 391,
+          "ms": 389,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 8,
-          "ms": 392,
+          "ms": 391,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 9,
-          "ms": 390,
+          "ms": 389,
           "tokens": 1,
           "ok": true
         }
@@ -217,43 +217,43 @@
       "detail": [
         {
           "run": 0,
-          "ms": 391,
+          "ms": 390,
           "tokens": 1,
           "ok": true
         },
         {
           "run": 1,
-          "ms": 388,
-          "tokens": 1,
-          "ok": true
-        },
-        {
-          "run": 2,
-          "ms": 390,
-          "tokens": 1,
-          "ok": true
-        },
-        {
-          "run": 3,
-          "ms": 388,
-          "tokens": 1,
-          "ok": true
-        },
-        {
-          "run": 4,
           "ms": 389,
           "tokens": 1,
           "ok": true
         },
         {
-          "run": 5,
+          "run": 2,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 3,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
+          "run": 4,
           "ms": 388,
           "tokens": 1,
           "ok": true
         },
         {
+          "run": 5,
+          "ms": 389,
+          "tokens": 1,
+          "ok": true
+        },
+        {
           "run": 6,
-          "ms": 390,
+          "ms": 389,
           "tokens": 1,
           "ok": true
         },

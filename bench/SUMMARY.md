@@ -75,6 +75,26 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 
 chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 
+## playbook memory
+
+| metric | value |
+| --- | --- |
+| flows | 4 |
+| replays | 40 |
+| pass | 40 |
+| klawva median | 2001 ms |
+| tokens per replay | 1 |
+| retrieval top 3 with site hint | 1 |
+
+## living brain
+
+| metric | value |
+| --- | --- |
+| status | blocked |
+| reason | insufficient_balance |
+| exact matches | not run |
+| search top 3 | not run |
+
 ## model-driven, open-ended
 
 one task, one model, no steps given, 3 runs per arm. supermemory disabled on both arms.

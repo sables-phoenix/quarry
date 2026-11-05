@@ -14,6 +14,8 @@ const real = load("./browser/real-flows.json");
 const textAgent = JSON.parse(readFileSync(new URL("./agent/text-results.json", import.meta.url), "utf8")) as { quarry: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number }; webfetch: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number } };
 const jsPages = load("./browser/js-pages.json");
 const ladder = load("./browser/ladder.json");
+const playbook = JSON.parse(readFileSync(new URL("./playbook.json", import.meta.url), "utf8")) as { replay_summary: { flows: number; runs: number; ok: number }; replay: Array<{ name: string; median_ms: number; tokens: number }>; retrieval: { with_site_hint: { top3: number } } };
+const livingbrain = JSON.parse(readFileSync(new URL("./livingbrain.json", import.meta.url), "utf8")) as { status: string; reason?: string; exact_matches?: number; search?: { top3?: number } };
 const nav = load("./browser/nav-flows.json");
 const agent = JSON.parse(readFileSync(new URL("./agent/results.json", import.meta.url), "utf8")) as {
   guided: {
@@ -105,6 +107,26 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | replay | ${klawva.quarry_replay.tokens} | ${klawva.quarry_replay.median_ms} ms | 5 |
 
 chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${klawva.chrome.median_ms} ms.
+
+## playbook memory
+
+| metric | value |
+| --- | --- |
+| flows | ${playbook.replay_summary.flows} |
+| replays | ${playbook.replay_summary.runs} |
+| pass | ${playbook.replay_summary.ok} |
+| klawva median | ${playbook.replay.find((row) => row.name === "klawva")?.median_ms ?? 0} ms |
+| tokens per replay | ${playbook.replay[0]?.tokens ?? 0} |
+| retrieval top 3 with site hint | ${playbook.retrieval.with_site_hint.top3} |
+
+## living brain
+
+| metric | value |
+| --- | --- |
+| status | ${livingbrain.status} |
+| reason | ${livingbrain.reason ?? ""} |
+| exact matches | ${livingbrain.exact_matches ?? "not run"} |
+| search top 3 | ${livingbrain.search?.top3 ?? "not run"} |
 
 ## model-driven, open-ended
 

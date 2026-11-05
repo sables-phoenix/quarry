@@ -1,0 +1,7 @@
+{
+  "status": "blocked",
+  "reason": "insufficient_balance",
+  "code": "insufficient_balance",
+  "http": 402,
+  "pass": false
+}

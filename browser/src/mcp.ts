@@ -2,6 +2,8 @@ import { createInterface } from "node:readline";
 import { Effect } from "effect";
 import { Session } from "./session.js";
 import { projectState } from "./state.js";
+import { PlaybookStore } from "./playbook.js";
+import { LivingBrain, livingBrainConfig } from "./livingbrain.js";
 
 type Request = { id?: unknown; method?: string; params?: { name?: string; arguments?: Record<string, unknown> } };
 type Content = { type: "text"; text: string } | { type: "image"; data: string; mimeType: string };
@@ -19,10 +21,14 @@ const TOOLS = [
   { name: "browser_act", description: "Run typed steps and return a summarized delta. Click needs a role and a name: {op:'click',role:'link',name:'Docs'}. Other steps: {op:'fill',role:'textbox',name:'email',value:'a@b.c'}, {op:'wait_for',text:'Checkout',timeout:8000}, {op:'wait',ms:300}. Roles: link, button, textbox, tab, checkbox. Batch independent steps in one call when the flow is known. Always call browser_open first.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
   { name: "browser_assert", description: "Check typed assertions against the current page. Ops: text, not_text, url, count, exists, present, visible. Example: browser_assert({asserts:[{op:'text',value:'Checkout'}]}).", inputSchema: { type: "object", properties: { asserts: { type: "array", items: { type: "object" } } }, required: ["asserts"] } },
   { name: "browser_replay", description: "Run a recorded flow. Shape: {url, steps:[...], asserts:[{op:'text',value:'Checkout'}]}. Returns 1 token on pass, a witness on failure. Prefer browser_open + browser_act while exploring.", inputSchema: { type: "object", properties: { url: { type: "string" }, steps: { type: "array", items: { type: "object" } }, asserts: { type: "array", items: { type: "object" } } }, required: ["url", "steps"] } },
+  { name: "browser_playbook_save", description: "Save an executable playbook locally. Optionally sync a pointer page to Living Brain with sync:true. Example: browser_playbook_save({site:'klawva.xyz',goal:'hire cv tailor',url:'https://klawva.xyz/employees',steps:[...],asserts:[...]}).", inputSchema: { type: "object", properties: { site: { type: "string" }, goal: { type: "string" }, url: { type: "string" }, steps: { type: "array", items: { type: "object" } }, asserts: { type: "array", items: { type: "object" } }, sync: { type: "boolean" } }, required: ["site", "goal", "url", "steps"] } },
+  { name: "browser_playbook_find", description: "Find saved playbooks by site and goal. Local matches come first. If none exist and Living Brain is configured, search the shared index.", inputSchema: { type: "object", properties: { site: { type: "string" }, goal: { type: "string" }, limit: { type: "number" } }, required: ["site", "goal"] } },
+  { name: "browser_playbook_run", description: "Load a saved playbook by id, replay it, and record the result. Returns pass or a witness.", inputSchema: { type: "object", properties: { id: { type: "string" } }, required: ["id"] } },
   { name: "browser_jump", description: "Navigate to a previously recorded state hash using the shortest known action path.", inputSchema: { type: "object", properties: { target: { type: "string" } }, required: ["target"] } },
 ];
 
 let session: Session | null = null;
+const playbooks = new PlaybookStore();
 
 async function getSession(): Promise<Session> {
   if (session && session.browser.isOpen()) return session;
@@ -32,6 +38,55 @@ async function getSession(): Promise<Session> {
 }
 
 async function call(name: string, args: Record<string, unknown>): Promise<Response> {
+  if (name === "browser_playbook_save") {
+    const playbook = await playbooks.save({
+      site: String(args.site),
+      goal: String(args.goal),
+      url: String(args.url),
+      steps: (args.steps ?? []) as never,
+      asserts: (args.asserts ?? []) as never,
+    });
+    let remote: Record<string, unknown> | null = null;
+    let remoteError: string | null = null;
+    const config = livingBrainConfig();
+    if (args.sync && config) {
+      try {
+        remote = (await new LivingBrain(config).capture(playbook)) as unknown as Record<string, unknown>;
+      } catch (error) {
+        remoteError = String(error);
+      }
+    }
+    return { content: [{ type: "text", text: JSON.stringify({ playbook, remote, remoteError }) }], structuredContent: { id: playbook.id, remote, remoteError } };
+  }
+  if (name === "browser_playbook_find") {
+    const limit = typeof args.limit === "number" ? args.limit : 3;
+    const local = await playbooks.find(String(args.site), String(args.goal), limit);
+    if (local.length > 0) {
+      return { content: [{ type: "text", text: JSON.stringify(local.map((match) => ({ ...match, source: "local" }))) }], structuredContent: { matched: local.length, source: "local" } };
+    }
+    const config = livingBrainConfig();
+    if (config) {
+      try {
+        const remote = await new LivingBrain(config).find(String(args.site), String(args.goal), playbooks);
+        if (remote) {
+          return { content: [{ type: "text", text: JSON.stringify([{ playbook: remote.playbook, score: 1, source: "livingbrain", slug: remote.slug }]) }], structuredContent: { matched: 1, source: "livingbrain" } };
+        }
+      } catch (error) {
+        return { content: [{ type: "text", text: `no local playbook; living brain failed: ${String(error)}` }], isError: true };
+      }
+    }
+    return { content: [{ type: "text", text: "no matching playbook" }], structuredContent: { matched: 0 } };
+  }
+  if (name === "browser_playbook_run") {
+    const playbook = await playbooks.load(String(args.id));
+    if (!playbook) throw new Error(`playbook not found: ${String(args.id)}`);
+    const started = performance.now();
+    const runSession = await getSession();
+    const result = await Effect.runPromise(runSession.replay({ url: playbook.url, steps: playbook.steps, asserts: playbook.asserts ?? [] }));
+    await playbooks.markResult(playbook.id, result.ok, result.witness);
+    const ms = Math.round(performance.now() - started);
+    return { content: [{ type: "text", text: result.ok ? `pass ${playbook.id} ${ms}ms` : `fail ${playbook.id} ${ms}ms\n${result.witness}` }], structuredContent: { ok: result.ok, id: playbook.id, ms, tokens: result.tokens, failed: result.failed as unknown } };
+  }
   const s = await getSession();
   if (name === "browser_open") {
     const state = await Effect.runPromise(s.open(String(args.url)));

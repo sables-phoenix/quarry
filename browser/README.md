@@ -40,7 +40,7 @@ a default chrome devtools snapshot of mdn is 22,960 tokens. a screenshot is 1,36
 
 a playbook is the durable form of a discovered flow. it holds the site, goal, url, exact steps, assertions, verification time, and success count. the store lives at `~/.cache/quarry/playbooks` unless `QUARRY_PLAYBOOKS` points elsewhere.
 
-the steps stay local. if Living Brain is configured, quarry can write a pointer page with `quarry-playbook-id` and retrieve it later. the page is the shared index entry, not the executable copy. configure `LIVING_BRAIN_API_KEY`, `LIVING_BRAIN_SUBJECT_ID`, and `LIVING_BRAIN_BRAIN_ID` to enable the adapter.
+the steps stay local. set `QUARRY_PLAYBOOKS` to a shared directory when several tools or people should read the same playbooks. Living Brain was evaluated and discarded because it needs a prepaid balance.
 
 ## use
 

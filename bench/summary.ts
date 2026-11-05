@@ -15,7 +15,6 @@ const textAgent = JSON.parse(readFileSync(new URL("./agent/text-results.json", i
 const jsPages = load("./browser/js-pages.json");
 const ladder = load("./browser/ladder.json");
 const playbook = JSON.parse(readFileSync(new URL("./playbook.json", import.meta.url), "utf8")) as { replay_summary: { flows: number; runs: number; ok: number }; replay: Array<{ name: string; median_ms: number; tokens: number }>; retrieval: { with_site_hint: { top3: number } } };
-const livingbrain = JSON.parse(readFileSync(new URL("./livingbrain.json", import.meta.url), "utf8")) as { status: string; reason?: string; exact_matches?: number; search?: { top3?: number } };
 const nav = load("./browser/nav-flows.json");
 const agent = JSON.parse(readFileSync(new URL("./agent/results.json", import.meta.url), "utf8")) as {
   guided: {
@@ -118,15 +117,6 @@ chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${kla
 | klawva median | ${playbook.replay.find((row) => row.name === "klawva")?.median_ms ?? 0} ms |
 | tokens per replay | ${playbook.replay[0]?.tokens ?? 0} |
 | retrieval top 3 with site hint | ${playbook.retrieval.with_site_hint.top3} |
-
-## living brain
-
-| metric | value |
-| --- | --- |
-| status | ${livingbrain.status} |
-| reason | ${livingbrain.reason ?? ""} |
-| exact matches | ${livingbrain.exact_matches ?? "not run"} |
-| search top 3 | ${livingbrain.search?.top3 ?? "not run"} |
 
 ## model-driven, open-ended
 

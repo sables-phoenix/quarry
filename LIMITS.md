@@ -19,8 +19,8 @@ what quarry does not do, and what the numbers do not cover.
 - the local store is a directory of JSON files. it has no encryption and no access control.
 - playbook matching is token overlap over site and goal. a site hint makes the top three reliable on the 24-playbook test. a vague goal without a site does not.
 - a playbook is only as good as its labels. a site change that renames a control makes replay fail until a person updates the steps.
-- Living Brain stores a pointer page, not the executable steps. if the local artifact is deleted, the shared page cannot replay it.
-- the hosted fidelity test is blocked while the Living Brain balance is empty. a 402 is not a pass.
+- no hosted sync. Living Brain was discarded because it cannot be used without a prepaid balance. the local store is the only source of truth.
+- a shared playbook directory has no locking. two writers can overwrite the same file. the last write wins.
 - no secrets belong in a playbook or a pointer page.
 
 ## benchmarks

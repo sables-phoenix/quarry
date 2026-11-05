@@ -82,18 +82,9 @@ chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 | flows | 4 |
 | replays | 40 |
 | pass | 40 |
-| klawva median | 2001 ms |
+| klawva median | 1794 ms |
 | tokens per replay | 1 |
 | retrieval top 3 with site hint | 1 |
-
-## living brain
-
-| metric | value |
-| --- | --- |
-| status | blocked |
-| reason | insufficient_balance |
-| exact matches | not run |
-| search top 3 | not run |
 
 ## model-driven, open-ended
 

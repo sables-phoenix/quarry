@@ -81,7 +81,7 @@ one task, one model, no steps given, 3 runs per arm. supermemory disabled on bot
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 56.6 s | $0.006832 | 18588 | 2/3 |
+| quarry | 180.0 s | $0.020506 | 36483 | 1/3 |
 | chrome devtools | 20.0 s | $0.005274 | 18725 | 3/3 |
 
 chrome wins the open-ended task. one quarry run timed out at checkout.

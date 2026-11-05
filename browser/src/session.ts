@@ -132,6 +132,15 @@ export class Session {
     });
   }
 
+  fillForm(values: string[]): Effect.Effect<{ filled: number; fields: string[] }, BrowserError> {
+    const self = this;
+    return Effect.gen(function* () {
+      const result = yield* self.browser.fillForm(values);
+      self.state = yield* self.capture();
+      return result;
+    });
+  }
+
   controls(): Effect.Effect<{ text: string; tokens: number }, BrowserError> {
     const self = this;
     return Effect.gen(function* () {

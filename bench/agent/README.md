@@ -17,10 +17,10 @@ the scripted benches measure what each tool returns. this one measures a model c
 
 | arm | wall, median | cost, median | input tokens, median | success |
 | --- | --- | --- | --- | --- |
-| quarry | 56.6 s | $0.00683 | 18,588 | 2/3 |
+| quarry | 180.0 s | $0.02051 | 36,483 | 1/3 |
 | chrome devtools | 20.0 s | $0.00527 | 18,725 | 3/3 |
 
-chrome wins the open-ended task on wall clock and reliability. one quarry run hit the 180 s timeout; the two successful runs took 57 s and 48 s. input tokens are at parity.
+chrome wins the open-ended task on wall clock and reliability. one quarry run reached checkout in 94 s; two hit the 180 s timeout.
 
 ## guided results
 

@@ -46,6 +46,25 @@ function find(role, name) {
   return partial;
 }`;
 
+export const FILL_FORM = `(values) => { ${RESOLVE}
+  const els = deepAll(document, 'input,textarea', []).filter((el) => {
+    const type = String(el.type || '').toLowerCase();
+    return !el.disabled && !['hidden', 'checkbox', 'radio', 'submit', 'button', 'file', 'image', 'reset'].includes(type) && el.getBoundingClientRect().width > 0;
+  });
+  const fields = els.map(labelOf);
+  const count = Math.min(values.length, els.length);
+  for (let index = 0; index < count; index++) {
+    const el = els[index];
+    el.focus();
+    const proto = el instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+    const descriptor = Object.getOwnPropertyDescriptor(proto, 'value');
+    if (descriptor && descriptor.set) descriptor.set.call(el, String(values[index])); else el.value = String(values[index]);
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  return JSON.stringify({ filled: count, fields });
+}`;
+
 export const APPLY = `(steps) => { ${RESOLVE}
   const done = [];
   for (const s of steps) {
@@ -315,6 +334,10 @@ export class Browser {
 
   assert(assertions: Assertion[]): Effect.Effect<Array<{ op: string; value: unknown; ok: boolean }>, BrowserError> {
     return this.wrap("assert", async () => JSON.parse(String(await this.evalRaw(`(${ASSERT})(${JSON.stringify(assertions)})`))) as Array<{ op: string; value: unknown; ok: boolean }>);
+  }
+
+  fillForm(values: string[]): Effect.Effect<{ filled: number; fields: string[] }, BrowserError> {
+    return this.wrap("fillForm", async () => JSON.parse(String(await this.evalRaw(`(${FILL_FORM})(${JSON.stringify(values)})`))) as { filled: number; fields: string[] });
   }
 
   screenshot(clip?: { x: number; y: number; width: number; height: number }): Effect.Effect<string, BrowserError> {

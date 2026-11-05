@@ -70,7 +70,7 @@ four fixture flows, one run each. the current numbers are in `bench/browser/ladd
 
 the fixture ladder is cheap on both sides. the real page comparison is the one that matters: a default chrome devtools snapshot of mdn is 22,960 tokens. the measured scoped state is 13,285 to 15,780 tokens across captures, a 1.5x to 1.7x win. react is the loss: 20,672 against 23,705.
 
-the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 2 of 3 against chrome devtools 3 of 3, and was slower.
+the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 1 of 3 against chrome devtools 3 of 3, and was slower.
 
 ## real pages
 

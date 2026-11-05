@@ -13,6 +13,7 @@ const TOOLS = [
   { name: "browser_wait", description: "Wait for text or a fixed delay. Use this after a click when the next screen is slow. Example: browser_wait({ text: 'Checkout', timeout: 8000 }).", inputSchema: { type: "object", properties: { text: { type: "string" }, ms: { type: "number" }, timeout: { type: "number" } } } },
   { name: "browser_look", description: "Return a screenshot. The first call is a full frame. Later calls compare with the previous frame and return a cropped image when the change is small. Use only when pixels matter.", inputSchema: { type: "object", properties: {} } },
   { name: "browser_controls", description: "Return only interactive controls with stable ids, roles, names, and values. Use this to find the field or button to act on. Example: browser_controls({}).", inputSchema: { type: "object", properties: {} } },
+  { name: "browser_fill_form", description: "Fill every visible text field in document order with the given values. Returns the field labels and how many were filled. Use this when a form has several fields and guecting labels is slow. Example: browser_fill_form({values:['Backend engineer','Remote','you@example.com']}).", inputSchema: { type: "object", properties: { values: { type: "array", items: { type: "string" } } }, required: ["values"] } },
   { name: "browser_state", description: "Return the current semantic state, its hash, and its token estimate.", inputSchema: { type: "object", properties: {} } },
   { name: "browser_project", description: "Return only the state nodes that match a query.", inputSchema: { type: "object", properties: { query: { type: "string" } }, required: ["query"] } },
   { name: "browser_act", description: "Run typed steps and return a summarized delta. Click needs a role and a name: {op:'click',role:'link',name:'Docs'}. Other steps: {op:'fill',role:'textbox',name:'email',value:'a@b.c'}, {op:'wait_for',text:'Checkout',timeout:8000}, {op:'wait',ms:300}. Roles: link, button, textbox, tab, checkbox. Batch independent steps in one call when the flow is known. Always call browser_open first.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
@@ -63,6 +64,10 @@ async function call(name: string, args: Record<string, unknown>): Promise<Respon
   if (name === "browser_controls") {
     const controls = await Effect.runPromise(s.controls());
     return { content: [{ type: "text", text: controls.text }], structuredContent: { tokens: controls.tokens } };
+  }
+  if (name === "browser_fill_form") {
+    const result = await Effect.runPromise(s.fillForm((args.values ?? []) as string[]));
+    return { content: [{ type: "text", text: JSON.stringify(result) }], structuredContent: { filled: result.filled, fields: result.fields } };
   }
   if (name === "browser_state") {
     if (!s.state) throw new Error("open a page first");

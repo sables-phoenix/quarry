@@ -38,7 +38,7 @@
     "quarry_first": 21.2,
     "quarry_replay_event_waits": 2.4
   },
-  "notes": "event waits replace the 6.6 s of fixed sleeps. with 1.5 s per model call, replay is 11x faster end to end than the chrome arm and 8.8x faster than the first run. first-run and chrome numbers used fixed waits.",
+  "notes": "fixed-wait numbers are kept above for history. the matched event-wait section is the honest comparison. tokens are chars/4 estimates and actions are scripted.",
   "quarry_replay_event_waits": {
     "runs_ms": [
       2789,
@@ -48,5 +48,48 @@
     "median_ms": 2426,
     "tokens": 10,
     "model_calls": 0
+  },
+  "matched_event_waits": {
+    "chrome_devtools": {
+      "runs_ms": [
+        3806,
+        2900,
+        2966
+      ],
+      "median_ms": 2966,
+      "tokens_runs": [
+        4793,
+        4779,
+        4881
+      ],
+      "median_tokens": 4793,
+      "calls": 11
+    },
+    "quarry_first": {
+      "runs_ms": [
+        2615,
+        1867,
+        1867
+      ],
+      "median_ms": 1867,
+      "tokens": 350,
+      "calls": 8
+    },
+    "quarry_replay": {
+      "runs_ms": [
+        2789,
+        2426,
+        2022
+      ],
+      "median_ms": 2426,
+      "tokens": 10,
+      "calls": 0
+    },
+    "end_to_end_seconds_at_1_5s": {
+      "chrome": 19.5,
+      "quarry_first": 13.9,
+      "replay": 2.4
+    },
+    "notes": "same flow, event waits, 3 runs each. tokens are chars/4 estimates. actions are scripted, not chosen by a model. quarry first run batted actions, so it took fewer observations than the chrome arm snapshot per step."
   }
 }

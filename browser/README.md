@@ -80,18 +80,19 @@ run `node bench/real-flows.mjs` from this directory after `npm run build`.
 
 ## live site: klawva
 
-one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, select 24 hours, stop before payment. same steps and waits on both arms, separate browser instances.
+one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, select 24 hours, stop before payment. same steps, same event waits, 3 runs per arm.
 
-| arm | tokens | tool time | model calls |
+| arm | tokens | tool time, median | calls |
 | --- | --- | --- | --- |
-| chrome devtools mcp, snapshot per step | 4,851 | 9.9 s | 11 |
-| quarry, first run | 826 | 9.2 s | 8 |
-| quarry, replay with fixed waits | 10 | 9.0 s | 0 |
-| quarry, replay with event waits | 10 | 2.4 s | 0 |
+| chrome devtools mcp, snapshot per step | 4,793 | 3.0 s | 11 |
+| quarry first run, batched | 350 | 1.9 s | 8 |
+| quarry replay | 10 | 2.4 s | 0 |
 
-first run: 5.9x fewer tokens and about even on tool time. replay with event waits: 485x fewer tokens, 4.1x faster on tool time, and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 21.2 s for the first quarry run, and 2.4 s for replay.
+with a 1.5 s model call the end-to-end estimate is 19.5 s for devtools, 13.9 s for the first quarry run, and 2.4 s for replay.
 
-the first replay used the fixed waits from the recording and stayed at 9.0 s. replacing them with `wait_for` polling cut it to 2.4 s over three runs.
+three caveats. token counts are `chars / 4` estimates, not a tokenizer. the actions were scripted by us, not chosen by a model, so the token numbers measure what each tool returns, not what a model needs to decide. the first quarry run batched actions and therefore observed less than the chrome arm, which took a snapshot after every step.
+
+the earlier fixed-wait numbers (9.9 s chrome, 9.2 s first run, 9.0 s replay) are in `bench/klawva.json` for history. they mixed fixed and event waits and should not be used for the speed claim.
 
 evidence: `bench/klawva.json` and `bench/klawva-checkout.png`. no payment was made.
 

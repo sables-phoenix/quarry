@@ -38,7 +38,6 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | pass | 19 |
 | first run tokens | 2821 |
 | replay tokens | 19 |
-| screenshot formula, one frame per step | 81960 |
 
 ## browser, 10 real flows
 
@@ -64,12 +63,34 @@ chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 
 one task, one model, guided execution, 3 runs per arm.
 
-| arm | wall, median | cost, median | input tokens, median | success |
-| --- | --- | --- | --- | --- |
-| quarry | 12.5 s | $0.001953 | 7341 | 3/3 |
-| chrome devtools | 49.0 s | $0.009008 | 24638 | 3/3 |
+| arm | wall, median | cost, median | input tokens, median | cache reads, median | success |
+| --- | --- | --- | --- | --- | --- |
+| quarry | 12.5 s | $0.001953 | 7341 | 23936 | 3/3 |
+| chrome devtools | 49.0 s | $0.009008 | 24638 | 161024 | 3/3 |
 
-open-ended, one run each: quarry 17.5 s and $0.002477, chrome 119.5 s and $0.013676. the quarry open run used a recorded flow from supermemory.
+the open-ended run is excluded: the quarry arm recalled a recorded flow from supermemory and chrome did not.
+
+## text vs built-in webfetch
+
+one question, 3 runs per arm, same model.
+
+| arm | correct | wall, median | input tokens, median | cost, median |
+| --- | --- | --- | --- | --- |
+| quarry | 2/3 | 8.6 s | 9085 | $0.001827 |
+| opencode webfetch | 3/3 | 6.7 s | 14835 | $0.002251 |
+
+quarry was cheaper but slower and one run answered the wrong header. this is the honest result.
+
+## browser-only pages
+
+| metric | value |
+| --- | --- |
+| pages | 3 |
+| text unusable | 1 |
+| quarry text tokens | 2704 |
+| browser state tokens | 7484 |
+
+only excalidraw needed a browser. linear and notion were cheaper through the text layer.
 
 ## caveats
 

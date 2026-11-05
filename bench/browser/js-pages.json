@@ -1,0 +1,34 @@
+{
+  "summary": {
+    "pages": 3,
+    "text_unusable": 1,
+    "state_total": 7484,
+    "text_total": 2704
+  },
+  "rows": [
+    {
+      "url": "https://excalidraw.com/",
+      "text_chars": 21,
+      "text_tokens": 6,
+      "needs_browser": true,
+      "text_usable": false,
+      "state_tokens": 525
+    },
+    {
+      "url": "https://linear.app/",
+      "text_chars": 9253,
+      "text_tokens": 2314,
+      "needs_browser": false,
+      "text_usable": true,
+      "state_tokens": 6160
+    },
+    {
+      "url": "https://www.notion.so/product",
+      "text_chars": 1533,
+      "text_tokens": 384,
+      "needs_browser": false,
+      "text_usable": true,
+      "state_tokens": 799
+    }
+  ]
+}

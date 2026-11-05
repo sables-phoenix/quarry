@@ -11,6 +11,8 @@ const select = load("./select.json");
 const external = load("./external.json");
 const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
+const textAgent = JSON.parse(readFileSync(new URL("./agent/text-results.json", import.meta.url), "utf8")) as { quarry: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number }; webfetch: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number } };
+const jsPages = load("./browser/js-pages.json");
 const agent = JSON.parse(readFileSync(new URL("./agent/results.json", import.meta.url), "utf8")) as {
   guided: {
     quarry: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number };
@@ -65,7 +67,6 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | pass | ${fixtures.summary.ok} |
 | first run tokens | ${fixtures.summary.first_total} |
 | replay tokens | ${fixtures.summary.replay_total} |
-| screenshot formula, one frame per step | ${fixtures.summary.screenshot_total} |
 
 ## browser, 10 real flows
 
@@ -91,12 +92,34 @@ chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${kla
 
 one task, one model, guided execution, 3 runs per arm.
 
-| arm | wall, median | cost, median | input tokens, median | success |
-| --- | --- | --- | --- | --- |
-| quarry | ${(agent.guided.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.quarry.median_cost_usd} | ${agent.guided.quarry.median_input_tokens} | ${agent.guided.quarry.success}/3 |
-| chrome devtools | ${(agent.guided.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.chrome.median_cost_usd} | ${agent.guided.chrome.median_input_tokens} | ${agent.guided.chrome.success}/3 |
+| arm | wall, median | cost, median | input tokens, median | cache reads, median | success |
+| --- | --- | --- | --- | --- | --- |
+| quarry | ${(agent.guided.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.quarry.median_cost_usd} | ${agent.guided.quarry.median_input_tokens} | ${agent.guided.quarry.median_cache_read} | ${agent.guided.quarry.success}/3 |
+| chrome devtools | ${(agent.guided.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.chrome.median_cost_usd} | ${agent.guided.chrome.median_input_tokens} | ${agent.guided.chrome.median_cache_read} | ${agent.guided.chrome.success}/3 |
 
-open-ended, one run each: quarry ${(agent.open.quarry.wall_ms / 1000).toFixed(1)} s and $${agent.open.quarry.cost_usd}, chrome ${(agent.open.chrome.wall_ms / 1000).toFixed(1)} s and $${agent.open.chrome.cost_usd}. the quarry open run used a recorded flow from supermemory.
+the open-ended run is excluded: the quarry arm recalled a recorded flow from supermemory and chrome did not.
+
+## text vs built-in webfetch
+
+one question, 3 runs per arm, same model.
+
+| arm | correct | wall, median | input tokens, median | cost, median |
+| --- | --- | --- | --- | --- |
+| quarry | ${textAgent.quarry.correct}/3 | ${(textAgent.quarry.median_wall_ms / 1000).toFixed(1)} s | ${textAgent.quarry.median_input_tokens} | $${textAgent.quarry.median_cost_usd} |
+| opencode webfetch | ${textAgent.webfetch.correct}/3 | ${(textAgent.webfetch.median_wall_ms / 1000).toFixed(1)} s | ${textAgent.webfetch.median_input_tokens} | $${textAgent.webfetch.median_cost_usd} |
+
+quarry was cheaper but slower and one run answered the wrong header. this is the honest result.
+
+## browser-only pages
+
+| metric | value |
+| --- | --- |
+| pages | ${jsPages.summary.pages} |
+| text unusable | ${jsPages.summary.text_unusable} |
+| quarry text tokens | ${jsPages.summary.text_total} |
+| browser state tokens | ${jsPages.summary.state_total} |
+
+only excalidraw needed a browser. linear and notion were cheaper through the text layer.
 
 ## caveats
 

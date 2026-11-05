@@ -202,9 +202,6 @@ impl Fetcher {
         let _ = write_meta(&meta_path, &meta);
         let _ = write_body(&body_path, &body);
 
-        if cache == CacheState::Miss {
-            cache = CacheState::Miss;
-        }
         Ok(self.build_doc(
             &url,
             &final_url,

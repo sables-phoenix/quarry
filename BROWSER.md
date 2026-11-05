@@ -49,6 +49,8 @@ the model writes the test once. reruns are deterministic, cheap, and produce a d
 
 each piece exists somewhere. playwright records traces and replays them. percy and applitools diff screenshots in ci. stagehand and browserbase cache actions. chrome devtools mcp exposes an accessibility snapshot. none of them combine the pieces into one per-step observation protocol with a token budget.
 
+shipped versus prose: the code implements the scoped state, deltas, replay, and assertions. the fingerprint default and the image crop are described below and are not implemented.
+
 the new part is the ladder itself: a state fingerprint is the default observation, text delta is the second, a cropped pixel diff is the third, and a full frame is the last resort. a recorded flow replays without a model, and the run reports a delta instead of a transcript. that is the concept worth testing.
 
 ## flow benchmark
@@ -79,7 +81,7 @@ the same login flow, driven by the `chrome-devtools` mcp server that ships with 
 | delta ladder | 191 |
 | replay | 10 |
 
-on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm collapses: mdn is 18,841 tokens per snapshot, versus roughly 567 for the ladder on the same page.
+on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm collapses: mdn is 18,841 tokens per snapshot. the measured scoped state for mdn is 13,285 tokens.
 
 the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win much on a small form with a dom-only agent.
 

@@ -20,7 +20,6 @@ pub fn headings(text: &str) -> Vec<Heading> {
     let lines: Vec<&str> = text.lines().collect();
     let mut out: Vec<Heading> = Vec::new();
     let mut used: HashMap<String, usize> = HashMap::new();
-    let mut last_line = lines.len();
     for (i, line) in lines.iter().enumerate() {
         let Some(caps) = HEADING.captures(line) else {
             continue;
@@ -48,7 +47,6 @@ pub fn headings(text: &str) -> Vec<Heading> {
             chars: 0,
             tokens_est: 0,
         });
-        let _ = last_line;
     }
     for h in out.iter_mut() {
         let end = section_end(&lines, h.line, h.level);
@@ -56,8 +54,6 @@ pub fn headings(text: &str) -> Vec<Heading> {
         h.chars = body.chars().count();
         h.tokens_est = estimate_tokens(h.chars);
     }
-    last_line = lines.len();
-    let _ = last_line;
     out
 }
 

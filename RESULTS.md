@@ -8,7 +8,7 @@ the canonical numbers live in `bench/SUMMARY.md` and the JSON files next to the 
 - selection: 10 pages, one question each, top three sections returned. tokens use o200k. recall means the required string appears in the returned sections.
 - hosted reader: 6 pages against `r.jina.ai`. tokens use o200k.
 - browser fixtures: 19 local flows. quarry tokens are exact. the screenshot row is the 1,366-token frame formula, not a measured screenshot.
-- browser real flows: 10 flows across mdn, react docs, github, and wikipedia. quarry tokens are exact. the chrome devtools baselines were captured as snapshots and tokenized with o200k; they are exact for that run. the DOM assertion checks the page after the clicks, not the returned state payload.
+- browser real flows: 10 flows across mdn, react docs, github, and wikipedia. quarry tokens are exact. the chrome devtools baselines were captured as snapshots and tokenized with o200k; they are exact for that run. the assertion checks the returned state payload, not the page DOM.
 - klawva: one hiring flow up to checkout, 5 runs per arm. both sides exact o200k. no payment was made.
 
 ## current results

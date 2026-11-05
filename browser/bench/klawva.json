@@ -26,7 +26,9 @@
   "ratios": {
     "tokens_first": 5.87,
     "time_first": 1.07,
-    "tokens_replay_vs_chrome": 485.1
+    "tokens_replay_vs_chrome": 485.1,
+    "replay_event_vs_chrome_time": 4.08,
+    "replay_event_vs_first_time": 3.8
   },
   "screenshot_baseline_tokens": 8196,
   "screenshot_baseline_ratio": 9.9,
@@ -34,7 +36,17 @@
   "model_adjusted_seconds": {
     "chrome": 26.4,
     "quarry_first": 21.2,
-    "quarry_replay": 9.0
+    "quarry_replay_event_waits": 2.4
   },
-  "notes": "first run re-measured after the sequential act fix. the earlier 7.6 s used the old batched act that waited once per call. waits dominate the flow."
+  "notes": "event waits replace the 6.6 s of fixed sleeps. with 1.5 s per model call, replay is 11x faster end to end than the chrome arm and 8.8x faster than the first run. first-run and chrome numbers used fixed waits.",
+  "quarry_replay_event_waits": {
+    "runs_ms": [
+      2789,
+      2426,
+      2022
+    ],
+    "median_ms": 2426,
+    "tokens": 10,
+    "model_calls": 0
+  }
 }

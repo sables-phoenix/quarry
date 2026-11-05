@@ -68,7 +68,13 @@ export const APPLY = `(steps) => { ${RESOLVE}
   return JSON.stringify({ ok: true, done });
 }`;
 
-export const ASSERT = `(assertions) => { ${RESOLVE}
+export const WAIT_FOR = `(condition) => {
+  if (condition.selector) return Boolean(document.querySelector(condition.selector));
+  if (condition.text) return document.body.innerText.includes(condition.text);
+  return true;
+}`;
+
+const ASSERT = `(assertions) => { ${RESOLVE}
   const text = document.body.innerText;
   const out = [];
   for (const a of assertions) {
@@ -221,9 +227,22 @@ export class Browser {
   act(steps: Step[], settle = 250): Effect.Effect<{ ok: boolean; failed?: Step; navigated?: boolean; ms: number }, BrowserError> {
     return this.wrap("act", async () => {
       const started = performance.now();
-      for (const step of steps) {
+      for (let index = 0; index < steps.length; index++) {
+        const step = steps[index]!;
+        const next = steps[index + 1];
         if (step.op === "wait") {
           await sleep(step.ms ?? 300);
+          continue;
+        }
+        if (step.op === "wait_for") {
+          const deadline = Date.now() + (step.timeout ?? 5000);
+          let ready = false;
+          while (Date.now() < deadline) {
+            ready = Boolean(await this.evalRaw(`(${WAIT_FOR})(${JSON.stringify(step)})`));
+            if (ready) break;
+            await sleep(100);
+          }
+          if (!ready) return { ok: false, failed: step, ms: Math.round(performance.now() - started) };
           continue;
         }
         let parsed: { ok: boolean; failed?: Step; navigated?: boolean };
@@ -233,7 +252,7 @@ export class Browser {
           parsed = { ok: true, navigated: true };
         }
         if (!parsed.ok) return { ...parsed, ms: Math.round(performance.now() - started) };
-        await sleep(settle);
+        if (next?.op !== "wait_for") await sleep(settle);
       }
       return { ok: true, ms: Math.round(performance.now() - started) };
     });

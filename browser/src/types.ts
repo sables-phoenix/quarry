@@ -49,7 +49,8 @@ export type Step =
   | { op: "fill"; role: string; name: string; value: string }
   | { op: "select"; name: string; value: string }
   | { op: "check"; name: string; value: boolean }
-  | { op: "wait"; ms?: number };
+  | { op: "wait"; ms?: number }
+  | { op: "wait_for"; text?: string; selector?: string; timeout?: number };
 
 export type Assertion =
   | { op: "text"; value: string }

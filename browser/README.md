@@ -86,11 +86,12 @@ one flow on `https://klawva.xyz`: employees, cv tailor, hire, fill the brief, se
 | --- | --- | --- | --- |
 | chrome devtools mcp, snapshot per step | 4,851 | 9.9 s | 11 |
 | quarry, first run | 826 | 9.2 s | 8 |
-| quarry, replay | 10 | 9.0 s | 0 |
+| quarry, replay with fixed waits | 10 | 9.0 s | 0 |
+| quarry, replay with event waits | 10 | 2.4 s | 0 |
 
-first run: 5.9x fewer tokens and about even on tool time. replay: 485x fewer tokens and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 21.2 s for the first quarry run, and 9.0 s for replay.
+first run: 5.9x fewer tokens and about even on tool time. replay with event waits: 485x fewer tokens, 4.1x faster on tool time, and zero model calls. with a 1.5 s model call the end-to-end estimate is 26.4 s for devtools, 21.2 s for the first quarry run, and 2.4 s for replay.
 
-the replay time is about the same because the waits dominate. its win is tokens and model calls.
+the first replay used the fixed waits from the recording and stayed at 9.0 s. replacing them with `wait_for` polling cut it to 2.4 s over three runs.
 
 evidence: `bench/klawva.json` and `bench/klawva-checkout.png`. no payment was made.
 

@@ -39,16 +39,32 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 | first run tokens | 2821 |
 | replay tokens | 19 |
 
-## browser, 10 real flows
+## browser, 10 page checks on 4 pages
 
 | metric | value |
 | --- | --- |
-| tasks | 10 |
+| checks | 10 |
 | pages | 4 |
 | pass | 10 |
-| median | 5.4x |
-| total | 4.9x |
-| range | 2.6x to 15.7x |
+| median | 5.3x |
+| total | 4.7x |
+| range | 2.6x to 16.5x |
+
+## browser, cross-page flows
+
+| metric | value |
+| --- | --- |
+| flows | 4 |
+| pass | 4 |
+
+## observation ladder
+
+| metric | value |
+| --- | --- |
+| flows | 4 |
+| ladder tokens | 3357 |
+| full frame per step | 10928 |
+| crops | 2 |
 
 ## klawva hiring flow, quarry arms
 
@@ -59,16 +75,25 @@ all token counts use the o200k tokenizer on the returned text. no `chars / 4` es
 
 chrome devtools baseline on the same flow: 4164 tokens, 2734 ms.
 
-## model-driven
+## model-driven, open-ended
 
-one task, one model, guided execution, 3 runs per arm.
+one task, one model, no steps given, 3 runs per arm. supermemory disabled on both arms.
 
-| arm | wall, median | cost, median | input tokens, median | cache reads, median | success |
-| --- | --- | --- | --- | --- | --- |
-| quarry | 12.5 s | $0.001953 | 7341 | 23936 | 3/3 |
-| chrome devtools | 49.0 s | $0.009008 | 24638 | 161024 | 3/3 |
+| arm | wall, median | cost, median | input tokens, median | success |
+| --- | --- | --- | --- | --- |
+| quarry | 180.0 s | $0.028355 | 49019 | 1/3 |
+| chrome devtools | 20.0 s | $0.005274 | 18725 | 3/3 |
 
-the open-ended run is excluded: the quarry arm recalled a recorded flow from supermemory and chrome did not.
+chrome wins the open-ended task. quarry timed out twice at checkout.
+
+## model-driven, known flow
+
+same task, steps supplied, 3 runs per arm.
+
+| arm | wall, median | cost, median | success |
+| --- | --- | --- | --- |
+| quarry | 12.5 s | $0.001953 | 3/3 |
+| chrome devtools | 49.0 s | $0.009008 | 3/3 |
 
 ## text vs built-in webfetch
 
@@ -94,7 +119,7 @@ only excalidraw needed a browser. linear and notion were cheaper through the tex
 
 ## caveats
 
-- the 10 real-flow baselines are exact o200k for one capture run. the sample is 10 tasks on 4 pages.
+- the 10 page checks are exact o200k for one capture run. the sample is 10 checks on 4 pages.
 - the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen. the model-driven section is a separate run.
-- browser screenshot tokens use the 1,366-token frame formula, not a tokenizer.
+- browser image tokens use the 1,366-token frame formula and the crop area formula, not a tokenizer.
 - network latency varies. tool time is measured, model latency is not.

@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "flows": 4,
+    "ladder_total": 3357,
+    "screenshot_total": 10928,
+    "crops": 2
+  },
+  "rows": [
+    {
+      "path": "/visual.html",
+      "fingerprint_tokens": 45,
+      "after_fingerprint_tokens": 45,
+      "first_look": "full",
+      "after_look": "full",
+      "after_tokens": 1366,
+      "screenshot_per_step": 2732
+    },
+    {
+      "path": "/tabs.html",
+      "fingerprint_tokens": 44,
+      "after_fingerprint_tokens": 44,
+      "first_look": "full",
+      "after_look": "crop",
+      "after_tokens": 3,
+      "screenshot_per_step": 2732
+    },
+    {
+      "path": "/modal.html",
+      "fingerprint_tokens": 45,
+      "after_fingerprint_tokens": 47,
+      "first_look": "full",
+      "after_look": "full",
+      "after_tokens": 1366,
+      "screenshot_per_step": 2732
+    },
+    {
+      "path": "/list.html",
+      "fingerprint_tokens": 45,
+      "after_fingerprint_tokens": 46,
+      "first_look": "full",
+      "after_look": "crop",
+      "after_tokens": 261,
+      "screenshot_per_step": 2732
+    }
+  ]
+}

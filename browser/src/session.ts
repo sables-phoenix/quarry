@@ -29,10 +29,20 @@ export type JumpResult = {
   state: State;
 };
 
+export type Look = {
+  kind: "crop" | "full";
+  tokens: number;
+  changed: number;
+  ratio: number;
+  box: { x: number; y: number; width: number; height: number } | null;
+  data: string;
+};
+
 export class Session {
   readonly browser: Browser;
   readonly graph: Graph;
   state: State | null;
+  private lastShot: string | null = null;
 
   private constructor(browser: Browser, graph: Graph, state: State | null) {
     this.browser = browser;
@@ -58,6 +68,7 @@ export class Session {
     const self = this;
     return Effect.gen(function* () {
       yield* self.browser.navigate(url);
+      self.lastShot = null;
       const state = yield* self.capture();
       self.state = state;
       yield* Effect.sync(() => self.graph.rememberState(state));
@@ -106,6 +117,37 @@ export class Session {
       const steps = paths.flat();
       const result = yield* self.act(steps);
       return { reached: self.state.hash === target, actions: steps.length, ms: result.ms, model_tokens: 0, state: self.state };
+    });
+  }
+
+  fingerprint(): Effect.Effect<{ text: string; tokens: number; hash: string }, BrowserError> {
+    const self = this;
+    return Effect.gen(function* () {
+      const state = yield* self.capture();
+      self.state = state;
+      const title = String(yield* self.browser.evalJs("document.title"));
+      const controls = state.nodes.filter((node) => ["link", "button", "textbox", "tab", "checkbox", "radio", "combobox", "switch"].includes(node.role)).length;
+      const text = JSON.stringify({ hash: state.hash, url: state.url, title, text_chars: state.chars, controls, nodes: state.nodes.length });
+      return { text, tokens: tokenCount(text), hash: state.hash };
+    });
+  }
+
+  look(): Effect.Effect<Look, BrowserError> {
+    const self = this;
+    return Effect.gen(function* () {
+      const after = yield* self.browser.screenshot();
+      if (!self.lastShot) {
+        self.lastShot = after;
+        return { kind: "full", tokens: 1366, changed: -1, ratio: 1, box: null, data: after };
+      }
+      const diff = yield* self.browser.imageDiff(self.lastShot, after);
+      self.lastShot = after;
+      if (diff.changed > 0 && diff.ratio < 0.35 && diff.box) {
+        const crop = yield* self.browser.screenshot(diff.box);
+        const tokens = Math.ceil((diff.box.width * diff.box.height) / 750);
+        return { kind: "crop", tokens, changed: diff.changed, ratio: diff.ratio, box: diff.box, data: crop };
+      }
+      return { kind: "full", tokens: 1366, changed: diff.changed, ratio: diff.ratio, box: diff.box, data: after };
     });
   }
 

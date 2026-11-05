@@ -4,14 +4,18 @@ import { Session } from "./session.js";
 import { projectState } from "./state.js";
 
 type Request = { id?: unknown; method?: string; params?: { name?: string; arguments?: Record<string, unknown> } };
-type Response = { content: Array<{ type: string; text: string }>; structuredContent?: Record<string, unknown>; isError?: boolean };
+type Content = { type: "text"; text: string } | { type: "image"; data: string; mimeType: string };
+type Response = { content: Content[]; structuredContent?: Record<string, unknown>; isError?: boolean };
 
 const TOOLS = [
   { name: "browser_open", description: "Open a url and return the scoped semantic state. Example: browser_open({url:'https://example.com'}). Call this first.", inputSchema: { type: "object", properties: { url: { type: "string" } }, required: ["url"] } },
+  { name: "browser_fingerprint", description: "Return a tiny observation: hash, url, title, text length, and control count. Use this first after an action. Example: browser_fingerprint({}).", inputSchema: { type: "object", properties: {} } },
+  { name: "browser_wait", description: "Wait for text or a fixed delay. Use this after a click when the next screen is slow. Example: browser_wait({ text: 'Checkout', timeout: 8000 }).", inputSchema: { type: "object", properties: { text: { type: "string" }, ms: { type: "number" }, timeout: { type: "number" } } } },
+  { name: "browser_look", description: "Return a screenshot. The first call is a full frame. Later calls compare with the previous frame and return a cropped image when the change is small. Use only when pixels matter.", inputSchema: { type: "object", properties: {} } },
   { name: "browser_state", description: "Return the current semantic state, its hash, and its token estimate.", inputSchema: { type: "object", properties: {} } },
   { name: "browser_project", description: "Return only the state nodes that match a query.", inputSchema: { type: "object", properties: { query: { type: "string" } }, required: ["query"] } },
-  { name: "browser_act", description: "Run typed steps and return a summarized delta. Step examples: {op:'click',role:'link',name:'Docs'}, {op:'fill',role:'textbox',name:'email',value:'a@b.c'}, {op:'wait_for',text:'Checkout',timeout:8000}, {op:'wait',ms:300}. Roles: link, button, textbox, tab, checkbox. Always call browser_open first.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
-  { name: "browser_assert", description: "Check typed assertions against the current page.", inputSchema: { type: "object", properties: { asserts: { type: "array", items: { type: "object" } } }, required: ["asserts"] } },
+  { name: "browser_act", description: "Run typed steps and return a summarized delta. Click needs a role and a name: {op:'click',role:'link',name:'Docs'}. Other steps: {op:'fill',role:'textbox',name:'email',value:'a@b.c'}, {op:'wait_for',text:'Checkout',timeout:8000}, {op:'wait',ms:300}. Roles: link, button, textbox, tab, checkbox. Batch independent steps in one call when the flow is known. Always call browser_open first.", inputSchema: { type: "object", properties: { steps: { type: "array", items: { type: "object" } } }, required: ["steps"] } },
+  { name: "browser_assert", description: "Check typed assertions against the current page. Ops: text, not_text, url, count, exists, present, visible. Example: browser_assert({asserts:[{op:'text',value:'Checkout'}]}).", inputSchema: { type: "object", properties: { asserts: { type: "array", items: { type: "object" } } }, required: ["asserts"] } },
   { name: "browser_replay", description: "Run a recorded flow. Shape: {url, steps:[...], asserts:[{op:'text',value:'Checkout'}]}. Returns 1 token on pass, a witness on failure. Prefer browser_open + browser_act while exploring.", inputSchema: { type: "object", properties: { url: { type: "string" }, steps: { type: "array", items: { type: "object" } }, asserts: { type: "array", items: { type: "object" } } }, required: ["url", "steps"] } },
   { name: "browser_jump", description: "Navigate to a previously recorded state hash using the shortest known action path.", inputSchema: { type: "object", properties: { target: { type: "string" } }, required: ["target"] } },
 ];
@@ -30,6 +34,30 @@ async function call(name: string, args: Record<string, unknown>): Promise<Respon
   if (name === "browser_open") {
     const state = await Effect.runPromise(s.open(String(args.url)));
     return { content: [{ type: "text", text: state.text }], structuredContent: { hash: state.hash, tokens: state.tokens, nodes: state.nodes.length } };
+  }
+  if (name === "browser_fingerprint") {
+    const fp = await Effect.runPromise(s.fingerprint());
+    return { content: [{ type: "text", text: fp.text }], structuredContent: { tokens: fp.tokens, hash: fp.hash } };
+  }
+  if (name === "browser_wait") {
+    const waitArgs = args as { text?: string; ms?: number; timeout?: number };
+    const started = Date.now();
+    if (waitArgs.text) {
+      const result = await Effect.runPromise(s.browser.act([{ op: "wait_for", text: waitArgs.text, timeout: waitArgs.timeout }]));
+      return { content: [{ type: "text", text: JSON.stringify({ ok: result.ok, ms: Date.now() - started }) }], isError: !result.ok };
+    }
+    await Effect.runPromise(s.browser.act([{ op: "wait", ms: waitArgs.ms ?? 500 }]));
+    return { content: [{ type: "text", text: JSON.stringify({ ok: true, ms: Date.now() - started }) }] };
+  }
+  if (name === "browser_look") {
+    const look = await Effect.runPromise(s.look());
+    return {
+      content: [
+        { type: "image", data: look.data, mimeType: "image/png" },
+        { type: "text", text: JSON.stringify({ kind: look.kind, tokens: look.tokens, ratio: look.ratio, box: look.box }) },
+      ],
+      structuredContent: { kind: look.kind, tokens: look.tokens, ratio: look.ratio, box: look.box },
+    };
   }
   if (name === "browser_state") {
     if (!s.state) throw new Error("open a page first");

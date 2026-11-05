@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "flows": 4,
+    "ok": 4
+  },
+  "rows": [
+    {
+      "app": "github",
+      "from": "https://github.com/rust-lang/rust",
+      "click": "Issues",
+      "url": "https://github.com/rust-lang/rust/issues",
+      "tokens": 6290,
+      "ok": true,
+      "ms": 4580
+    },
+    {
+      "app": "github",
+      "from": "https://github.com/rust-lang/rust",
+      "click": "Pull requests",
+      "url": "https://github.com/rust-lang/rust/pulls",
+      "tokens": 6295,
+      "ok": true,
+      "ms": 3724
+    },
+    {
+      "app": "wikipedia",
+      "from": "https://en.wikipedia.org/wiki/HTTPS",
+      "click": "Talk",
+      "url": "https://en.wikipedia.org/wiki/Talk:HTTPS",
+      "tokens": 2585,
+      "ok": true,
+      "ms": 3535
+    },
+    {
+      "app": "react",
+      "from": "https://react.dev/reference/react/useState",
+      "click": "useEffect",
+      "url": "https://react.dev/reference/react/useEffect",
+      "tokens": 43233,
+      "ok": true,
+      "ms": 4473
+    }
+  ]
+}

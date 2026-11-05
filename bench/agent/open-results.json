@@ -1,0 +1,50 @@
+{
+  "model": "opencode-go/glm-5.3-flash",
+  "task": "hire the Klawva Cv Tailor and stop at checkout without paying",
+  "date": "2026-11-05",
+  "runs": 3,
+  "prompt": "Goal: hire the Klawva Cv Tailor on klawva.xyz and stop at checkout before paying. Never click PAY AND LAUNCH; stop when that text is visible. Use only the arm tools. Figure out the flow yourself. Reply DONE when the checkout page shows PAY AND LAUNCH, FAILED otherwise.",
+  "quarry": {
+    "success": 1,
+    "wall_ms": [
+      180000,
+      180000,
+      156000
+    ],
+    "median_wall_ms": 180000,
+    "input_tokens": [
+      51265,
+      49019,
+      38713
+    ],
+    "median_input_tokens": 49019,
+    "cost_usd": [
+      0.03235539,
+      0.02133729,
+      0.02835491
+    ],
+    "median_cost_usd": 0.028355
+  },
+  "chrome_devtools": {
+    "success": 3,
+    "wall_ms": [
+      16720,
+      19960,
+      29900
+    ],
+    "median_wall_ms": 19960,
+    "input_tokens": [
+      19193,
+      18725,
+      16709
+    ],
+    "median_input_tokens": 18725,
+    "cost_usd": [
+      0.00521744,
+      0.00568206,
+      0.00527434
+    ],
+    "median_cost_usd": 0.005274
+  },
+  "notes": "one task, one model, one machine. supermemory disabled on both arms. two quarry runs hit the 180 s timeout at checkout; chrome finished all three. this is the result the open run actually produced."
+}

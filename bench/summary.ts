@@ -13,12 +13,14 @@ const fixtures = load("./browser/fixtures.json");
 const real = load("./browser/real-flows.json");
 const textAgent = JSON.parse(readFileSync(new URL("./agent/text-results.json", import.meta.url), "utf8")) as { quarry: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number }; webfetch: { correct: number; median_wall_ms: number; median_input_tokens: number; median_cost_usd: number } };
 const jsPages = load("./browser/js-pages.json");
+const ladder = load("./browser/ladder.json");
+const nav = load("./browser/nav-flows.json");
 const agent = JSON.parse(readFileSync(new URL("./agent/results.json", import.meta.url), "utf8")) as {
   guided: {
     quarry: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number };
     chrome: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number };
   };
-  open: { quarry: { wall_ms: number; cost_usd: number }; chrome: { wall_ms: number; cost_usd: number } };
+  open: { quarry: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number }; chrome: { median_wall_ms: number; median_cost_usd: number; median_input_tokens: number; success: number } };
 };
 const klawva = JSON.parse(readFileSync(new URL("./browser/klawva.json", import.meta.url), "utf8")) as { chrome: { tokens: number; median_ms: number }; quarry_first: { tokens: number; median_ms: number }; quarry_replay: { tokens: number; median_ms: number } };
 
@@ -68,16 +70,32 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 | first run tokens | ${fixtures.summary.first_total} |
 | replay tokens | ${fixtures.summary.replay_total} |
 
-## browser, 10 real flows
+## browser, 10 page checks on 4 pages
 
 | metric | value |
 | --- | --- |
-| tasks | ${real.summary.flows} |
-| pages | 4 |
+| checks | ${real.summary.checks} |
+| pages | ${real.summary.pages} |
 | pass | ${real.summary.ok} |
 | median | ${real.summary.median_ratio}x |
 | total | ${real.summary.total_ratio}x |
 | range | ${real.summary.min_ratio}x to ${real.summary.max_ratio}x |
+
+## browser, cross-page flows
+
+| metric | value |
+| --- | --- |
+| flows | ${nav.summary.flows} |
+| pass | ${nav.summary.ok} |
+
+## observation ladder
+
+| metric | value |
+| --- | --- |
+| flows | ${ladder.summary.flows} |
+| ladder tokens | ${ladder.summary.ladder_total} |
+| full frame per step | ${ladder.summary.screenshot_total} |
+| crops | ${ladder.summary.crops} |
 
 ## klawva hiring flow, quarry arms
 
@@ -88,16 +106,25 @@ all token counts use the o200k tokenizer on the returned text. no \`chars / 4\` 
 
 chrome devtools baseline on the same flow: ${klawva.chrome.tokens} tokens, ${klawva.chrome.median_ms} ms.
 
-## model-driven
+## model-driven, open-ended
 
-one task, one model, guided execution, 3 runs per arm.
+one task, one model, no steps given, 3 runs per arm. supermemory disabled on both arms.
 
-| arm | wall, median | cost, median | input tokens, median | cache reads, median | success |
-| --- | --- | --- | --- | --- | --- |
-| quarry | ${(agent.guided.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.quarry.median_cost_usd} | ${agent.guided.quarry.median_input_tokens} | ${agent.guided.quarry.median_cache_read} | ${agent.guided.quarry.success}/3 |
-| chrome devtools | ${(agent.guided.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.chrome.median_cost_usd} | ${agent.guided.chrome.median_input_tokens} | ${agent.guided.chrome.median_cache_read} | ${agent.guided.chrome.success}/3 |
+| arm | wall, median | cost, median | input tokens, median | success |
+| --- | --- | --- | --- | --- |
+| quarry | ${(agent.open.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.open.quarry.median_cost_usd} | ${agent.open.quarry.median_input_tokens} | ${agent.open.quarry.success}/3 |
+| chrome devtools | ${(agent.open.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.open.chrome.median_cost_usd} | ${agent.open.chrome.median_input_tokens} | ${agent.open.chrome.success}/3 |
 
-the open-ended run is excluded: the quarry arm recalled a recorded flow from supermemory and chrome did not.
+chrome wins the open-ended task. quarry timed out twice at checkout.
+
+## model-driven, known flow
+
+same task, steps supplied, 3 runs per arm.
+
+| arm | wall, median | cost, median | success |
+| --- | --- | --- | --- |
+| quarry | ${(agent.guided.quarry.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.quarry.median_cost_usd} | ${agent.guided.quarry.success}/3 |
+| chrome devtools | ${(agent.guided.chrome.median_wall_ms / 1000).toFixed(1)} s | $${agent.guided.chrome.median_cost_usd} | ${agent.guided.chrome.success}/3 |
 
 ## text vs built-in webfetch
 
@@ -123,9 +150,9 @@ only excalidraw needed a browser. linear and notion were cheaper through the tex
 
 ## caveats
 
-- the 10 real-flow baselines are exact o200k for one capture run. the sample is 10 tasks on 4 pages.
+- the 10 page checks are exact o200k for one capture run. the sample is 10 checks on 4 pages.
 - the real-flow and klawva baselines were measured once through chrome devtools mcp. the quarry arms are scripted, not model-chosen. the model-driven section is a separate run.
-- browser screenshot tokens use the 1,366-token frame formula, not a tokenizer.
+- browser image tokens use the 1,366-token frame formula and the crop area formula, not a tokenizer.
 - network latency varies. tool time is measured, model latency is not.
 `;
 

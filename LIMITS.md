@@ -10,6 +10,7 @@ what quarry does not do, and what the numbers do not cover.
 - locators use synthetic `click()` and value assignment, not trusted CDP input. react, vue, and autofill may ignore them.
 - lexical section ranking. a question worded differently from the page can miss.
 - the state drops paragraphs under 60 characters and text outside live regions. a short answer can be absent from the payload.
+- `browser_look` captures the viewport only, not the full page. image tokens use a formula, not a tokenizer.
 - the MCP runs one browser. a closed browser is recreated on the next call; in-flight work is lost.
 - the graph is local and capped at 1,000 states.
 
@@ -19,7 +20,7 @@ what quarry does not do, and what the numbers do not cover.
 - model latency is not measured.
 - browser screenshot tokens are a formula, not a screenshot.
 - the 19-flow and 10-flow runs are single runs unless the table says otherwise.
-- the 10 real-flow baselines are exact o200k for one capture run per flow. they are 10 tasks on 4 pages.
+- the compression sample is 10 page checks on 4 pages. the navigation sample is 4 cross-page flows. both use one capture run.
 - selection recall is a substring check on questions written with knowledge of the pages.
 - network latency varies. cold numbers move run to run.
 

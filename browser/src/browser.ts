@@ -68,7 +68,26 @@ export const APPLY = `(steps) => { ${RESOLVE}
   return JSON.stringify({ ok: true, done });
 }`;
 
-export const WAIT_FOR = `(condition) => {
+export const DIFF = `(args) => new Promise((resolve) => {
+  const load = (b64) => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = 'data:image/png;base64,' + b64; });
+  Promise.all([load(args.before), load(args.after)]).then(([a, b]) => {
+    const w = Math.min(a.width, b.width), h = Math.min(a.height, b.height);
+    const cv = new OffscreenCanvas(w, h); const cx = cv.getContext('2d', { willReadFrequently: true });
+    cx.drawImage(a, 0, 0); const da = cx.getImageData(0, 0, w, h).data;
+    cx.clearRect(0, 0, w, h); cx.drawImage(b, 0, 0); const db = cx.getImageData(0, 0, w, h).data;
+    let minX = w, minY = h, maxX = -1, maxY = -1, changed = 0;
+    for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+      const i = (y * w + x) * 4;
+      if (Math.abs(da[i]-db[i]) + Math.abs(da[i+1]-db[i+1]) + Math.abs(da[i+2]-db[i+2]) > 24) {
+        changed++; if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y;
+      }
+    }
+    if (maxX < 0) return resolve(JSON.stringify({ changed: 0, ratio: 0, box: null }));
+    resolve(JSON.stringify({ changed, ratio: changed / (w * h), box: { x: minX, y: minY, width: maxX-minX+1, height: maxY-minY+1 } }));
+  }).catch(() => resolve(JSON.stringify({ changed: -1, ratio: 1, box: null })));
+})`;
+
+const WAIT_FOR = `(condition) => {
   if (condition.selector) return Boolean(document.querySelector(condition.selector));
   if (condition.text) return document.body.innerText.includes(condition.text);
   return true;
@@ -82,6 +101,10 @@ const ASSERT = `(assertions) => { ${RESOLVE}
     else if (a.op === 'not_text') out.push({ op: 'not_text', value: a.value, ok: !text.includes(a.value) });
     else if (a.op === 'count') out.push({ op: 'count', value: a.value, ok: deepAll(document, a.selector, []).filter((e) => !e.hidden).length === a.value });
     else if (a.op === 'url') out.push({ op: 'url', value: a.value, ok: location.href.includes(a.value) });
+    else if (a.op === 'exists' || a.op === 'present' || a.op === 'visible') {
+      const target = String(a.name ?? a.value ?? '');
+      out.push({ op: a.op, value: target, ok: target !== '' && text.includes(target) });
+    }
   }
   return JSON.stringify(out);
 }`;
@@ -281,6 +304,22 @@ export class Browser {
 
   assert(assertions: Assertion[]): Effect.Effect<Array<{ op: string; value: unknown; ok: boolean }>, BrowserError> {
     return this.wrap("assert", async () => JSON.parse(String(await this.evalRaw(`(${ASSERT})(${JSON.stringify(assertions)})`))) as Array<{ op: string; value: unknown; ok: boolean }>);
+  }
+
+  screenshot(clip?: { x: number; y: number; width: number; height: number }): Effect.Effect<string, BrowserError> {
+    return this.wrap("screenshot", async () => {
+      const params: Record<string, unknown> = { format: "png", captureBeyondViewport: false };
+      if (clip) params.clip = { ...clip, scale: 1 };
+      const result = (await this.cdp.send("Page.captureScreenshot", params)) as { data?: string };
+      if (!result.data) throw new Error("empty screenshot");
+      return result.data;
+    });
+  }
+
+  imageDiff(before: string, after: string): Effect.Effect<{ changed: number; ratio: number; box: { x: number; y: number; width: number; height: number } | null }, BrowserError> {
+    return this.evalJs(`(${DIFF})(${JSON.stringify({ before, after })})`).pipe(
+      Effect.map((value) => JSON.parse(String(value)) as { changed: number; ratio: number; box: { x: number; y: number; width: number; height: number } | null })
+    );
   }
 
   isOpen(): boolean {

@@ -67,26 +67,55 @@
     }
   },
   "open": {
-    "runs": 1,
-    "prompt": "goal only, no steps",
+    "task": "hire the Klavva Cv Tailor and stop at checkout without paying",
+    "runs": 3,
     "quarry": {
-      "wall_ms": 17510,
-      "cost_usd": 0.002477,
-      "input_tokens": 10688,
+      "wall_ms": [
+        180000,
+        180000,
+        156000
+      ],
+      "median_wall_ms": 180000,
+      "input_tokens": [
+        51265,
+        49019,
+        38713
+      ],
+      "median_input_tokens": 49019,
+      "cost_usd": [
+        0.03235539,
+        0.02133729,
+        0.02835491
+      ],
+      "median_cost_usd": 0.028355,
       "success": 1
     },
     "chrome": {
-      "wall_ms": 119480,
-      "cost_usd": 0.013676,
-      "input_tokens": 32569,
-      "success": 1
+      "wall_ms": [
+        16720,
+        19960,
+        29900
+      ],
+      "median_wall_ms": 19960,
+      "input_tokens": [
+        19193,
+        18725,
+        16709
+      ],
+      "median_input_tokens": 18725,
+      "cost_usd": [
+        0.00521744,
+        0.00568206,
+        0.00527434
+      ],
+      "median_cost_usd": 0.005274,
+      "success": 3
     },
     "ratios": {
-      "wall": 6.82,
-      "cost": 5.52,
-      "input_tokens": 3.05
-    },
-    "confound": "the quarry run recalled a recorded flow from supermemory. the chrome run did not."
+      "wall": 9.0,
+      "cost": 5.4,
+      "input_tokens": 2.6
+    }
   },
   "pre_fix_quarry": {
     "wall_ms": 54820,
@@ -95,5 +124,5 @@
     "success": 1,
     "note": "same task before the quarry tool descriptions were expanded. excluded from the medians."
   },
-  "notes": "one task, one model, one machine. the quarry state now includes body prose. charges come from the opencode session info. the guided prompt lists the steps, so this measures execution and tool ergonomics, not planning. the open run is contaminated by supermemory."
+  "notes": "one task, one model, one machine. supermemory disabled on both arms. the open run is the headline: chrome wins. the guided run supplied the steps, so it measures execution and ergonomics, not planning. quarry timed out twice at checkout in the open run."
 }

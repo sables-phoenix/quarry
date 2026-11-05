@@ -49,9 +49,9 @@ the model writes the test once. reruns are deterministic, cheap, and produce a d
 
 each piece exists somewhere. playwright records traces and replays them. percy and applitools diff screenshots in ci. stagehand and browserbase cache actions. chrome devtools mcp exposes an accessibility snapshot. none of them combine the pieces into one per-step observation protocol with a token budget.
 
-shipped versus prose: the code implements the scoped state, deltas, replay, and assertions. the fingerprint default and the image crop are described below and are not implemented.
+shipped: the scoped state, deltas, replay, assertions, the fingerprint, and the cropped-image diff. `browser_fingerprint` returns the default observation, `browser_look` returns a full frame on the first call and a crop when the change is small.
 
-the new part is the ladder itself: a state fingerprint is the default observation, text delta is the second, a cropped pixel diff is the third, and a full frame is the last resort. a recorded flow replays without a model, and the run reports a delta instead of a transcript. that is the concept worth testing.
+the new part is the ladder itself: a state fingerprint is the default observation, text delta is the second, a cropped pixel diff is the third, and a full frame is the last resort. a recorded flow replays without a model, and the run reports a delta instead of a transcript. the ladder ships in `browser/src/session.ts` and `browser/src/mcp.ts`.
 
 ## flow benchmark
 
@@ -83,11 +83,11 @@ the same login flow, driven by the `chrome-devtools` mcp server that ships with 
 
 on a tiny local form the snapshot-only baseline is already cheap, so the ladder wins by 1.2x, not 28x. the screenshot arm is the one that loses by 22.7x. on a real page the snapshot arm collapses: mdn is 18,841 tokens per snapshot. the measured scoped state for mdn is 13,285 tokens.
 
-the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win much on a small form with a dom-only agent.
+the honest rule: the ladder wins when the page is large, when the step is visual, or when the flow repeats. it does not win on open-ended exploration: in the open model run quarry finished 1 of 3 against chrome devtools 3 of 3.
 
 ## real pages, ten flows
 
-the current numbers are in `bench/SUMMARY.md` and `bench/browser/real-flows.json`. the sample is ten flows on four sites, one run each, with exact o200k counts on both sides. the actions are scripted.
+the current numbers are in `bench/SUMMARY.md`, `bench/browser/real-flows.json`, and `bench/browser/nav-flows.json`. the compression sample is ten page checks on four pages; the navigation sample is four cross-page flows. one run each, exact o200k on both sides.
 
 ## formal model
 
